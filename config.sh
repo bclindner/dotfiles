@@ -13,10 +13,6 @@ ln -f .screenrc ~
 ln -f .bash_profile ~
 ln -f .bashrc ~
 
-# tamsyn 1.11 as terminal font - s/o to Scott Fial!
-echo "setting console font...\n"
-wget http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-1.11.tar.gz
-tar -xzvf tamsyn-font-1.11.tar.gz tamsyn-font-1.11/Tamsyn7x14r.psf.gz
-cp tamsyn-font-1.11/Tamsyn7x14r.psf.gz ~/.config/
-sudo setfont ~/.config/Tamsyn7x14r.psf.gz
-rm -rf tamsyn*
+# terminal font
+echo "setting console font... (this may only work on debian)"
+sudo setfont /usr/share/consolefonts/Uni3-Terminus14.psf.gz
