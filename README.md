@@ -6,7 +6,9 @@ but anyways, these are my dotfiles. these dotfiles contain my configurations for
 * i3
 * i3status
 * nano
-* screen & bash_profile
+* screen
+* bash
+
 
 i basically just keep them here so i don't screw up my configurations when i reinstall (aka when i screw 
 up really really badly such that it's not worth fixing). also to figure out how to use git because 
