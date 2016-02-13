@@ -4,6 +4,6 @@ vbell off
 
 hardstatus on
 hardstatus alwayslastline
-hardstatus string "%{= wk}  %H | %-w %{= bw} %n*%t %{= wk} %+w %=| %c %m/%d/%y  "
+hardstatus string "%{= WK}  %H | %-w %{= gK} %n*%t %{= WK} %+w %=| %c %m/%d/%y  "
 
 bind ' ' windowlist -b
