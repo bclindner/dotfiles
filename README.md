@@ -8,10 +8,16 @@ but anyways, these are my dotfiles. these dotfiles contain my configurations for
 * nano
 * screen
 * bash
+* xfce4-terminal
 
 i basically just keep them here so i don't screw up my configurations when i reinstall (aka when i screw 
 up really really badly such that it's not worth fixing). also to figure out how to use git because 
 apparently i have to learn some sort of vcs to develop collaboratively. have fun looking through them, i 
 guess?
 
-**NOTE:** i3-gaps is REQUIRED for the i3 config to work.
+**NOTE:** the following packages are required for the dotfiles to be used fully (names may vary):
+
+* i3-gaps
+* i3bar & i3status
+* rofi
+* terminus-font

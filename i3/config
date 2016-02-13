@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:DejaVu Sans Mono 10
+font Terminus 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -129,16 +129,16 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	colors{
-		background #1d1f21
-		statusline #c5c8c6
+		background #171d24
+		statusline #e3e3e3
 
-		focused_workspace #5F819D #5f819d #1d1f21
-		active_workspace #1d1f21 #1d1f21 #c5c8c6
-		inactive_workspace #1d1f21 #1d1f21 #c5c8c6
-		urgent_workspace #A54242 #1d1f21 #c5c8c6
+		focused_workspace #4a88c3 #4a88c3 #171d24
+		active_workspace #4a88c3 #4a88c3 #171d24
+		inactive_workspace #373b41 #373b41 #e3e3e3
+		urgent_workspace #af3131 #af3131 #171d24
 	}
 	separator_symbol "+"
-	font pango:Dejavu Sans Mono 10
+	font Terminus 12
         status_command i3status
         tray_output primary
 }
