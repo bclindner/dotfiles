@@ -1,7 +1,8 @@
 #!/bin/bash
 mkdir ~/.config
-ln -s i3 ~/.config
-ln -s i3status ~/.config
-ln -s .nanorc ~
-ln -s .screenrc ~
-ln -s .bash_profile ~
+ln -fs i3 ~/.config
+ln -fs i3status ~/.config
+ln -fs .nanorc ~
+ln -fs .screenrc ~
+ln -fs .bash_profile ~
+ln -fs .bashrc ~
