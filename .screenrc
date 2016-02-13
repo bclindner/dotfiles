@@ -1,5 +1,5 @@
 startup_message off
 hardstatus on
 hardstatus alwayslastline
-hardstatus string "%{= wk} load %l | %-w %{= rk} %n*%t %{= wk} %+w %=| %c %m/%d/%y"
+hardstatus string "%{= wk}  %H | %-w %{= bw} %n*%t %{= wk} %+w %=| %c %m/%d/%y  "
 bind ' ' windowlist -b
