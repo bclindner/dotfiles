@@ -11,8 +11,7 @@ color_prompt=yes
 # cute lil' PS1
 PS1="[\h.\u:\w] > "
 
-# colors!! s/o to terminal.sexy
-#!/bin/sh
+# colors! s/o to terminal.sexy
 if [ "$TERM" = "linux" ]; then
   /bin/echo -e "
     \e]P0171d24
@@ -36,3 +35,7 @@ if [ "$TERM" = "linux" ]; then
     clear
 fi
                                         
+# aliases
+alias x="startx"
+alias ll='ls -l'
+alias la='ls -a'

@@ -1,9 +1,12 @@
 set $mod Mod4
 
-font Terminus 12
+font -xos4-terminus-medium-r-normal--0-0-*-*-c-0-iso8859-16
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# USERBIND: chromium
+bindsym $mod+c exec chromium
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
@@ -12,8 +15,8 @@ bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -font "DejaVu Sans Mono 14" -bg "#1d1f21" -fg "#c5c8c6"
-# There also is the (new) i3-dmenu-desktop which only displays applications
+bindsym $mod+d exec dmenu_run -fn -xos4-terminus-medium-r-normal--0-0---c-0-iso8859-16
+# There also is the (new) i3-dmenu-desktop whichh only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
@@ -132,15 +135,15 @@ bar {
 		background #171d24
 		statusline #e3e3e3
 
-		focused_workspace #4a88c3 #4a88c3 #171d24
-		active_workspace #4a88c3 #4a88c3 #171d24
+		focused_workspace #af3131 #af3131 #e3e3e3
+		active_workspace #af3131 #af3131 #e3e3e3
 		inactive_workspace #373b41 #373b41 #e3e3e3
-		urgent_workspace #af3131 #af3131 #171d24
+		urgent_workspace #9442af #9442af #171d24
 	}
 	separator_symbol "+"
-	font Terminus 12
+	font -xos4-terminus-medium-r-normal--0-0-*-*-c-0-iso8859-16
         status_command i3status
         tray_output primary
 }
-gaps inner 32
+gaps inner 16
 for_window [class="^.*"] border pixel 0
