@@ -9,4 +9,4 @@ shopt -s checkwinsize
 color_prompt=yes
 
 # cute lil' PS1
-PS1="\a[\h.\u:\w] > "
+PS1="[\h.\u:\w] > "
