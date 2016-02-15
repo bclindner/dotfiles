@@ -36,6 +36,11 @@ if [ "$TERM" = "linux" ]; then
 fi
                                         
 # aliases
-alias x="startx"
+## starting x from terminal
+alias x="sh startx"
+## ls
 alias ll='ls -l'
 alias la='ls -a'
+alias l='ls'
+## 
+alias s='sudo'
