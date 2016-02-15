@@ -5,3 +5,5 @@ hardstatus alwayslastline
 hardstatus string "%{= Wk}  %H | %-w %{= rW} %n*%t %{= Wk} %+w %=| %c %m/%d/%y  "
 
 bind ' ' windowlist -b
+
+msgwait 2
