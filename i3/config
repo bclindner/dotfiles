@@ -5,7 +5,8 @@ font -xos4-terminus-medium-r-normal--0-0-*-*-c-0-iso8859-16
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# USERBIND: chromium
+# USERBINDS
+# chromium
 bindsym $mod+c exec chromium
 
 # start a terminal
