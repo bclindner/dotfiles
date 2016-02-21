@@ -3,17 +3,27 @@
 import i3 # s/o to ziberna for this handy library
 import subprocess as sp # we're gonna pipe straight into a subprocessed lemonbar so this is neccessary
 from time import sleep,strftime # need these to hold the "while True:" and the date function
+import re #need this for the iwconfig parser
 
+# user settings
 
-# first things first, let's set some stuff lemonbar's gonna use
-bg = "%{B#1d1f24}" # background color
-fg = "%{B#af3131}" # color for foreground boxes
-text = "%{F#e3e3e3}" # color for text
-ftext = "%{F#1d1f24}" # color for foreground boxes text
+## underline colors
+black = "#1d1f24"
+white = "#e3e3e3"
+red = "#af3131"
+blue = "#4a8cc3"
+green = "#65cc3e"
+## fg & bg colors
+bg = "%{B"+black+"}" # background color
+rbg = "%{B"+red+"}" # color for foreground boxes
+fg = "%{F"+white+"}" # color for text
+rfg = "%{F"+black+"}" # color for foreground text
+iw = "wlp7s0u1" # name of preferred wifi interface
+
+hostname = sp.Popen(['hostname'],stdout=sp.PIPE).communicate()[0].decode().rstrip('\n') # get the hostname
 lalign = "%{l}" # left-aligner
 calign = "%{c}" # center-aligner
 ralign = "%{r}" # right-aligner
-hostname = "PHI" # a hostname
 bar = sp.Popen([ # set up the bar
 'lemonbar', # my bar of choice
 '-bp', # dock bottom, make permanent
@@ -22,30 +32,53 @@ bar = sp.Popen([ # set up the bar
 '-g', # set the width-height
 '1920x24', # 24px height is nice
 ],stdin=sp.PIPE,stdout=sp.PIPE)
+sh = sp.Popen(['sh'],stdin=bar.stdout) # get sh, for clickable bar justice
 
+def clickable(text,cmd): # make text clickable, executing cmd on click
+  return "%{A:"+cmd+":}"+text+"%{A}"
 
-def status():
-  status = bg+text # generate the initial status line, without info
+def underline(text,color): # make text underline, with color
+  return "%{U"+color+"}%{+u}"+text+"%{-u}"
+
+def active(text): #active workspace style
+  return rbg+rfg+text+bg+fg
+
+def workspaces():
   ws = i3.get_workspaces() # get all active workspaces
   # WORKSPACES
-  wsp = ""
+  wsp = "" # workspace
   for w in ws: # for each workspace
-    if w['focused'] == True: #check if it's focused and if so make it follow fg color
-      wsp += fg + ftext
-    wsp += "%{A:i3-msg workspace " + w['name'] + ":}" # make it clickable
-    wsp += " " + w['name'] + " " # write workspace name
-    wsp += "%{A}" # stop making it clickable
-    if w['focused'] == True: # focus check
-      wsp += bg + text
+    if w['focused'] == True: #check if it's focused and if so make it follow red color
+      wsp += active(clickable(" "+w['name']+" ","i3-msg workspace" + w['name']))
+    else:
+      wsp += clickable(" "+w['name']+" ","i3-msg workspace" + w['name'])
+  return wsp
 
-  wifi = "" # i don't wanna make a thing for this yet tbh
+def wifi():
+  # the oneliner from hell - return the string-formatted output of a command
+  output = sp.Popen(["iwconfig",iw],stdout=sp.PIPE).communicate()[0].decode()
+  regex = re.compile(".*?Link Quality=(\d+)/(\d+).+(-\d+ dBm)") # matches link quality, link quality max, and dBm reading
+  info = re.findall(regex,output)[0] #evaluate the output
+  linkp = round(float(info[0]) / float(info[1]) * 100)
+  return " "+underline(iw+" "+str(linkp)+"%",blue)+" "
+
+def vol():
+  output = sp.Popen(['amixer','get','Master'],stdout=sp.PIPE).communicate()[0].decode()
+  regex = re.compile("(\d+%)") # matches percents
+  info = re.findall(regex,output)[0] # evaluate the output
+  vol = "vol "+info
+  return " "+clickable(underline(vol,green),'xfce4-terminal -x alsamixer')+" "
+
+def status():
+  status = bg+fg # generate the initial status line, without info
   # DATE
-  date = strftime("%H:%M:%S %d %b %Y")
-  status += lalign + "  " + hostname + calign + wsp + ralign + wifi + date + "  \n" # put it all together
+  date = " "+underline(strftime("%H:%M:%S %d %b %Y"),red)
+  status += lalign + "  " + hostname + calign + workspaces() + ralign + vol() + wifi() + date + "  \n" # put it all together
   return status
 
+
 def update(event=None,data=None,subscription=None):
-  s = status().encode()
+  s = status().encode('ANSI_x3.4-1968')
   bar.stdin.write(s)
   bar.stdin.flush()
 
@@ -56,4 +89,4 @@ while True: # initialize a loop to output the text needed
   sleep(1) # lazy but it works i guess
 
 # the update() and subscription method, as written, is kinda hacky
-# that said, it keeps me from having to rebuild status a bunch, that might eat up resources
+# that said, it keeps me from having to rebuild status more to keep up with time, so it *does* save resources
