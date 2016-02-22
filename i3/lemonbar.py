@@ -3,7 +3,7 @@
 import i3 # s/o to ziberna for this handy library
 import subprocess as sp # we're gonna pipe straight into a subprocessed lemonbar so this is neccessary
 from time import sleep,strftime # need these to hold the "while True:" and the date function
-import re #need this for the iwconfig parser
+import re # need this to parse console output
 
 # user settings
 
@@ -31,6 +31,10 @@ bar = sp.Popen([ # set up the bar
 '-xos4-terminus-medium-r-normal--0-0-*-*-c-0-iso8859-16', # to this x11-syntax monstrosity
 '-g', # set the width-height
 '1920x24', # 24px height is nice
+'-a', # we need 12 clickable areas max since vol and kill are clickable
+'12',
+'-u', # we need thicker underlines
+'3'
 ],stdin=sp.PIPE,stdout=sp.PIPE)
 sh = sp.Popen(['sh'],stdin=bar.stdout) # get sh, for clickable bar justice
 
@@ -73,7 +77,8 @@ def status():
   status = bg+fg # generate the initial status line, without info
   # DATE
   date = " "+underline(strftime("%H:%M:%S %d %b %Y"),red)
-  status += lalign + "  " + hostname + calign + workspaces() + ralign + vol() + wifi() + date + "  \n" # put it all together
+  kill = clickable("  ","killall python3 lemonbar && ~/.config/i3/lemonbar.py") # a restart function
+  status += lalign + kill + hostname + calign + workspaces() + ralign + vol() + wifi() + date + "  \n" # put it all together
   return status
 
 
