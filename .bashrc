@@ -37,9 +37,10 @@ fi
                                         
 # aliases
 ## ls
-alias ll='ls -l'
-alias la='ls -a'
-alias l='ls'
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -l'
+alias la='ls --color=auto -a'
+alias l='ls --color=auto'
 ## sudo
 alias s='sudo'
 ## rm -rf
