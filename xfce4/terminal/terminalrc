@@ -2,7 +2,7 @@
 FontName=Terminus 12
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
-MiscBordersDefault=FALSE
+MiscBordersDefault=TRUE
 MiscCursorBlinks=FALSE
 MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
 MiscDefaultGeometry=80x24
@@ -25,4 +25,5 @@ ColorPalette=#17171d1d2424;#afaf31313131;#6565cccc3e3e;#eeee7d7d2f2f;#4a4a8c8cc3
 ColorBoldUseDefault=FALSE
 CommandLoginShell=TRUE
 TitleMode=TERMINAL_TITLE_REPLACE
+MiscScrollAlternateScreen=TRUE
 
