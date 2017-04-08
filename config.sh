@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # nano, screen and bash
-echo "linking nano, screen, and bash configuration..."
-ln -f $(pwd)/.nanorc ~
+echo "linking screen, and bash configuration..."
 ln -f $(pwd)/.screenrc ~
 ln -f $(pwd)/.bash_profile ~
 ln -f $(pwd)/.bashrc ~
