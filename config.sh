@@ -22,11 +22,12 @@ if [ $char = "y" ]; then
   mkdir ~/.config
   ln -sf $(pwd)/i3 ~/.config/i3
 fi
-echo "setup xfce4-terminal? [y/n]"
+echo "setup xfce4? [y/n]"
 read -s -n 1 -r char
 if [ $char = "y" ]; then
-  echo "linking xfce4-terminal configuration..."
+  echo "linking xfce4 configuration..."
   ln -sf $(pwd)/xfce4/terminal ~/.config/xfce4
+  ln -sf $(pwd)/xfce4/xfconf/xfce-perchannel-xml/* ~/.config/xfce4/xfconf/xfce-perchannel-xml/
 fi
 
 echo "done!"
