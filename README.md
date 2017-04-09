@@ -6,7 +6,7 @@ this includes a prebuilt configs for i3, xfce4-terminal, screen, and a .bash\_pr
 
 ## requirements
 
-using .bash\_profile - which is default - screen **must** be installed. otherwise, you won't be able to access terminals or terminal emulators. i'll add a check to see if this is installed later.
+to use the .bash\_profile, [screen](https://www.gnu.org/software/screen)) must be installed.
 
 these dotfiles make heavy use of the Terminus font - before you run the config, remember to install it (xfonts-terminus in Ubuntu systems, but can also be found [here](https://terminus-font.sourceforge.net).
 
@@ -16,7 +16,7 @@ xfce4 configuration assumes the use of xfce4-terminal, AKA the only correct choi
 
 ## using
 
-deploying the dotfiles is easy - just run `. config.sh`. the console-config for Debian-based systems is the only part that requires root. you'll be asked if you want to add configs for i3 or xfce4.
+deploying the dotfiles is easy - just run `config.sh` to symlink the files to their default directories. base dotfiles will be installed, screen dotfiles will be installed if detected, and you'll be asked what else you want installed.
 
 ## quirks/considerations
 
