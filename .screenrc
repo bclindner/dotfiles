@@ -4,9 +4,9 @@ hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{= Wk}  %H | %-w %{= mW} %n*%t %{= Wk} %+w %=| %c %m/%d/%y  "
 
+vbell off
 vbell_msg "bell: window ~%"
 vbellwait 1
-vbell off
 
 bind ' ' windowlist -b
 bind 'q' quit
