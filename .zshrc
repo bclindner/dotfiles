@@ -46,9 +46,11 @@ alias clr="clear"
 alias cl="clear && ls"
 ## git
 ### shorthand
+alias gi="git init"
 alias gcm="git commit -am"
 alias gcl="git clone"
 alias ga="git add"
+alias gaa="git add -A"
 alias gr="git rm"
 alias gps="git push"
 alias gpl="git pull"
@@ -56,10 +58,13 @@ alias gpl="git pull"
 alias commit="git commit -am"
 alias clone="git clone"
 alias grab="git grab"
+alias push="git push"
+alias pull="git pull"
 ## for Debian-based: apt
 ### shorthand
 alias a="apt"
 alias sa="sudo apt"
+alias af="apt search" # we can't use as for this alias because GNU `as` would be overwritten. dammit, stallman.
 alias sai="sudo apt install"
 alias sad="sudo apt update"
 alias sau="sudo apt update"
@@ -77,7 +82,7 @@ alias upgrade="sudo apt upgrade"
 alias update-upgrade="sudo apt update && sudo apt upgrade"
 alias purge="sudo apt purge"
 alias remove="sudo apt purge"
-
+alias search="apt search"
 # shell text replacements (global aliases)
 ## common pipe commands
 alias -g p-G="| grep"
