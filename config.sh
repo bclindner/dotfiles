@@ -30,13 +30,18 @@ if [ $SHELL = "/bin/bash" ]; then
 fi
 
 # xresources 
-ln -f $(pwd)/.xresources ~
-
+if [ ! -f ~/.xresources ]; then
+  echo "no xresources detected. linking..."
+  ln -f $(pwd)/.xresources ~
+fi
+if [ ! -f ~/.vimrc ]; then
+  echo "no vimrc detected. linking..."
+  ln -f $(pwd)/.vimrc ~
+fi
 # terminal font
 echo "setup console-setup? (requires root) "
 read -s -n 1 -r char
 if [ $char = "y" ]; then
-  echo "copying console-setup..."
   sudo rm /etc/default/console-setup
   sudo cp console-setup /etc/default/console-setup
 fi
@@ -45,14 +50,12 @@ fi
 echo "setup i3? "
 read -s -n 1 -r char
 if [ $char = "y" ]; then
-  echo "linking i3-gaps configuration & lemonbar..."
   mkdir ~/.config
   ln -sf $(pwd)/i3 ~/.config/i3
 fi
 echo "setup xfce4? "
 read -s -n 1 -r char
 if [ $char = "y" ]; then
-  echo "linking xfce4 configuration..."
   ln -sf $(pwd)/xfce4/terminal ~/.config/xfce4
   ln -sf $(pwd)/xfce4/xfconf/xfce-perchannel-xml/* ~/.config/xfce4/xfconf/xfce-perchannel-xml/
 fi
