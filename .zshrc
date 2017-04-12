@@ -15,7 +15,7 @@ autoload -Uz compinit
 compinit
 
 # prompt
-PS1="%(!.%F{red}.%F{magenta})%n%f%# " #colors username red when rooted
+PS1="%(!.%F{red}.%F{magenta})%n%f%(?..%F{red})%#%f " #colors username red if root, and %/# red if command failed
 RPS1="%~" # right prompt displays cd
 
 # prompt file associations (suffix aliases)
@@ -42,6 +42,8 @@ alias la="ls -a --color=auto"
 alias ll="ls -la --color=auto"
 alias c="clear"
 alias clr="clear"
+### a little creature comfort: clear && ls
+alias cl="clear && ls"
 ## git
 ### shorthand
 alias gcm="git commit -am"
@@ -72,5 +74,11 @@ alias sagu="sudo apt update && sudo apt upgrade"
 alias install="sudo apt install"
 alias update="sudo apt update"
 alias upgrade="sudo apt upgrade"
+alias update-upgrade="sudo apt update && sudo apt upgrade"
 alias purge="sudo apt purge"
 alias remove="sudo apt purge"
+
+# shell text replacements (global aliases)
+## common pipe commands
+alias -g p-G="| grep"
+alias -g p-L="| less"
