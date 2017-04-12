@@ -1,63 +1,64 @@
-set $mod Mod4
+# set mod key to Alt because Super causes RSI
+set $mod Mod1
 
-font -xos4-terminus-medium-r-normal--0-0-*-*-c-0-iso8859-16
+# Terminus is pretty cool
+font Terminus-12
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# alt drags float windows
 floating_modifier $mod
 
 # USERBINDS
-# chromium
-bindsym $mod+c exec chromium
-
-# start a terminal
-bindsym $mod+Return exec xfce4-terminal
+# terminal
+bindsym $mod+return exec xfce4-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+F4 kill
 
 # dank dmenu
-bindsym $mod+d exec dmenu_run -fn -xos4-terminus-medium-r-normal--0-0---c-0-iso8859-16 -nb "#171d24" -nf "#e3e3e3" -sb "#af3131" -sf "#1d1f24"
+bindsym $mod+d exec dmenu_run -fn Terminus-12 -nb "#171d24" -nf "#e3e3e3" -sb "#9442AF" -sf "#1d1f24"
 
-# arrowkey move, because why even use vi keys
+# move focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
+bindsym $mod+h focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 # move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# horz. split
+bindsym $mod+s split h
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
+# vert. split
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+# fullscreen
 bindsym $mod+f fullscreen toggle
+bindsym $mod+F11 fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# layout changes
+bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# for small windows: float toggle
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Ctrl+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -73,9 +74,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 0
-# assign windows to workspaces
-assign [class="chromium"] 1
-assign [class="steam"] 2
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -107,7 +105,14 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
+# for i3-gaps
 gaps inner 8
 gaps outer 16
+
+bar {
+        status_command i3status
+        tray_output primary
+}
+
+# windows get no borders
 for_window [class="^.*"] border pixel 0

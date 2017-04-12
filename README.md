@@ -6,7 +6,7 @@ this includes a prebuilt configs for i3, xfce4-terminal, screen, and a .bash\_pr
 
 ## requirements
 
-to use the .bash\_profile, [screen](https://www.gnu.org/software/screen)) must be installed.
+to use the .bash\_profile, [screen](https://www.gnu.org/software/screen) must be installed.
 
 these dotfiles make heavy use of the Terminus font - before you run the config, remember to install it (xfonts-terminus in Ubuntu systems, but can also be found [here](https://terminus-font.sourceforge.net).
 
