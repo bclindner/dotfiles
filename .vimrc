@@ -5,11 +5,11 @@ set showbreak=">>>"
 set showmatch
 set visualbell
 " search options
-set hlsearch
+set nohlsearch
 set smartcase
 set ignorecase
 set incsearch
-" set indent options (StandardJS 2 spaces)
+"set indent options (StandardJS 2 spaces)
 set autoindent
 set shiftwidth=2
 set smartindent
@@ -21,3 +21,4 @@ set backspace=indent,eol,start
 syntax enable
 " delek colorscheme
 colorscheme delek
+autocmd FileType make set nosmarttab

@@ -6,8 +6,8 @@ HISTFILE=~/.histfile
 HISTSIZE=500
 SAVEHIST=500
 ## misc. options
-setopt autocd notify
-unsetopt appendhistory beep extendedglob nomatch
+setopt autocd notify extendedglob
+unsetopt appendhistory beep nomatch
 bindkey -e
 ## autocompletion
 zstyle :compinstall filename '/home/bclindner/.zshrc'
@@ -15,8 +15,10 @@ autoload -Uz compinit
 compinit
 
 # prompt
-PS1="%(!.%F{red}.%F{magenta})%n%f%(?..%F{red})%#%f " #colors username red if root, and %/# red if command failed
+PS1="%(!.%F{red}.%F{magenta})%n%f%(?..%F{red})%#%f " # colors username red if root, and %# red if command failed
+if ! [[ /proc/$PPID/exe -ef /usr/bin/mc ]]; then # `mc`-safe: RPS1 does not initialize if the terminal is run from `mc`
 RPS1="%~" # right prompt displays cd
+fi
 
 # prompt file associations (suffix aliases)
 ## vim for webdev
@@ -30,21 +32,42 @@ alias -s scss="vim"
 alias -s pug="vim"
 alias -s md="vim"
 alias -s txt="vim"
+alias -s c="vim"
 ## administration
 alias -s log="less"
 
 # aliases
 ## general command shorthands
+### sudo
 alias s="sudo"
+### ls/ll/la/l
 alias ls="ls --color=auto"
 alias l="ls --color=auto"
 alias la="ls -a --color=auto"
 alias ll="ls -la --color=auto"
+### clear
 alias c="clear"
 alias clr="clear"
 ### a little creature comfort: clear && ls
 alias cl="clear && ls"
-## git
+### quit
+alias q="exit"
+alias x="edit"
+## vim shorthands
+alias v="vim"
+alias sv="sudo vim"
+alias svim="sudo vim"
+## ranger
+alias rng="ranger"
+alias browse="ranger"
+alias r="ranger" #remove if machine has R installed
+### GHCi shorthand
+alias h="ghci"
+### GHCi semisemantic
+alias hask="ghci"
+### GHCi semantic
+alias haskell="ghci"
+# git
 ### shorthand
 alias gi="git init"
 alias gcm="git commit -am"
@@ -54,13 +77,14 @@ alias gaa="git add -A"
 alias gr="git rm"
 alias gps="git push"
 alias gpl="git pull"
-alias gs="git status" # this overwrites ghostscript, but i won't ever use it, so meh
+alias gl="git log"
 ### semantic
 alias commit="git commit -am"
 alias clone="git clone"
 alias grab="git grab"
 alias push="git push"
 alias pull="git pull"
+alias status="git status"
 ## for Debian-based: apt
 ### shorthand
 alias a="apt"
@@ -86,6 +110,8 @@ alias update-upgrade="sudo apt update && sudo apt upgrade"
 alias purge="sudo apt purge"
 alias remove="sudo apt purge"
 alias search="apt search"
+## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
+alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
 # shell text replacements (global aliases)
 ## common pipe commands
 alias -g p-G="| grep"
