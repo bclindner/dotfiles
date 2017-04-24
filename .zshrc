@@ -38,6 +38,9 @@ alias -s log="less"
 
 # aliases
 ## general command shorthands
+### rm
+alias rr="rm -r"
+alias nuke="rm -rf"
 ### sudo
 alias s="sudo"
 ### ls/ll/la/l
@@ -53,11 +56,11 @@ alias cl="clear && ls"
 ### quit
 alias q="exit"
 alias x="edit"
-## vim shorthands
+### vim
 alias v="vim"
 alias sv="sudo vim"
 alias svim="sudo vim"
-## ranger
+### ranger
 alias rng="ranger"
 alias browse="ranger"
 alias r="ranger" #remove if machine has R installed
@@ -67,6 +70,8 @@ alias h="ghci"
 alias hask="ghci"
 ### GHCi semantic
 alias haskell="ghci"
+### node shorthand
+alias n="node"
 # git
 ### shorthand
 alias gi="git init"
@@ -78,6 +83,7 @@ alias gr="git rm"
 alias gps="git push"
 alias gpl="git pull"
 alias gl="git log"
+alias gst="git status" # gs is taken by GhostScript
 ### semantic
 alias commit="git commit -am"
 alias clone="git clone"
