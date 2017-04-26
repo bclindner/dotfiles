@@ -50,7 +50,9 @@ fi
 echo "setup i3? "
 read -s -n 1 -r char
 if [ $char = "y" ]; then
-  mkdir ~/.config
+  if [ -d ~/.config ]; then
+    mkdir ~/.config
+  fi
   ln -sf $(pwd)/i3 ~/.config/i3
 fi
 echo "setup xfce4? "

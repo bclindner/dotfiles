@@ -72,6 +72,11 @@ alias hask="ghci"
 alias haskell="ghci"
 ### node shorthand
 alias n="node"
+### compiling semantic
+alias build=". ./configure && make && sudo make install"
+alias m="make"
+alias sm="sudo make"
+alias smi="sudo make install"
 # git
 ### shorthand
 alias gi="git init"

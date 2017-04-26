@@ -1,2 +1,2 @@
-screen -S shell -x 2> /dev/null || screen -S shell
+screen 
 exit 0
