@@ -1,2 +1,0 @@
-screen 
-exit 0
