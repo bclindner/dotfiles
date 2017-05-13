@@ -1,27 +1,41 @@
 # bclindner zsh config
-# general settings
-## use 256 colors
+# oh-my-zsh settings
+export ZSH=/home/bclindner/.oh-my-zsh
+## use agnoster theme
+ZSH_THEME="agnoster"
+## correction enabled
+ENABLE_CORRECTION="true"
+## ... on completion waiting
+COMPLETION_WAITING_DOTS="true"
+## i don't actually know what this does
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+## use a buncha plugins
+plugins=(git heroku node screen npm sudo)
+## use oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+####################
+# general settings #
+####################
+# use 256 colors
 export TERM=xterm-256color
-## history
+# history
 HISTFILE=~/.histfile
 HISTSIZE=500
 SAVEHIST=500
-## misc. options
+# misc. options
 setopt autocd notify extendedglob
 unsetopt appendhistory beep nomatch
 bindkey -e
-## autocompletion
-zstyle :compinstall filename '/home/bclindner/.zshrc'
-autoload -Uz compinit
-compinit
+# prompt (pre oh-my-zsh)
+# PS1="%(!.%F{red}.%F{magenta})%n%f%(?..%F{red})%#%f " # colors username red if root, and %# red if command failed
+# if ! [[ /proc/$PPID/exe -ef /usr/bin/mc ]]; then # `mc`-safe: RPS1 does not initialize if the terminal is run from `mc`
+# RPS1="%~" # right prompt displays cd
+# fi
 
-# prompt
-PS1="%(!.%F{red}.%F{magenta})%n%f%(?..%F{red})%#%f " # colors username red if root, and %# red if command failed
-if ! [[ /proc/$PPID/exe -ef /usr/bin/mc ]]; then # `mc`-safe: RPS1 does not initialize if the terminal is run from `mc`
-RPS1="%~" # right prompt displays cd
-fi
-
-# prompt file associations (suffix aliases)
+###########
+# aliases #
+###########
+# suffix aliases (command file associations) 
 ## vim for webdev
 alias -s js="vim"
 alias -s html="vim"
@@ -37,7 +51,7 @@ alias -s c="vim"
 ## administration
 alias -s log="less"
 
-# aliases
+# command aliases
 ## general command shorthands
 ### rm
 alias rr="rm -r"
@@ -81,18 +95,6 @@ alias m="make"
 alias sm="sudo make"
 alias mc="make clean"
 alias smi="sudo make install"
-# git
-### shorthand
-alias gi="git init"
-alias gcm="git commit -am"
-alias gcl="git clone"
-alias ga="git add"
-alias gaa="git add -A"
-alias gr="git rm"
-alias gps="git push"
-alias gpl="git pull"
-alias gl="git log"
-alias gst="git status" # gs is taken by GhostScript
 ### semantic
 alias commit="git commit -am"
 alias clone="git clone"

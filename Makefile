@@ -12,7 +12,8 @@ vim:
 	-git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 	vim +VundleInstall +qall
 zsh:
-	ln -sr .zshrc ~
+	sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
+	ln -srf .zshrc ~
 screen:
 	ln -sr .screenrc ~
 	ln -sr .zprofile ~
