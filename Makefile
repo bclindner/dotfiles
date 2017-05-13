@@ -22,6 +22,7 @@ xfce4-terminal:
 dwm:
 	git clone https://github.com/bclindner/dwm
 	$(MAKE) -C dwm
+	$(MAKE) -C dwm install
 	ln -sr .xprofile ~
 	ln -sr .conkyrc ~
 	rm -rf dwm
