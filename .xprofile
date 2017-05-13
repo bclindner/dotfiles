@@ -1,0 +1,5 @@
+#!/bin/sh
+
+feh --bg-fill /usr/share/xfce4/backdrops/Mountainous_View_by_Sven_Scheuermeier.jpg
+xfce4-power-manager &
+(conky | while read LINE; do xsetroot -name "$LINE"; done) &
