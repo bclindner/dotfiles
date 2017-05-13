@@ -4,7 +4,7 @@ my dotfiles. these use [Vundle](https://github.com/VundleVim/Vundle.vim) and [oh
 
 ## how to use
 
-these dotfiles can all be installed using `make`. no dotfile installs require sudo. files are *symlinked*, meaning the repo still needs to exist for the dotfiles to work. no symlinking commands are forced - commands will fail if dotfiles exist.
+these dotfiles can all be installed using `make`. files are *symlinked*, meaning the repo still needs to exist for the dotfiles to work. no symlinking commands are forced - commands will fail if dotfiles exist.
 
 to install some basic configs (screen, vim, fonts, xfce4-terminal, and zsh), you can just type `make`. you can install other dotfiles individually:
 
