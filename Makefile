@@ -20,7 +20,8 @@ xfce4-terminal:
 	mkdir -p ~/.config/xfce4/terminal/
 	ln -sr .config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
 dwm:
-	git clone https://github.com/bclindner/dwm-bclindner
-	cd bclindner; $(MAKE)
+	git clone https://github.com/bclindner/dwm
+	$(MAKE) -C dwm
 	ln -sr .xprofile ~
 	ln -sr .conkyrc ~
+	rm -rf dwm
