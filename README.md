@@ -14,4 +14,4 @@ to install some basic configs (screen, vim, fonts, xfce4-terminal, and zsh), you
 * `make fonts`: installs Powerline-compatible fonts (e.g. Terminus). This is *required* for the Vim installation (as it uses [vim-airline](https://github.com/vim-airline/vim-airline)), but it's not included in `make vim` because it can take a long time, which is unneccessary if you're just running `make vim` on something with Powerline fonts already installed.
 * `make xfce4-terminal`: installs the `xfce4-terminal` config, necessary for running it comfortably on tiling WMs.
 * `make dwm` *(requires sudo)*: makes and installs my current DWM configuration, cloning from my [GitHub repository](https://github.com/bclindner/dwm). also installs a custom `.xprofile` and `.conkyrc` that works alongside it, though they aren't necessary for DWM to run.
-  * this make job assumes `conky`, `feh`, and `xfce4-power-manager` are already installed.
+  * this make job assumes `conky`, `feh`, and some XFCE4 utilities (namely `xfce4-power-manager`) are already installed.
