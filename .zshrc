@@ -1,6 +1,7 @@
 # bclindner zsh config
-
 # general settings
+## use 256 colors
+export TERM=xterm-256color
 ## history
 HISTFILE=~/.histfile
 HISTSIZE=500
@@ -41,6 +42,7 @@ alias -s log="less"
 ### rm
 alias rr="rm -r"
 alias nuke="rm -rf"
+alias rf="rm -rf"
 ### sudo
 alias s="sudo"
 ### ls/ll/la/l
@@ -72,10 +74,12 @@ alias hask="ghci"
 alias haskell="ghci"
 ### node shorthand
 alias n="node"
-### compiling semantic
+### make semantic
 alias build=". ./configure && make && sudo make install"
+### make shorthand
 alias m="make"
 alias sm="sudo make"
+alias mc="make clean"
 alias smi="sudo make install"
 # git
 ### shorthand
