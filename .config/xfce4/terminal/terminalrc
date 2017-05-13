@@ -28,6 +28,5 @@ TitleMode=TERMINAL_TITLE_REPLACE
 MiscScrollAlternateScreen=TRUE
 BindingBackspace=TERMINAL_ERASE_BINDING_ASCII_DELETE
 ScrollingSingleLine=FALSE
-BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 BackgroundDarkness=0.950000
 

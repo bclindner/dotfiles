@@ -13,10 +13,15 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 "" tree plugin
 Plugin 'scrooloose/nerdtree'
-
+"" syntax linter
+Plugin 'vim-syntastic/syntastic'
+"" tagbar (requires exuberant-ctags)
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 filetype plugin indent on
 " binds
+"" tagbar
+nmap <F8> :TagbarToggle<CR>
 "" NERDtree
 map <C-n> :NERDTreeToggle<CR>
 "" alt-movement between splits
@@ -55,7 +60,7 @@ autocmd FileType make set noexpandtab
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "" airline stuff
-let g:airline_theme='vice'
+let g:airline_theme='base16_twilight'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
