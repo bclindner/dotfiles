@@ -1,8 +1,4 @@
-all:
-	$(MAKE) fonts
-	$(MAKE) vim
-	$(MAKE) zsh
-	$(MAKE) screen
+all: fonts vim zsh screen xfce4-terminal
 fonts:
 	git clone https://github.com/powerline/fonts.git
 	sh -c fonts/install.sh
@@ -23,3 +19,8 @@ screen:
 xfce4-terminal:
 	mkdir -p ~/.config/xfce4/terminal/
 	ln -sr .config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
+dwm:
+	git clone https://github.com/bclindner/dwm-bclindner
+	cd bclindner; $(MAKE)
+	ln -sr .xprofile ~
+	ln -sr .conkyrc ~
