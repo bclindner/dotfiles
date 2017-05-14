@@ -18,10 +18,11 @@ MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 TabActivityColor=#dc322f
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+[Configuration]
 ColorCursor=#e3e3e3e3e3e3
 ColorForeground=#e3e3e3e3e3e3
-ColorBackground=#17171d1d2424
-ColorPalette=rgb(23,29,36);rgb(175,49,49);rgb(101,204,62);rgb(238,125,47);rgb(74,140,195);rgb(135,95,215);rgb(69,195,179);rgb(185,185,185);rgb(55,59,65);rgb(208,92,92);rgb(166,225,116);rgb(228,149,76);rgb(101,167,223);rgb(175,95,255);rgb(124,218,205);rgb(227,227,227)
+ColorBackground=#1d1d1f1f2121
+ColorPalette=#1d1d1f1f2121;#afaf31313131;#6565cccc3e3e;#eeee7d7d2f2f;#4a4a8c8cc3c3;#87875f5fd7d7;#4545c3c3b3b3;#777777777777;#37373b3b4141;#d0d05c5c5c5c;#a6a6e1e17474;#e4e495954c4c;#6565a7a7dfdf;#afaf5f5fffff;#7c7cdadacdcd;#e3e3e3e3e3e3
 ColorBoldUseDefault=FALSE
 CommandLoginShell=TRUE
 TitleMode=TERMINAL_TITLE_REPLACE
