@@ -12,12 +12,13 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
 "" tree plugin
 Plugin 'scrooloose/nerdtree'
-"" syntax linter
+"" linter
 Plugin 'vim-syntastic/syntastic'
-"" tagbar (requires exuberant-ctags)
-Plugin 'majutsushi/tagbar'
-"" tmux statusline
-Plugin 'edkolev/tmuxline.vim'
+"" completion engine
+Plugin 'valloric/youcompleteme'
+"" sneak motion
+Plugin 'justinmk/vim-sneak'
+"" custom theme
 Plugin 'bclindner/vim-airline-bclindner'
 call vundle#end()
 filetype plugin indent on
