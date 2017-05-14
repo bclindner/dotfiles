@@ -35,7 +35,7 @@ bindkey -e
 ###########
 # aliases #
 ###########
-# suffix aliases (command file associations) 
+# suffix aliases (command file associations)
 ## vim for webdev
 alias -s js="vim"
 alias -s html="vim"
@@ -129,7 +129,8 @@ alias remove="sudo apt purge"
 alias search="apt search"
 ## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
-# shell text replacements (global aliases)
-## common pipe commands
+# global aliases (shell text replacements)
+# ## common pipe commands
 alias -g p-G="| grep"
 alias -g p-L="| less"
+alias -g ~gh="https://github.com/"

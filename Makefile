@@ -1,4 +1,4 @@
-all: fonts vim zsh screen xfce4-terminal
+all: fonts vim zsh tmux xfce4-terminal
 fonts:
 	git clone https://github.com/powerline/fonts.git
 	sh -c fonts/install.sh
@@ -17,6 +17,8 @@ zsh:
 screen:
 	ln -sr .screenrc ~
 	ln -sr .zprofile ~
+tmux:
+	ln -sr .tmux.conf ~
 xfce4-terminal:
 	mkdir -p ~/.config/xfce4/terminal/
 	ln -sr .config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal/terminalrc

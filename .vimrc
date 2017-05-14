@@ -17,6 +17,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
 "" tagbar (requires exuberant-ctags)
 Plugin 'majutsushi/tagbar'
+"" tmuxline
+Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 filetype plugin indent on
 " binds
@@ -60,7 +62,7 @@ autocmd FileType make set noexpandtab
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "" airline stuff
-let g:airline_theme='base16_twilight'
+let g:airline_theme='cool'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
