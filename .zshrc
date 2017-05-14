@@ -95,7 +95,7 @@ alias m="make"
 alias sm="sudo make"
 alias mc="make clean"
 alias smi="sudo make install"
-### semantic
+## git semantic
 alias commit="git commit -am"
 alias clone="git clone"
 alias grab="git grab"
@@ -130,7 +130,10 @@ alias search="apt search"
 ## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
 # global aliases (shell text replacements)
-# ## common pipe commands
+## common pipe commands
 alias -g p-G="| grep"
 alias -g p-L="| less"
-alias -g ~gh="https://github.com/"
+
+# autostart tmux if not already started - usually an oh-my-zsh plugin suffices here but it breaks status line for some reason
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
