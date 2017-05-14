@@ -7,14 +7,16 @@
 export ZSH=/home/bclindner/.oh-my-zsh
 ## use agnoster theme
 ZSH_THEME="agnoster"
-## correction enabled
-ENABLE_CORRECTION="true"
+## correction disabled
+ENABLE_CORRECTION="false"
 ## ... on completion waiting
 COMPLETION_WAITING_DOTS="true"
 ## i don't actually know what this does
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-## use a buncha plugins
-plugins=(git heroku node screen npm sudo)
+## make tmux autostart
+ZSH_TMUX_AUTOSTART="true"
+## use a buncha plugins:
+plugins=(git heroku node screen npm command-not-found sudo tmux)
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -141,6 +143,3 @@ alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.co
 alias -g p-G="| grep"
 alias -g p-L="| less"
 
-# autostart tmux if not already started - usually the tmux oh-my-zsh plugin suffices here but it breaks status line for some reason
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
