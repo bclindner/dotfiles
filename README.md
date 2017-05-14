@@ -6,7 +6,7 @@ my dotfiles. these use [Vundle](https://github.com/VundleVim/Vundle.vim) and [oh
 
 these dotfiles can all be installed using `make`. files are *symlinked*, meaning the repo still needs to exist for the dotfiles to work. no symlinking commands are forced - commands will fail if dotfiles exist.
 
-to install some basic configs (tmux, vim, fonts, xfce4-terminal, and zsh), you can just type `make`. you can install other dotfiles individually:
+to install some basic configs (tmux, vim, fonts, xfce4-terminal, zsh, and xresources), you can just type `make`. you can install other dotfiles individually:
 
 * `make xresources`: installs the `.Xresources` file containing my color pallette, including color scheme info for newer `rofi` versions.
 * `make screen`: installs GNU `screen` config, including a .zprofile

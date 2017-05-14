@@ -1,4 +1,4 @@
-all: fonts vim zsh tmux xfce4-terminal
+all: fonts vim zsh tmux xfce4-terminal xresources
 fonts:
 	git clone https://github.com/powerline/fonts.git
 	sh -c fonts/install.sh
