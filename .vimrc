@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "" use airline (powerline replacement)
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 "" git wrapper
 Plugin 'tpope/vim-fugitive'
 "" tree plugin
@@ -17,6 +16,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
 "" tagbar (requires exuberant-ctags)
 Plugin 'majutsushi/tagbar'
+"" tmux statusline
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'bclindner/vim-airline-bclindner'
 call vundle#end()
 filetype plugin indent on
 " binds
@@ -59,7 +61,7 @@ autocmd FileType make set noexpandtab
 "" nerdtree stuff
 autocmd StdinReadPre * let s:std_in=1
 "" airline stuff
-let g:airline_theme='cool'
+let g:airline_theme='bclindner'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif

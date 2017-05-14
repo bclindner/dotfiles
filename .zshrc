@@ -10,7 +10,7 @@ COMPLETION_WAITING_DOTS="true"
 ## i don't actually know what this does
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 ## use a buncha plugins
-plugins=(git heroku node screen npm sudo)
+plugins=(git heroku node screenbc npm sudo)
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 ####################
