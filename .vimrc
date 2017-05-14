@@ -1,27 +1,20 @@
 " plugins
 set nocompatible
 filetype off
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "" let Vundle self-update
 Plugin 'VundleVim/Vundle.vim'
-"" use airline (powerline replacement)
 Plugin 'vim-airline/vim-airline'
-"" git wrapper
 Plugin 'tpope/vim-fugitive'
-"" tree plugin
 Plugin 'scrooloose/nerdtree'
-"" linter
 Plugin 'vim-syntastic/syntastic'
-"" completion engine
 Plugin 'valloric/youcompleteme'
-"" sneak motion
 Plugin 'justinmk/vim-sneak'
-"" custom theme
 Plugin 'bclindner/vim-airline-bclindner'
 call vundle#end()
 filetype plugin indent on
+
 " binds
 "" tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -32,8 +25,9 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
 " general options
-"" powerline setting: laststatus
+"" powerline fix
 set laststatus=2
 "" line options
 set number
@@ -58,15 +52,17 @@ set backspace=indent,eol,start
 syntax enable
 "" for makefiles: use noexpandtab
 autocmd FileType make set noexpandtab
+
 " plugin configuration
 "" nerdtree stuff
 autocmd StdinReadPre * let s:std_in=1
 "" airline stuff
 let g:airline_theme='bclindner'
+
+" define powerline symbols
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-" define powerline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''

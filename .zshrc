@@ -1,5 +1,9 @@
 # bclindner zsh config
-# oh-my-zsh settings
+
+######################
+# oh-my-zsh settings #
+######################
+
 export ZSH=/home/bclindner/.oh-my-zsh
 ## use agnoster theme
 ZSH_THEME="agnoster"
@@ -13,9 +17,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git heroku node screenbc npm sudo)
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
 ####################
 # general settings #
 ####################
+
 # use 256 colors
 export TERM=xterm-256color
 # history
@@ -35,6 +41,7 @@ bindkey -e
 ###########
 # aliases #
 ###########
+
 # suffix aliases (command file associations)
 ## vim for webdev
 alias -s js="vim"
@@ -134,6 +141,6 @@ alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.co
 alias -g p-G="| grep"
 alias -g p-L="| less"
 
-# autostart tmux if not already started - usually an oh-my-zsh plugin suffices here but it breaks status line for some reason
+# autostart tmux if not already started - usually the tmux oh-my-zsh plugin suffices here but it breaks status line for some reason
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && exec tmux
