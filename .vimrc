@@ -1,3 +1,5 @@
+" bclindner vimrc
+
 " plugins
 set nocompatible
 filetype off
@@ -16,8 +18,6 @@ call vundle#end()
 filetype plugin indent on
 
 " binds
-"" tagbar
-nmap <F8> :TagbarToggle<CR>
 "" NERDtree
 map <C-n> :NERDTreeToggle<CR>
 "" alt-movement between splits
@@ -46,6 +46,8 @@ set shiftwidth=2
 set expandtab
 set smartindent
 set softtabstop=2
+"" use mouse, because sometimes i'm just lazy
+set mouse=a
 "" make backspace not stupid
 set backspace=indent,eol,start
 "" syntax highlighting
