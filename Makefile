@@ -56,4 +56,7 @@ dwm-force:
 	ln -srf .xprofile ~
 	ln -srf .conkyrc ~
 	rm -rf dwm
-
+xresources:
+	ln -sr .Xresources ~
+xresources-force:
+	ln -srf .Xresources ~
