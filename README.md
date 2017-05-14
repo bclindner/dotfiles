@@ -17,6 +17,7 @@ to install some basic configs (tmux, vim, fonts, xfce4-terminal, and zsh), you c
   * this make job assumes `zsh` is already installed and in use - since it's installing oh-my-zsh, it will fail otherwise. additionally, appending `-force` to this job will simply run it normally.
 * `make fonts`: installs Powerline-compatible fonts (e.g. Terminus). This is *required* for the `vim`, `zsh`, and `tmux` jobs, since they require Powerline fonts to display correctly. this command isn't included in them because it can take a long time, which is unneccessary if you're just running `make vim` on something with Powerline fonts already installed.
 * `make xfce4-terminal`: installs the `xfce4-terminal` config, necessary for running it comfortably on tiling WMs.
+  * xfce4-terminal overwrites the symlink on the next boot, so you'll need to run `make xfce4-terminal-force` if you're updating.
 * `make dwm` *(requires sudo)*: makes and installs my current DWM configuration, cloning from my [GitHub repository](https://github.com/bclindner/dwm). also installs a custom `.xprofile` and `.conkyrc` that works alongside it, though they aren't necessary for DWM to run.
   * this make job assumes `conky`, `feh`, and some XFCE4 utilities (namely `xfce4-power-manager`) are already installed.
 
