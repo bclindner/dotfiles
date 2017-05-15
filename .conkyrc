@@ -7,5 +7,5 @@ conky.config = {
   use_spacer = 'none',
 };
 conky.text = [[
-  C ${cpu cpu0}% | ${time %a %d %b %y %H:%M}
+  C ${cpu cpu0}% | W ${wireless_link_qual_perc wlan0}% | ${battery_short BATC} | ${time %a %d %b %y %H:%M}
 ]];
