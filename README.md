@@ -6,7 +6,7 @@ this repository is a set of configuration files for Linux, the `zsh` terminal, a
 
 these dotfiles were designed with efficiency first: common shell commands are aliased to be 4 characters or less, git status is almost always visible in the terminal, vim is configured to be as quick and versatile as possible, etc. regardless this, i've tried to keep a clean and consistent look with Powerline-style prompts and statuslines and my favorite shade of purple as the most prominent color.
 
-these are managed using [GNU `make`](https://www.gnu.org/software/make/), which is ideal due to its features - it's prominent on most Linux machines I work with, it makes chaining together individual dotfile install processes a breeze, and it's easy to use in a terminal, among other things.
+these are managed using [GNU `make`](https://www.gnu.org/software/make/), which can manage dotfiles just as well as it's known to manage code builds - it's prominent on most Linux machines I work with, it makes chaining together individual dotfile install processes a breeze, and it's easy to use in a terminal, among other things.
 
 ## features
 
@@ -49,7 +49,7 @@ you can append `-force` to any of these targets (e.g. `make vim-force`) to make 
 ## organization
 
 dotfiles are organized into two folders, with the leading dot removed for each file:
-  * the `desktop` folder contains dotfiles for the `dwm` desktop distribution
+  * the `desktop` folder contains dotfiles for the `dwm` desktop distribution and other miscellaneous non-terminal configs.
   * the `terminal` folder contains dotfiles for anything relating to the terminal, including terminal emulator dotfiles.
 
 other than that, you'll find this README, of course, and the Makefile to automate dotfile installation.
@@ -62,4 +62,4 @@ in particular, I outright copied [agnoster](https://github.com/agnoster)'s zsh t
 
 ## license
 
-The contents of this repository are protected under the MIT license, in the "LICENSE" file of this repository.
+the contents of this repository are protected under the MIT license, in the "LICENSE" file of this repository.
