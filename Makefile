@@ -50,6 +50,14 @@ dwm-force:
 	ln -srf xprofile ~/.xprofile
 	ln -srf conkyrc ~/.conkyrc
 	rm -rf dwm
+conky-desktop:
+	ln -sf conkyrc.desktop ~/.conkyrc
+conky-desktop-force:
+	ln -srf conkyrc.desktop ~/.conkyrc
+conky-laptop:
+	ln -sf conkyrc.laptop ~/.conkyrc
+conky-laptop-force:
+	ln -srf conkyrc.laptop ~/.conkyrc
 xresources:
 	ln -sr Xresources ~
 xresources-force:
