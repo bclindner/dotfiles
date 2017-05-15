@@ -1,7 +1,7 @@
 ez-install: fonts vim zsh tmux xfce4-terminal xresources git
 update: vim-force zsh-force tmux-force xfce4-terminal-force xresources-force git-force
-update-desktop: update conky-desktop-force
-update-laptop: update conky-laptop-force
+update-desktop: update dwm-force conky-desktop-force
+update-laptop: update dwm-force conky-laptop-force
 fonts:
 	git clone https://github.com/powerline/fonts.git
 	sh -c fonts/install.sh
