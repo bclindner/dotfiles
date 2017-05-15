@@ -26,7 +26,9 @@ vim-force:
 zsh:
 	sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
 	ln -srf zshrc ~/.zshrc
-zsh-force: zsh #they're functionally the same
+zsh-force:
+	-sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
+	ln -srf zshrc ~/.zshrc
 tmux:
 	ln -sr tmux.conf ~/.tmux.conf
 tmux-force:
@@ -40,15 +42,13 @@ xfce4-terminal-force:
 dwm:
 	git clone https://github.com/bclindner/dwm
 	$(MAKE) -C dwm install
-	ln -sr xprofile ~/.conkyrc
-	ln -sr conkyrc ~/.conkyrc
+	ln -sr xprofile ~/.xprofile
 	rm -rf dwm
 dwm-force:
 	-rm -rf dwm
 	git clone https://github.com/bclindner/dwm
 	$(MAKE) -C dwm install
 	ln -srf xprofile ~/.xprofile
-	ln -srf conkyrc ~/.conkyrc
 	rm -rf dwm
 conky-desktop:
 	ln -sf conkyrc.desktop ~/.conkyrc
