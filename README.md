@@ -2,11 +2,11 @@
 
 ![seriously, though, i got pwned HARD once](https://i.imgur.com/5qaqnTa.png)
 
-these are designed for relatively recent versions of Linux, and are primarily for terminal usage, though they also include some files for configuring [my dwm fork](https://github.com/bclindner/dwm). these are used and tested mostly on Ubuntu and other Debian-based systems with LightDM and XFCE4 in use before having dotfiles applied, so I cannot vouch for their usability on other systems or setups.
+this repository is a set of configuration files for Linux, the `zsh` terminal, and some common linux programs. they are primarily for terminal usage, though they also include some files for configuring [my dwm fork](https://github.com/bclindner/dwm). these are used and tested mostly on Ubuntu and other Debian-based systems with LightDM and XFCE4 in use before having dotfiles applied, so I cannot vouch for their usability on other systems or setups.
 
 these dotfiles were designed with efficiency first: common shell commands are aliased to be 4 characters or less, git status is almost always visible in the terminal, vim is configured to be as quick and versatile as possible, etc. regardless this, i've tried to keep a clean and consistent look with Powerline-style prompts and statuslines and my favorite shade of purple as the most prominent color.
 
-these are managed using [GNU `make`](https://www.gnu.org/software/make/), which is ideal due to its features - it's prominent on most Linux machines I work with, it's relatively easy to write and maintain build targets (in this case dotfiles & plugin managers), and it's very easy to use, among other things.
+these are managed using [GNU `make`](https://www.gnu.org/software/make/), which is ideal due to its features - it's prominent on most Linux machines I work with, it makes chaining together individual dotfile install processes a breeze, and it's easy to use in a terminal, among other things.
 
 ## features
 
