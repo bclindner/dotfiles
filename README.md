@@ -56,7 +56,7 @@ other than that, you'll find this README, of course, and the Makefile to automat
 
 ## thanks
 
-huge shout-out to the developers of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), [Vundle](https://github.com/VundleVim/Vundle.vim), and [vim-airline](https://github.com/vim-airline/vim-airline).
+huge shout-out to the developers of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), [Vundle](https://github.com/VundleVim/Vundle.vim), and [vim-airline](https://github.com/vim-airline/vim-airline), among many others whose projects influenced or outright enabled some of the features of these dotfiles.
 
 in particular, I outright copied [agnoster](https://github.com/agnoster)'s zsh theme and changed maybe two lines, and I also use a [vim-airline theme](https://github.com/bclindner/vim-airline-bclindner) largely based off of the code of the "cool" theme from [here](https://github.com/vim-airline/vim-airline-themes).
 
