@@ -36,7 +36,7 @@ screen-force:
 tmux:
 	ln -sr .tmux.conf ~
 tmux-force:
-	ln -sr .tmux.conf ~
+	ln -srf .tmux.conf ~
 xfce4-terminal:
 	mkdir -p ~/.config/xfce4/terminal/
 	ln -sr .config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal/terminalrc

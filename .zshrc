@@ -13,10 +13,11 @@ ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
 ## i don't actually know what this does
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-## make tmux autostart
+## make tmux autostart & fix color bug (issue #3937)
 ZSH_TMUX_AUTOSTART="true"
+export TERM=screen-256color
 ## use a buncha plugins:
-plugins=(git heroku node screen npm command-not-found sudo tmux)
+plugins=(git heroku node screen npm command-not-found sudo tmux) 
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -136,10 +137,12 @@ alias update-upgrade="sudo apt update && sudo apt upgrade"
 alias purge="sudo apt purge"
 alias remove="sudo apt purge"
 alias search="apt search"
+## quick-edit commands for some dotfiles
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 ## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
 # global aliases (shell text replacements)
 ## common pipe commands
 alias -g p-G="| grep"
 alias -g p-L="| less"
-
