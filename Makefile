@@ -15,7 +15,7 @@ fonts-force:
 	fc-cache -vf
 	rm -rf fonts
 vim:
-	ln -sr vimrc ~/,vimrc
+	ln -sr vimrc ~/.vimrc
 	git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 	vim +VundleInstall +qall
 vim-force:
@@ -59,6 +59,6 @@ conky-laptop:
 conky-laptop-force:
 	ln -srf conkyrc.laptop ~/.conkyrc
 xresources:
-	ln -sr Xresources ~
+	ln -sr Xresources ~/.Xresources
 xresources-force:
-	ln -srf Xresources ~
+	ln -srf Xresources ~/.Xresources
