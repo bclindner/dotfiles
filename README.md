@@ -9,8 +9,6 @@ these dotfiles can all be installed using `make`. files are *symlinked*, meaning
 to install some basic configs (tmux, vim, fonts, xfce4-terminal, zsh, and xresources), you can just type `make`. you can install other dotfiles individually:
 
 * `make xresources`: installs the `.Xresources` file containing my color pallette, including color scheme info for newer `rofi` versions.
-* `make screen`: installs GNU `screen` config, including a .zprofile
-  * this make job assumes `screen` is already installed.
 * `make tmux`: installs `tmux` config.
   * this make job assumes `tmux` is already installed, and Powerline fonts are installed (`make fonts`).
 * `make vim`: installs configs for `vim`, including the [Vundle](https://github.com/VundleVim/Vundle.vim) plugin manager.

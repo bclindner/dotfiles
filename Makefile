@@ -26,7 +26,7 @@ vim-force:
 zsh:
 	sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
 	ln -srf zshrc ~/.zshrc
-zsh-force: zsh
+zsh-force: zsh #they're functionally the same
 tmux:
 	ln -sr tmux.conf ~/.tmux.conf
 tmux-force:
@@ -51,6 +51,6 @@ dwm-force:
 	ln -srf conkyrc ~/.conkyrc
 	rm -rf dwm
 xresources:
-	ln -sr .Xresources ~
+	ln -sr Xresources ~
 xresources-force:
-	ln -srf .Xresources ~
+	ln -srf Xresources ~
