@@ -15,46 +15,40 @@ fonts-force:
 	fc-cache -vf
 	rm -rf fonts
 vim:
-	ln -sr .vimrc ~
+	ln -sr vimrc ~/,vimrc
 	git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 	vim +VundleInstall +qall
 vim-force:
-	ln -srf .vimrc ~
+	ln -srf vimrc ~/.vimrc
 	-rm -rf fonts
 	git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 	vim +VundleInstall +qall
 zsh:
 	sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
-	ln -srf .zshrc ~
+	ln -srf zshrc ~/.zshrc
 zsh-force: zsh
-screen:
-	ln -sr .screenrc ~
-	ln -sr .zprofile ~
-screen-force:
-	ln -srf .screenrc ~
-	ln -srf .zprofile ~
 tmux:
-	ln -sr .tmux.conf ~
+	ln -sr tmux.conf ~/.tmux.conf
 tmux-force:
-	ln -srf .tmux.conf ~
+	ln -srf tmux.conf ~/.tmux.conf
 xfce4-terminal:
 	mkdir -p ~/.config/xfce4/terminal/
-	ln -sr .config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
+	ln -sr terminalrc ~/.config/xfce4/terminal/terminalrc
 xfce4-terminal-force:
 	mkdir -p ~/.config/xfce4/terminal/
-	ln -sfr .config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
+	ln -sfr terminalrc ~/.config/xfce4/terminal/terminalrc
 dwm:
 	git clone https://github.com/bclindner/dwm
 	$(MAKE) -C dwm install
-	ln -sr .xprofile ~
-	ln -sr .conkyrc ~
+	ln -sr xprofile ~/.conkyrc
+	ln -sr conkyrc ~/.conkyrc
 	rm -rf dwm
 dwm-force:
 	-rm -rf dwm
 	git clone https://github.com/bclindner/dwm
 	$(MAKE) -C dwm install
-	ln -srf .xprofile ~
-	ln -srf .conkyrc ~
+	ln -srf xprofile ~/.xprofile
+	ln -srf conkyrc ~/.conkyrc
 	rm -rf dwm
 xresources:
 	ln -sr .Xresources ~
