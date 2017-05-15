@@ -62,4 +62,4 @@ in particular, I outright copied [agnoster](https://github.com/agnoster)'s zsh t
 
 ## license
 
-The contents of this repository are protected under the MIT license, in "LICENSE.md" of this repository.
+The contents of this repository are protected under the MIT license, in the "LICENSE" file of this repository.
