@@ -5,8 +5,8 @@
 ######################
 
 export ZSH=/home/bclindner/.oh-my-zsh
-## use agnoster theme
-ZSH_THEME="agnoster"
+## use forked agnoster theme
+ZSH_THEME="bclindner"
 ## correction disabled
 ENABLE_CORRECTION="false"
 ## ... on completion waiting

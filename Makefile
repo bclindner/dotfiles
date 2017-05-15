@@ -26,9 +26,13 @@ vim-force:
 zsh:
 	sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
 	ln -srf zshrc ~/.zshrc
+	cd ~/.oh-my-zsh/custom; mkdir themes
+	ln -sr bclindner.zsh-theme ~/.oh-my-zsh/custom/themes/
 zsh-force:
 	-sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
 	ln -srf zshrc ~/.zshrc
+	mkdir -p ~/.oh-my-zsh/custom/themes
+	ln -sr bclindner.zsh-theme ~/.oh-my-zsh/custom/themes/
 tmux:
 	ln -sr tmux.conf ~/.tmux.conf
 tmux-force:
