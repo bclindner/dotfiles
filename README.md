@@ -13,7 +13,7 @@ to install some basic configs (tmux, vim, fonts, xfce4-terminal, zsh, and xresou
   * this make job assumes `tmux` is already installed, and Powerline fonts are installed (`make fonts`).
 * `make vim`: installs configs for `vim`, including the [Vundle](https://github.com/VundleVim/Vundle.vim) plugin manager.
 * `make zsh`: installs the `zsh` config, including the [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) zsh framework. **NOTE:** this command is somewhat destructive - while your old .zshrc won't go away, it will be moved to ~/.zshrc.pre-oh-my-zsh.
-  * this make job assumes `zsh` is already installed and in use - since it's installing oh-my-zsh, it will fail otherwise. additionally, appending `-force` to this job will simply run it normally.
+  * this make job assumes `zsh` is already installed and in use - since it's installing oh-my-zsh, it will fail otherwise.
 * `make fonts`: installs Powerline-compatible fonts (e.g. Terminus). This is *required* for the `vim`, `zsh`, and `tmux` jobs, since they require Powerline fonts to display correctly. this command isn't included in them because it can take a long time, which is unneccessary if you're just running `make vim` on something with Powerline fonts already installed.
 * `make xfce4-terminal`: installs the `xfce4-terminal` config, necessary for running it comfortably on tiling WMs.
   * xfce4-terminal overwrites the symlink after it's relaunched, so you'll need to run `make xfce4-terminal-force` if you're updating.
