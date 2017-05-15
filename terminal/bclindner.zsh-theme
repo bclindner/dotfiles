@@ -187,7 +187,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment magenta black '%~'
+  prompt_segment 135 255 '%~' # literally the only line i've changed lmfao
 }
 
 # Virtualenv: current working virtualenv
