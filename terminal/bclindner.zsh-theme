@@ -1,7 +1,6 @@
 # vim:ft=zsh ts=2 sw=2 sts=2
 #
 # agnoster's Theme - https://gist.github.com/3712874
-# fork by bclindner - https://github.com/bclindner/dotfiles
 # A Powerline-inspired theme for ZSH
 #
 # # README
@@ -51,7 +50,7 @@ CURRENT_BG='NONE'
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
 # rendering default background/foreground.
-bcprompt_segment() {
+prompt_segment() {
   local bg fg
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
   [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
@@ -65,7 +64,7 @@ bcprompt_segment() {
 }
 
 # End the prompt, closing any open segments
-bcprompt_end() {
+prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
   else
@@ -79,14 +78,14 @@ bcprompt_end() {
 # Each component will draw itself, and hide itself if no information needs to be shown
 
 # Context: user@hostname (who am I and where am I)
-bcprompt_context() {
+prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    bcprompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
   fi
 }
 
 # Git: branch/detached head, dirty status
-bcprompt_git() {
+prompt_git() {
   (( $+commands[git] )) || return
   local PL_BRANCH_CHAR
   () {
@@ -100,9 +99,9 @@ bcprompt_git() {
     dirty=$(parse_git_dirty)
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
     if [[ -n $dirty ]]; then
-      bcprompt_segment yellow black
+      prompt_segment yellow black
     else
-      bcprompt_segment green black
+      prompt_segment green black
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
@@ -128,44 +127,44 @@ bcprompt_git() {
   fi
 }
 
-bcprompt_bzr() {
+prompt_bzr() {
     (( $+commands[bzr] )) || return
     if (bzr status >/dev/null 2>&1); then
         status_mod=`bzr status | head -n1 | grep "modified" | wc -m`
         status_all=`bzr status | head -n1 | wc -m`
         revision=`bzr log | head -n2 | tail -n1 | sed 's/^revno: //'`
         if [[ $status_mod -gt 0 ]] ; then
-            bcprompt_segment yellow black
+            prompt_segment yellow black
             echo -n "bzr@"$revision "✚ "
         else
             if [[ $status_all -gt 0 ]] ; then
-                bcprompt_segment yellow black
+                prompt_segment yellow black
                 echo -n "bzr@"$revision
 
             else
-                bcprompt_segment green black
+                prompt_segment green black
                 echo -n "bzr@"$revision
             fi
         fi
     fi
 }
 
-bcprompt_hg() {
+prompt_hg() {
   (( $+commands[hg] )) || return
   local rev status
   if $(hg id >/dev/null 2>&1); then
     if $(hg prompt >/dev/null 2>&1); then
       if [[ $(hg prompt "{status|unknown}") = "?" ]]; then
         # if files are not added
-        bcprompt_segment red white
+        prompt_segment red white
         st='±'
       elif [[ -n $(hg prompt "{status|modified}") ]]; then
         # if any modification
-        bcprompt_segment yellow black
+        prompt_segment yellow black
         st='±'
       else
         # if working copy is clean
-        bcprompt_segment green black
+        prompt_segment green black
       fi
       echo -n $(hg prompt "☿ {rev}@{branch}") $st
     else
@@ -173,13 +172,13 @@ bcprompt_hg() {
       rev=$(hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
       branch=$(hg id -b 2>/dev/null)
       if `hg st | grep -q "^\?"`; then
-        bcprompt_segment red black
+        prompt_segment red black
         st='±'
       elif `hg st | grep -q "^[MA]"`; then
-        bcprompt_segment yellow black
+        prompt_segment yellow black
         st='±'
       else
-        bcprompt_segment green black
+        prompt_segment green black
       fi
       echo -n "☿ $rev@$branch" $st
     fi
@@ -187,15 +186,15 @@ bcprompt_hg() {
 }
 
 # Dir: current working directory
-bcprompt_dir() {
-  bcprompt_segment magenta white '%~'
+prompt_dir() {
+  prompt_segment magenta black '%~'
 }
 
 # Virtualenv: current working virtualenv
-bcprompt_virtualenv() {
+prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    bcprompt_segment blue black "(`basename $virtualenv_path`)"
+    prompt_segment blue black "(`basename $virtualenv_path`)"
   fi
 }
 
@@ -203,27 +202,27 @@ bcprompt_virtualenv() {
 # - was there an error
 # - am I root
 # - are there background jobs?
-bcprompt_status() {
+prompt_status() {
   local symbols
   symbols=()
   [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
 
-  [[ -n "$symbols" ]] && bcprompt_segment black default "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
 ## Main prompt
 build_prompt() {
   RETVAL=$?
-  bcprompt_status
-  bcprompt_virtualenv
-  bcprompt_context
-  bcprompt_dir
-  bcprompt_git
-  bcprompt_bzr
-  bcprompt_hg
-  bcprompt_end
+  prompt_status
+  prompt_virtualenv
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_bzr
+  prompt_hg
+  prompt_end
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
