@@ -47,13 +47,13 @@ xfce4-terminal-force:
 	ln -sfr terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
 dwm:
 	git clone https://github.com/bclindner/dwm
-	$(MAKE) -C dwm install
+	sudo $(MAKE) -C dwm install
 	ln -sr desktop/xprofile ~/.xprofile
 	rm -rf dwm
 dwm-force:
 	-rm -rf dwm
 	git clone https://github.com/bclindner/dwm
-	$(MAKE) -C dwm install
+	sudo $(MAKE) -C dwm install
 	ln -srf desktop/xprofile ~/.xprofile
 	rm -rf dwm
 conky-desktop:
