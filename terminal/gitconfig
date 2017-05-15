@@ -1,0 +1,11 @@
+[user]
+  email = brian@bclindner.com
+  name = Brian C. Lindner
+[core]
+  editor = vim
+[web]
+  browser = chromium-browser
+[push]
+  default = simple
+[credential]
+  helper = cache --timeout 1800 

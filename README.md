@@ -6,7 +6,7 @@ my dotfiles. these use [Vundle](https://github.com/VundleVim/Vundle.vim) and [oh
 
 these dotfiles can all be installed using `make`. files are *symlinked*, meaning the repo still needs to exist for the dotfiles to work. no symlinking commands are forced - commands will fail if dotfiles exist.
 
-to install some basic configs (tmux, vim, fonts, xfce4-terminal, zsh, and xresources), you can just type `make`. you can install other dotfiles individually:
+to install some basic configs (tmux, vim, fonts, xfce4-terminal, zsh, and xresources), you can just type `make`. to update some rudimentary configs, use `make update-desktop` or `make update-laptop`. (*this is destructive* - be careful). you can also install dotfiles individually:
 
 * `make xresources`: installs the `.Xresources` file containing my color pallette, including color scheme info for newer `rofi` versions.
 * `make tmux`: installs `tmux` config.
@@ -19,5 +19,6 @@ to install some basic configs (tmux, vim, fonts, xfce4-terminal, zsh, and xresou
   * xfce4-terminal overwrites the symlink after it's relaunched, so you'll need to run `make xfce4-terminal-force` if you're updating.
 * `make dwm` *(requires sudo)*: makes and installs my current DWM configuration, cloning from my [GitHub repository](https://github.com/bclindner/dwm). also installs a custom `.xprofile` that works alongside it, though it isn't necessary for DWM to run.
   * this make job assumes `conky`, `feh`, and some XFCE4 utilities (namely `xfce4-power-manager`) are already installed. additionally, run `make conky-desktop` or `make conky-laptop` to install the correct statusline configuration.
+* `make git` installs my .gitconfig - if you're reading this, probably don't do this, because you'd be using my name and email for all of your commits.
 
 you can append `-force` to any of these jobs to make them install destructively (overwriting existing git repositories and forcing symlinks), but be careful.

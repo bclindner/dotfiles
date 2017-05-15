@@ -1,4 +1,7 @@
-all: fonts vim zsh tmux xfce4-terminal xresources
+ez-install: fonts vim zsh tmux xfce4-terminal xresources git
+update: vim-force zsh-force tmux-force xfce4-terminal-force xresources-force git-force
+update-desktop: update conky-desktop-force
+update-laptop: update conky-laptop-force
 fonts:
 	git clone https://github.com/powerline/fonts.git
 	sh -c fonts/install.sh
@@ -65,3 +68,7 @@ xresources:
 	ln -sr desktop/Xresources ~/.Xresources
 xresources-force:
 	ln -srf desktop/Xresources ~/.Xresources
+git:
+	ln -sr terminal/gitconfig ~/.gitconfig
+git-force:
+	ln -srf terminal/gitconfig ~/.gitconfig
