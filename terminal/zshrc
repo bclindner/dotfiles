@@ -97,26 +97,18 @@ alias hask="ghci"
 ### GHCi semantic
 alias haskell="ghci"
 ### node shorthand
-alias n="node"
+alias njs="node"
 ### make semantic
 alias build=". ./configure && make && sudo make install"
-### make shorthand
+### make shorthands
 alias m="make"
 alias sm="sudo make"
-alias mc="make clean"
 alias smi="sudo make install"
-## git semantic
-alias commit="git commit -am"
-alias clone="git clone"
-alias grab="git grab"
-alias push="git push"
-alias pull="git pull"
-alias status="git status"
 ## for Debian-based: apt
 ### shorthand
 alias a="apt"
 alias sa="sudo apt"
-alias af="apt search" # we can't use as for this alias because GNU `as` would be overwritten. dammit, stallman.
+alias as="apt search" # we're not using GNU's assembler at any point
 alias sai="sudo apt install"
 alias sad="sudo apt update"
 alias sau="sudo apt update"
@@ -146,3 +138,4 @@ alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.co
 ## common pipe commands
 alias -g p-G="| grep"
 alias -g p-L="| less"
+
