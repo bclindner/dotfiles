@@ -7,32 +7,44 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "" let Vundle self-update
 Plugin 'VundleVim/Vundle.vim'
+" statusline
 Plugin 'vim-airline/vim-airline'
+" git wrapper
 Plugin 'tpope/vim-fugitive'
+" file tree
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-syntastic/syntastic'
+" async linter
+Plugin 'w0rp/ale'
+" sneak motion (replaces `s`)
 Plugin 'justinmk/vim-sneak'
+" custom theme
 Plugin 'bclindner/vim-airline-bclindner'
+" autoclosing capabilities
 Plugin 'Townk/vim-autoclose'
+" SublimeText-style multicursor
 Plugin 'terryma/vim-multiple-cursors'
+" language support
+Plugin 'digitaltoad/vim-pug'
 call vundle#end()
 filetype plugin indent on
 
 " binds
 "" NERDtree
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 "" alt-movement between splits
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+"" C-x closes like Nano
+map <C-x> :x<CR>
 
 " general options
 "" powerline fix
 set laststatus=2
 "" line options
 set list
-set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number
 set linebreak
 set showbreak=">>>"
@@ -63,8 +75,6 @@ autocmd FileType make set noexpandtab
 autocmd StdinReadPre * let s:std_in=1
 "" airline stuff
 let g:airline_theme='bclindner'
-"" syntastic stuff
-let g:syntastic_javascript_checkers = ['standard']
 
 " define powerline symbols
 if !exists('g:airline_symbols')
