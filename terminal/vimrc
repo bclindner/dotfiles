@@ -11,9 +11,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'valloric/youcompleteme'
 Plugin 'justinmk/vim-sneak'
 Plugin 'bclindner/vim-airline-bclindner'
+Plugin 'Townk/vim-autoclose'
+Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 filetype plugin indent on
 
@@ -30,6 +31,8 @@ nmap <silent> <A-Right> :wincmd l<CR>
 "" powerline fix
 set laststatus=2
 "" line options
+set list
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number
 set linebreak
 set showbreak=">>>"
@@ -60,6 +63,8 @@ autocmd FileType make set noexpandtab
 autocmd StdinReadPre * let s:std_in=1
 "" airline stuff
 let g:airline_theme='bclindner'
+"" syntastic stuff
+let g:syntastic_javascript_checkers = ['standard']
 
 " define powerline symbols
 if !exists('g:airline_symbols')
