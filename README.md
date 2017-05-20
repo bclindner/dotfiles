@@ -23,7 +23,7 @@ these dotfiles provide the following features:
 
 ## installation
 
-as previously mentioned, these dotfiles can all be installed using `make`. files are *symlinked*, meaning the repo still needs to exist for the dotfiles to work. no symlinking commands are forced - commands will fail if dotfiles already exist.
+as previously mentioned, these dotfiles can all be installed using `make`. files are *symlinked*, meaning the cloned repo cannot be moved or deleted when the dotfiles are deployed - otherwise, they won't work. no symlinking commands are forced - commands will fail if dotfiles already exist.
 
 to install a basic set of configs, you can just type `make` - this might take a while, as it installs Powerline-compatible fonts and refreshes font cache. 
 
