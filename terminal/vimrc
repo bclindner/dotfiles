@@ -25,6 +25,12 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'terryma/vim-multiple-cursors'
 " language support
 Plugin 'digitaltoad/vim-pug'
+" close buffers w/o closing window
+Plugin 'moll/vim-bbye'
+" useful plugin for dealing w/ quotes
+Plugin 'tpope/vim-surround'
+" ctrl-p is nice
+Plugin 'ctrlpvim/ctrlp.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -36,13 +42,15 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
-"" C-x closes like Nano
-map <C-x> :x<CR>
+"" tab movement between buffer
+nmap <Tab> :bnext<CR>
+nmap <S-Tab> :bprev<CR>
+"" C-x closes buffer
+nmap <C-x> :Bdelete<CR>
 
 " general options
-"" powerline fix
-set laststatus=2
 "" line options
+set hidden
 set list
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number
@@ -74,9 +82,12 @@ autocmd FileType make set noexpandtab
 "" nerdtree stuff
 autocmd StdinReadPre * let s:std_in=1
 "" airline stuff
+set laststatus=2
 let g:airline_theme='bclindner'
-
-" define powerline symbols
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+""" set airline symbols
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
