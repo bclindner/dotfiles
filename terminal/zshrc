@@ -17,7 +17,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 ZSH_TMUX_AUTOSTART="true"
 export TERM=screen-256color
 ## use a buncha plugins:
-plugins=(git heroku node screen npm command-not-found sudo tmux) 
+plugins=(git heroku node screen npm command-not-found sudo tmux gulp yarn)
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
