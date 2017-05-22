@@ -31,6 +31,8 @@ Plugin 'moll/vim-bbye'
 Plugin 'tpope/vim-surround'
 " ctrl-p is nice
 Plugin 'ctrlpvim/ctrlp.vim'
+" good indent guides
+Plugin 'Yggdroot/indentLine'
 call vundle#end()
 filetype plugin indent on
 
@@ -49,7 +51,8 @@ nmap <S-Tab> :bprev<CR>
 nmap <C-x> :Bdelete<CR>
 
 " general options
-"" line options
+colorscheme zellner
+" line options
 set hidden
 set list
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
@@ -84,6 +87,7 @@ autocmd StdinReadPre * let s:std_in=1
 "" airline stuff
 set laststatus=2
 let g:airline_theme='bclindner'
+""" enable bufferline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
@@ -111,3 +115,5 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
+"" ctrlp stuff - ignore line
+set wildignore+=node_modules
