@@ -1,37 +1,31 @@
 " bclindner vimrc
 
-" plugins
+" vundle configuration
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "" let Vundle self-update
 Plugin 'VundleVim/Vundle.vim'
-" statusline
+"" THE ESSENTIALS - statusline, file tree, linter, fuzzy finder.
 Plugin 'vim-airline/vim-airline'
-" file tree
 Plugin 'scrooloose/nerdtree'
-" async linter
 Plugin 'w0rp/ale'
-" sneak motion (replaces `s`)
-Plugin 'justinmk/vim-sneak'
-" custom theme
-Plugin 'bclindner/vim-airline-bclindner'
-" autoclosing capabilities
-Plugin 'Townk/vim-autoclose'
-" SublimeText-style multicursor
-Plugin 'terryma/vim-multiple-cursors'
-" close buffers w/o closing window
-Plugin 'moll/vim-bbye'
-" useful plugin for dealing w/ quotes
-Plugin 'tpope/vim-surround'
-" fuzzy finders are nice
 Plugin 'ctrlpvim/ctrlp.vim'
+" OPTIMIZATIONS - autoclosing, multicursor, sneak, :Bdelete, and surround
+Plugin 'Townk/vim-autoclose'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'justinmk/vim-sneak'
+Plugin 'moll/vim-bbye'
+Plugin 'tpope/vim-surround'
 " language support
 Plugin 'digitaltoad/vim-pug'
 Plugin 'pangloss/vim-javascript'
+" THEME - ripped this off of the 'cool' theme that came with vim-airline lmao
+Plugin 'bclindner/vim-airline-bclindner'
 call vundle#end()
 filetype plugin indent on
+" end vundle configuration
 
 " binds
 "" NERDtree
@@ -46,19 +40,22 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprev<CR>
 "" C-x closes buffer
 nmap <C-x> :Bdelete<CR>
+" end binds
 
 " general options
+"" colorscheme
 colorscheme zellner
-" line options
-set hidden
+"" line options
 set list
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number
 set linebreak
 set showbreak=">>>"
-set showmatch
+"" QoL
+set hidden
 set visualbell
 "" search options
+set showmatch
 set nohlsearch
 set smartcase
 set ignorecase
@@ -77,6 +74,7 @@ set backspace=indent,eol,start
 syntax enable
 "" for makefiles: use noexpandtab
 autocmd FileType make set noexpandtab
+" end general options
 
 " plugin configuration
 "" nerdtree stuff
@@ -114,3 +112,4 @@ let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 "" ctrlp stuff - ignore line
 set wildignore+=node_modules
+" end plugin configuration
