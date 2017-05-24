@@ -9,8 +9,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " statusline
 Plugin 'vim-airline/vim-airline'
-" git wrapper
-Plugin 'tpope/vim-fugitive'
 " file tree
 Plugin 'scrooloose/nerdtree'
 " async linter
