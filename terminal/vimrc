@@ -23,16 +23,15 @@ Plugin 'bclindner/vim-airline-bclindner'
 Plugin 'Townk/vim-autoclose'
 " SublimeText-style multicursor
 Plugin 'terryma/vim-multiple-cursors'
-" language support
-Plugin 'digitaltoad/vim-pug'
 " close buffers w/o closing window
 Plugin 'moll/vim-bbye'
 " useful plugin for dealing w/ quotes
 Plugin 'tpope/vim-surround'
-" ctrl-p is nice
+" fuzzy finders are nice
 Plugin 'ctrlpvim/ctrlp.vim'
-" good indent guides
-Plugin 'Yggdroot/indentLine'
+" language support
+Plugin 'digitaltoad/vim-pug'
+Plugin 'pangloss/vim-javascript'
 call vundle#end()
 filetype plugin indent on
 
