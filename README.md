@@ -18,7 +18,7 @@ these dotfiles provide the following features:
 * terminal multiplexing with [`tmux`](https://tmux.github.io/), including full Powerline-style statusline
 * a `vim` configuration with [Vundle](https://github.com/VundleVim/Vundle.vim)
 * statuslines for `vim` and `tmux` courtesy of [vim-airline](https://github.com/vim-airline/vim-airline) and [tmuxline.vim](https://github.com/edkolev/tmuxline.vim), respectively
-* config files for [`dwm`](dwm.suckless.org), an ultra-light tiling window manager, and separate `conky` configs to provide relevant statuslines for desktops and laptops
+* config files for [`dwm`](http://dwm.suckless.org), an ultra-light tiling window manager, and separate `conky` configs to provide relevant statuslines for desktops and laptops
 * a distraction-free `xfce4-terminal` config, optimized for tiling WM usage
 
 ## installation
