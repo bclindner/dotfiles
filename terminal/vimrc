@@ -1,31 +1,28 @@
 " bclindner vimrc
 
-" vundle configuration
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-"" let Vundle self-update
-Plugin 'VundleVim/Vundle.vim'
+" vim-plug configuration
+call plug#begin('~/.vim/plugins/')
+Plug 'VundleVim/Vundle.vim'
 "" THE ESSENTIALS - statusline, file tree, linter, fuzzy finder.
-Plugin 'vim-airline/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'w0rp/ale'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " OPTIMIZATIONS - autoclosing, multicursor, sneak, :Bdelete, and surround
-Plugin 'Townk/vim-autoclose'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'justinmk/vim-sneak'
-Plugin 'moll/vim-bbye'
-Plugin 'tpope/vim-surround'
+Plug 'Townk/vim-autoclose'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'justinmk/vim-sneak'
+Plug 'moll/vim-bbye'
+Plug 'tpope/vim-surround'
 " language support
-Plugin 'digitaltoad/vim-pug'
-Plugin 'pangloss/vim-javascript'
+Plug 'digitaltoad/vim-pug'
+Plug 'pangloss/vim-javascript'
 " THEME - ripped this off of the 'cool' theme that came with vim-airline lmao
-Plugin 'bclindner/vim-airline-bclindner'
-call vundle#end()
+Plug 'bclindner/vim-airline-bclindner'
+call plug#end()
 filetype plugin indent on
-" end vundle configuration
+" end vim-plug configuration
 
 " binds
 "" NERDtree
@@ -40,6 +37,8 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprev<CR>
 "" C-x closes buffer
 nmap <C-x> :Bdelete<CR>
+"" make fzf like ctrlp
+nmap <C-p> :FZF<CR>
 " end binds
 
 " general options

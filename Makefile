@@ -19,12 +19,14 @@ fonts-force:
 	rm -rf fonts
 vim:
 	ln -sr terminal/vimrc ~/.vimrc
-	git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
-	vim +VundleInstall +qall
+	mkdir -p ~/.vim/autoload
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	vim +PlugInstall +qall
 vim-force:
 	ln -srf terminal/vimrc ~/.vimrc
-	-git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
-	vim +VundleInstall +qall
+	mkdir -p ~/.vim/autoload
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	vim +PlugInstall +qall
 zsh:
 	sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
 	ln -srf terminal/zshrc ~/.zshrc
