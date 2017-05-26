@@ -7,8 +7,7 @@ Plug 'VundleVim/Vundle.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " OPTIMIZATIONS - autoclosing, multicursor, sneak, :Bdelete, and surround
 Plug 'Townk/vim-autoclose'
 Plug 'terryma/vim-multiple-cursors'
