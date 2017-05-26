@@ -17,7 +17,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 ZSH_TMUX_AUTOSTART="true"
 export TERM=screen-256color
 ## use a buncha plugins:
-plugins=(git node screen npm command-not-found sudo tmux gulp yarn docker docker-compose)
+plugins=(git node screen npm command-not-found sudo gulp yarn docker docker-compose)
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
