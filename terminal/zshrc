@@ -138,6 +138,3 @@ alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.co
 ## common pipe commands
 alias -g p-G="| grep"
 alias -g p-L="| less"
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
