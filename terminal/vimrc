@@ -36,8 +36,6 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprev<CR>
 "" C-x closes buffer
 nmap <C-x> :Bdelete<CR>
-"" make fzf like ctrlp
-nmap <C-p> :FZF<CR>
 " end binds
 
 " general options
