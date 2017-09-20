@@ -42,6 +42,15 @@ bindkey -e
 # fi
 
 ###########
+# exports #
+###########
+
+# golang exports
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/go/bin:$GOROOT/bin:$GOPATH/bin
+
+###########
 # aliases #
 ###########
 
@@ -134,6 +143,8 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 ## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
+## love framework build macro
+alias love-build="zip -9 -r game.love"
 # global aliases (shell text replacements)
 ## common pipe commands
 alias -g p-G="| grep"

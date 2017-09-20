@@ -1,26 +1,27 @@
 " bclindner vimrc
 
 " vim-plug configuration
-call plug#begin('~/.vim/plugins/')
-Plug 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged/')
 "" THE ESSENTIALS - statusline, file tree, linter, fuzzy finder.
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 " OPTIMIZATIONS - autoclosing, multicursor, sneak, :Bdelete, and surround
-Plug 'Townk/vim-autoclose'
+Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-sneak'
 Plug 'moll/vim-bbye'
 Plug 'tpope/vim-surround'
 " language support
-Plug 'digitaltoad/vim-pug'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript' " javascript
+Plug 'leafgarland/typescript-vim' " typescript
+Plug 'digitaltoad/vim-pug' " pug
 " THEME - ripped this off of the 'cool' theme that came with vim-airline lmao
 Plug 'bclindner/vim-airline-bclindner'
 call plug#end()
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 " end vim-plug configuration
 
 " binds
@@ -36,6 +37,8 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprev<CR>
 "" C-x closes buffer
 nmap <C-x> :Bdelete<CR>
+"" abbreviate to allow tag autoclosing - type </(space)
+iabbrev <// </<C-X><C-O>
 " end binds
 
 " general options
@@ -68,13 +71,17 @@ set mouse=a
 set backspace=indent,eol,start
 "" syntax highlighting
 syntax enable
-"" for makefiles: use noexpandtab
+"" for makefiles and go files: use noexpandtab
+autocmd FileType go set noexpandtab
+autocmd FileType go set tabstop=2
 autocmd FileType make set noexpandtab
+autocmd FileType make set tabstop=2
 " end general options
 
 " plugin configuration
 "" nerdtree stuff
 autocmd StdinReadPre * let s:std_in=1
+let g:NERDTreeWinPos = "right"
 "" airline stuff
 set laststatus=2
 let g:airline_theme='bclindner'
@@ -109,3 +116,9 @@ let g:airline_symbols.whitespace = 'Ξ'
 "" ctrlp stuff - ignore line
 set wildignore+=node_modules
 " end plugin configuration
+
+" custom commands
+command! Vimrc e $MYVIMRC
+command! VimrcUpdate source $MYVIMRC
+" end custom commands
+
