@@ -8,7 +8,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 " OPTIMIZATIONS - autoclosing, multicursor, sneak, :Bdelete, and surround
-Plug 'jiangmiao/auto-pairs'
+Plug 'Townk/vim-autoclose'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-sneak'
 Plug 'moll/vim-bbye'
