@@ -1,6 +1,6 @@
 # bclindner's dotfiles
 
-![seriously, though, i got pwned HARD once](https://i.imgur.com/5qaqnTa.png)
+![screenshot](https://i.imgur.com/5qaqnTa.png)
 
 this repository is a set of configuration files for Linux, the `zsh` terminal, and some of my commonly-used Linux programs. they are primarily for terminal usage, though they also include some files for configuring [my dwm fork](https://github.com/bclindner/dwm). these are used and tested mostly on Ubuntu and other Debian-based systems with LightDM and XFCE4 in use before having dotfiles applied, so I cannot vouch for their usability on other systems or setups.
 
