@@ -2,11 +2,12 @@
 
 " vim-plug configuration
 call plug#begin('~/.vim/plugged/')
-"" THE ESSENTIALS - statusline, file tree, linter, fuzzy finder.
+"" THE ESSENTIALS - statusline, file tree, linter, fuzzy finder, etc.
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
 " OPTIMIZATIONS - autoclosing, multicursor, sneak, :Bdelete, and surround
 Plug 'Townk/vim-autoclose'
 Plug 'terryma/vim-multiple-cursors'
@@ -17,6 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript' " javascript
 Plug 'leafgarland/typescript-vim' " typescript
 Plug 'digitaltoad/vim-pug' " pug
+Plug 'gregsexton/MatchTag' " html tag matching
 " THEME - ripped this off of the 'cool' theme that came with vim-airline lmao
 Plug 'bclindner/vim-airline-bclindner'
 call plug#end()
@@ -65,6 +67,7 @@ set shiftwidth=2
 set expandtab
 set smartindent
 set softtabstop=2
+set tabstop=2
 "" use mouse, because sometimes i'm just lazy
 set mouse=a
 "" make backspace not stupid
@@ -76,6 +79,8 @@ autocmd FileType go set noexpandtab
 autocmd FileType go set tabstop=2
 autocmd FileType make set noexpandtab
 autocmd FileType make set tabstop=2
+"" python
+autocmd FileType python setlocal tabstop=2
 " end general options
 
 " plugin configuration
@@ -85,6 +90,8 @@ let g:NERDTreeWinPos = "right"
 "" airline stuff
 set laststatus=2
 let g:airline_theme='bclindner'
+"" ale stuff
+let g:ale_sign_column_always = 1
 """ enable bufferline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -120,5 +127,6 @@ set wildignore+=node_modules
 " custom commands
 command! Vimrc e $MYVIMRC
 command! VimrcUpdate source $MYVIMRC
+command! Zshrc e ~/.zshrc
 " end custom commands
 
