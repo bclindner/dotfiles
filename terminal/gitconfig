@@ -4,8 +4,8 @@
 [core]
   editor = vim
 [web]
-  browser = chromium-browser
+  browser = firefox
 [push]
   default = simple
 [credential]
-  helper = cache --timeout 1800 
+  helper = cache --timeout 1800

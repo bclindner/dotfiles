@@ -151,7 +151,7 @@ alias sctl="sudo systemctl"
 alias xclip="xclip -selection c"
 ## firefox shorthand and default -new-tab
 alias firefox="firefox -new-tab"
-alias ff="firefox -new-tab"
+alias ff="firefox"
 # global aliases (shell text replacements)
 ## common pipe commands
 alias -g p-G="| grep"
