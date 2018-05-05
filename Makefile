@@ -74,3 +74,8 @@ git:
 	ln -sr terminal/gitconfig ~/.gitconfig
 git-force:
 	ln -srf terminal/gitconfig ~/.gitconfig
+i3:
+	ln -sr desktop/i3config ~/.config/i3/config
+i3-force:
+	ln -srf desktop/i3config ~/.config/i3/config
+
