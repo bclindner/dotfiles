@@ -21,9 +21,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+w exec firefox
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec "dmenu_run -nb '#1d1f21' -sb '#3a3e42' -p '>' -fn 'Terminess Powerline:pixelsize=10' -l 15"
-bindsym $mod+d exec "dmenu_run -nb '#1d1f21' -sb '#3a3e42' -p '>' -fn 'Terminess Powerline:pixelsize=10' -l 15"
-bindsym $alt+F2 exec "dmenu_run -nb '#1d1f21' -sb '#3a3e42' -p '>' -fn 'Terminess Powerline:pixelsize=10' -l 15"
+set $dmenu "dmenu_run -nb '#1d1f21' -sb '#3a3e42' -p '>' -fn 'Terminess Powerline:pixelsize=10' -l 15"
+bindsym $mod+space exec $dmenu
+bindsym $mod+d exec $dmenu
+bindsym $alt+F2 exec $dmenu
 
 # change focus
 bindsym $alt+j focus left
