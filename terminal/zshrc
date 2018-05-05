@@ -108,7 +108,7 @@ alias smi="sudo make install"
 ### shorthand
 alias a="apt"
 alias sa="sudo apt"
-alias as="apt search" # we're not using GNU's assembler at any point
+alias acs="apt search"
 alias sai="sudo apt install"
 alias sad="sudo apt update"
 alias sau="sudo apt update"
