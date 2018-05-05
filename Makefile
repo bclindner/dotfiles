@@ -43,10 +43,10 @@ tmux-force:
 	ln -srf terminal/tmux.conf ~/.tmux.conf
 xfce4-terminal:
 	mkdir -p ~/.config/xfce4/terminal/
-	ln -sr terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
+	ln -sr terminal/xfce4-terminal ~/.config/xfce4/terminal/terminalrc
 xfce4-terminal-force:
 	mkdir -p ~/.config/xfce4/terminal/
-	ln -sfr terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
+	ln -sfr terminal/xfce4-terminal ~/.config/xfce4/terminal/terminalrc
 dwm:
 	git clone https://github.com/bclindner/dwm
 	sudo $(MAKE) -C dwm install
