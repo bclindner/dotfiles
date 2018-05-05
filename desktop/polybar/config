@@ -1,6 +1,6 @@
 [colors]
 dark = #1d1f21
-dark-accent = #3a3e42
+dark-highlight = #3a3e42
 light = #eeeeee
 
 purple = #875fd7
@@ -19,19 +19,16 @@ height = 24
 offset-y = 24
 
 modules-left = i3
-modules-center = 
-modules-right = wlan eth memory cpu battery volume date
+modules-center =
+modules-right = wlan memory cpu battery volume date
 
 background = ${colors.dark}
 foreground = ${colors.light}
 
-tray-position = right
+tray-position = left
 tray-detached = false
 tray-maxsize = 16
 tray-offset-y = -24
-
-override-redirect = false
-wm-restack = i3
 
 line-size = 3
 line-color = ${colors.accent}
@@ -43,8 +40,8 @@ module-margin-left = 1
 module-margin-right = 1
 module-padding = 1
 
-font-0 = Terminess Powerline:pixelsize=9;1
-font-1 = Symbola:size=10;1
+font-0 = Terminess Powerline:pixelsize=8;1
+font-1 = Symbola:size=12;1
 
 [module/i3]
 type = internal/i3
@@ -55,7 +52,7 @@ label-mode-foreground = ${colors.light}
 label-mode-background = ${colors.dark}
 
 label-focused = %index%
-label-focused-background = ${colors.dark-accent}
+label-focused-background = ${colors.dark-highlight}
 label-focused-underline = ${colors.accent}
 label-focused-padding = 1
 
@@ -66,12 +63,13 @@ label-visible = %index%
 label-visible-padding = 1
 
 label-urgent = %index%
+label-urgent-background = ${colors.dark-highlight}
 label-urgent-underline = ${colors.urgent}
 label-urgent-padding = 1
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 5.0
 date = "%H:%m"
 format-padding = 1
 
@@ -88,13 +86,13 @@ poll-interval = 5
 format-margin = 1
 
 format-charging = <label-charging>
-label-charging = %percentage%%
+label-charging = %percentage%% %time%
 format-charging-underline = ${colors.yellow}
 format-charging-prefix = "⚡ "
 format-charging-padding = 1
 
 format-discharging = <label-discharging>
-label-discharging = %percentage%%
+label-discharging = %percentage%% %time%
 format-discharging-underline = ${colors.red}
 format-discharging-prefix = "🔋 "
 format-discharging-padding = 1
@@ -112,14 +110,14 @@ interval = 3.0
 
 format-connected-padding = 1
 format-connected = <label-connected>
-label-connected = wlan %signal%%
+label-connected = 🖧 %signal%%
 format-connected-underline = ${colors.ok}
 
 [module/cpu]
 type = internal/cpu
 interval = 1
 
-format-prefix = "cpu "
+format-prefix = "💻 "
 format-underline = ${colors.red}
 format = <label> <ramp-coreload>
 label =
@@ -135,11 +133,13 @@ ramp-coreload-6 = ▇
 ramp-coreload-7 = █
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 master-soundcard = default
 speaker-soundcard = default
 headphone-soundcard = default
+
+format-volume-padding = 1
 
 format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
@@ -160,8 +160,9 @@ ramp-volume-2 = 🔊
 type = internal/memory
 interval = 3
 
+format-padding = 1
 format-underline = ${colors.cyan}
-label = ram %gb_used%/%gb_free%
+label = 🐏 %gb_used%/%gb_free%
 
 [settings]
 screenchange-reload = true
