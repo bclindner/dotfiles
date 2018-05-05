@@ -20,7 +20,7 @@ offset-y = 24
 
 modules-left = i3
 modules-center =
-modules-right = wlan memory cpu battery volume date
+modules-right = eth wlan memory cpu battery volume date
 
 background = ${colors.dark}
 foreground = ${colors.light}
@@ -69,18 +69,20 @@ label-urgent-padding = 1
 
 [module/date]
 type = internal/date
-interval = 5.0
-date = "%H:%m"
+interval = 1.0
+date = "%T %Z"
+date-alt = "%F %T %Z"
 format-padding = 1
 
 format-prefix = "🕒 "
+label = %date%
 format-underline = ${colors.accent}
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = ADP0
-full-at = 98
+full-at = 96
 poll-interval = 5
 
 format-margin = 1
@@ -110,8 +112,18 @@ interval = 3.0
 
 format-connected-padding = 1
 format-connected = <label-connected>
-label-connected = 🖧 %signal%%
+label-connected = 🖧  %signal%%
 format-connected-underline = ${colors.ok}
+
+[module/eth]
+type = internal/network
+interface = enp2s0
+interval = 3.0
+
+format-connected-padding = 1
+format-connected-underline = ${colors.ok}
+format-connected = <label-connected>
+label-connected = 🔗 %local_ip%
 
 [module/cpu]
 type = internal/cpu
@@ -133,11 +145,7 @@ ramp-coreload-6 = ▇
 ramp-coreload-7 = █
 
 [module/volume]
-type = internal/alsa
-
-master-soundcard = default
-speaker-soundcard = default
-headphone-soundcard = default
+type = internal/pulseaudio
 
 format-volume-padding = 1
 
@@ -155,6 +163,7 @@ label-muted-foreground = #66
 ramp-volume-0 = 🔈
 ramp-volume-1 = 🔉
 ramp-volume-2 = 🔊
+
 
 [module/memory]
 type = internal/memory
