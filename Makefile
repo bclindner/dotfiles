@@ -75,9 +75,9 @@ git:
 git-force:
 	ln -srf terminal/gitconfig ~/.gitconfig
 i3:
-	ln -sr desktop/i3config ~/.config/i3/config
+	ln -sr desktop/i3 ~/.config/i3
 i3-force:
-	ln -srf desktop/i3config ~/.config/i3/config
+	ln -srf desktop/i3 ~/.config/i3
 polybar:
 	ln -sr desktop/polybar ~/.config/polybar
 polybar-force:
