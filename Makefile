@@ -78,4 +78,8 @@ i3:
 	ln -sr desktop/i3config ~/.config/i3/config
 i3-force:
 	ln -srf desktop/i3config ~/.config/i3/config
+polybar:
+	ln -sr desktop/polybar ~/.config/polybar
+polybar-force:
+	ln -srf desktop/polybar ~/.config/polybar
 

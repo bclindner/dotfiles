@@ -1,0 +1,167 @@
+[colors]
+dark = #1d1f21
+dark-accent = #3a3e42
+light = #eeeeee
+
+purple = #875fd7
+red = #d65e5e
+green = #66d65e
+yellow = #d0d65e
+cyan = #5ed6ca
+blue = #5e5ed6
+
+accent = ${colors.purple}
+urgent = ${colors.red}
+ok = ${colors.green}
+
+[bar/bclindner]
+height = 24
+offset-y = 24
+
+modules-left = i3
+modules-center = 
+modules-right = wlan eth memory cpu battery volume date
+
+background = ${colors.dark}
+foreground = ${colors.light}
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 16
+tray-offset-y = -24
+
+override-redirect = false
+wm-restack = i3
+
+line-size = 3
+line-color = ${colors.accent}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+module-padding = 1
+
+font-0 = Terminess Powerline:pixelsize=9;1
+font-1 = Symbola:size=10;1
+
+[module/i3]
+type = internal/i3
+index-sort = true
+wrapping-scroll = false
+
+label-mode-foreground = ${colors.light}
+label-mode-background = ${colors.dark}
+
+label-focused = %index%
+label-focused-background = ${colors.dark-accent}
+label-focused-underline = ${colors.accent}
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+label-visible = %index%
+label-visible-padding = 1
+
+label-urgent = %index%
+label-urgent-underline = ${colors.urgent}
+label-urgent-padding = 1
+
+[module/date]
+type = internal/date
+interval = 5
+date = "%H:%m"
+format-padding = 1
+
+format-prefix = "🕒 "
+format-underline = ${colors.accent}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP0
+full-at = 98
+poll-interval = 5
+
+format-margin = 1
+
+format-charging = <label-charging>
+label-charging = %percentage%%
+format-charging-underline = ${colors.yellow}
+format-charging-prefix = "⚡ "
+format-charging-padding = 1
+
+format-discharging = <label-discharging>
+label-discharging = %percentage%%
+format-discharging-underline = ${colors.red}
+format-discharging-prefix = "🔋 "
+format-discharging-padding = 1
+
+format-full = <label-full>
+label-full = %percentage%%
+format-full-underline = ${colors.green}
+format-full-prefix = "🔌 "
+format-full-padding = 1
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+interval = 3.0
+
+format-connected-padding = 1
+format-connected = <label-connected>
+label-connected = wlan %signal%%
+format-connected-underline = ${colors.ok}
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+format-prefix = "cpu "
+format-underline = ${colors.red}
+format = <label> <ramp-coreload>
+label =
+format-padding = 1
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/volume]
+type = internal/volume
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+
+format-volume-underline = ${colors.blue}
+format-muted-underline = ${colors.yellow}
+
+master-mixer = Master
+
+label-muted = 🔇 mute
+label-muted-foreground = #66
+
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+[module/memory]
+type = internal/memory
+interval = 3
+
+format-underline = ${colors.cyan}
+label = ram %gb_used%/%gb_free%
+
+[settings]
+screenchange-reload = true
