@@ -30,7 +30,7 @@ vim-force:
 zsh:
 	sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
 	ln -srf terminal/zshrc ~/.zshrc
-	cd ~/.oh-my-zsh/custom; mkdir themes
+	mkdir -p ~/.oh-my-zsh/custom/themes
 	ln -sr terminal/bclindner.zsh-theme ~/.oh-my-zsh/custom/themes/
 zsh-force:
 	-sh -c "`wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -`"
