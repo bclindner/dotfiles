@@ -20,7 +20,7 @@ offset-y = 24
 
 modules-left = i3
 modules-center =
-modules-right = eth wlan memory cpu battery volume date
+modules-right = eth wlan memory cpu volume date
 
 background = ${colors.dark}
 foreground = ${colors.light}
@@ -40,8 +40,8 @@ module-margin-left = 1
 module-margin-right = 1
 module-padding = 1
 
-font-0 = Terminess Powerline:pixelsize=8;1
-font-1 = Symbola:size=12;1
+font-0 = xos4 Terminess Powerline:pixelsize=14;1
+font-1 = Symbola:size=14;1
 
 [module/i3]
 type = internal/i3
@@ -107,7 +107,7 @@ format-full-padding = 1
 
 [module/wlan]
 type = internal/network
-interface = wlp1s0
+interface = wlp0s22f2u3
 interval = 3.0
 
 format-connected-padding = 1
@@ -117,7 +117,7 @@ format-connected-underline = ${colors.ok}
 
 [module/eth]
 type = internal/network
-interface = enp2s0
+interface = enp9s0
 interval = 3.0
 
 format-connected-padding = 1
