@@ -171,7 +171,7 @@ interval = 3
 
 format-padding = 1
 format-underline = ${colors.cyan}
-label = 🐏 %gb_used%/%gb_free%
+label = 🐏 %gb_used%/%gb_total%
 
 [settings]
 screenchange-reload = true
