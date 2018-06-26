@@ -107,12 +107,12 @@ format-full-padding = 1
 
 [module/wlan]
 type = internal/network
-interface = wlp0s22f2u3
+interface = wlp7s0u2u2
 interval = 3.0
 
 format-connected-padding = 1
 format-connected = <label-connected>
-label-connected = 🖧  %signal%%
+label-connected = 🖧  %essid% %signal%%
 format-connected-underline = ${colors.ok}
 
 [module/eth]
