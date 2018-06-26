@@ -54,6 +54,7 @@ set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number
 set linebreak
 set showbreak=">>>"
+set breakindent
 "" QoL
 set hidden
 set visualbell
