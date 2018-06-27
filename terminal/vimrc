@@ -82,10 +82,12 @@ autocmd FileType go set noexpandtab
 autocmd FileType go set tabstop=2
 autocmd FileType make set noexpandtab
 autocmd FileType make set tabstop=2
-"" python
-autocmd FileType python setlocal tabstop=2
-"" auto-apply vimrc
+" auto-apply dotfiles on save
 autocmd BufWritePost $MYVIMRC source % | PlugInstall | q | redraw
+autocmd BufWritePost ~/.Xresources !xrdb -merge ~/.Xresources
+autocmd BufWritePost ~/.zshrc !source %
+autocmd BufWritePost ~/.config/i3/config !i3-msg reload
+autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
 " end general options
 
 " plugin configuration
@@ -133,6 +135,6 @@ set wildignore+=node_modules
 command! Vimrc e $MYVIMRC
 command! VimrcUpdate source $MYVIMRC
 command! Zshrc e ~/.zshrc
-command! WTF w !sudo tee %
+command! W w !sudo tee %
 " end custom commands
 
