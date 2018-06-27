@@ -1,5 +1,4 @@
-ez-install: fonts vim zsh xfce4-terminal xresources git
-update: vim-force zsh-force xfce4-terminal-force xresources-force git-force
+default: fonts vim zsh xresources i3 polybar git
 fonts:
 	# clone into powerline fonts
 	git clone https://github.com/powerline/fonts.git
@@ -71,22 +70,6 @@ zsh-force:
 	# symlink the custom theme, forcefully
 	ln -srf terminal/bclindner.zsh-theme ~/.oh-my-zsh/custom/themes/
 
-xfce4-terminal:
-	# ensure xfce4-terminal is installed
-	xfce4-terminal --version
-	# create the terminal config directory if necessary
-	mkdir -p ~/.config/xfce4/terminal/
-	# symlink the file
-	ln -sr terminal/xfce4-terminal ~/.config/xfce4/terminal/terminalrc
-
-xfce4-terminal-force:
-	# ensure xfce4-terminal is installed
-	xfce4-terminal --version
-	# create the terminal config directory if necessary
-	mkdir -p ~/.config/xfce4/terminal/
-	# symlink the file, forcefully
-	ln -srf terminal/xfce4-terminal ~/.config/xfce4/terminal/terminalrc
-
 xresources:
 	# symlink Xresources
 	ln -sr desktop/Xresources ~/.Xresources
@@ -107,25 +90,25 @@ git-force:
 	# link the gitconfig
 	ln -srf terminal/gitconfig ~/.gitconfig
 
-i3:
+i3: polybar
 	# ensure i3 is installed
 	i3 -v
 	# symlink i3 config folder
 	ln -sr desktop/i3 ~/.config/i3
 
-i3-force:
+i3-force: polybar-force
 	# ensure i3 is installed
 	i3 -v
 	# symlink i3 config folder, forcefully
 	ln -srf desktop/i3 ~/.config/i3
 
-polybar:
+polybar: xresources
 	# ensure polybar is installed
 	polybar -v
 	# symlink polybar config folder
 	ln -sr desktop/polybar ~/.config/polybar
 
-polybar-force:
+polybar-force: xresources-force
 	# ensure polybar is installed
 	polybar -v
 	# symlink polybar config folder, forcefully

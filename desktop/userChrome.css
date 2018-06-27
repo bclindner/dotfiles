@@ -1,0 +1,10 @@
+@namespace xul url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#tabbrowser-tabs {
+  background-color: #1d1f21;
+}
+
+* {
+  --chrome-primary-background-color: #1d1f21;
+  --chrome-secondary-background-color: #1d1f21;
+}
