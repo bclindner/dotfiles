@@ -1,14 +1,15 @@
 [colors]
-dark = #1d1f21
-dark-highlight = #3a3e42
-light = #eeeeee
+; pull colors from xresources
+dark = ${xrdb:*.background}
+dark-highlight = ${xrdb:*.color8}
+light = ${xrdb:*.foreground}
 
-purple = #875fd7
-red = #d65e5e
-green = #66d65e
-yellow = #d0d65e
-cyan = #5ed6ca
-blue = #5e5ed6
+red = ${xrdb:*.color1}
+green = ${xrdb:*.color2}
+yellow = ${xrdb:*.color3}
+blue = ${xrdb:*.color4}
+purple = ${xrdb:*.color5}
+cyan = ${xrdb:*.color6}
 
 accent = ${colors.purple}
 urgent = ${colors.red}
