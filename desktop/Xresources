@@ -1,42 +1,49 @@
-! rofi
-rofi.color-normal: #1d1f21, #eeeeee, #1d1f21, #875fd7, #eeeeee
-rofi.color-urgent: #1d1f21, #eeeeee, #1d1f21, #875fd7, #eeeeee
-rofi.color-active: #1d1f21, #eeeeee, #1d1f21, #875fd7, #eeeeee
-rofi.color-window: #1d1f21, #1d1f21, #1d1f21
+! urxvt: font
+URxvt.font: xft:xos4 Terminess Powerline:pixelsize=14:antialias=false
 
-! special
+! urxvt: allow scrolling in secondary window (e.g. less, vim, etc)
+URxvt.secondaryScreen: 1
+URxvt.secondaryWheel: 1
+URxvt.secondaryScroll: 0
+
+! urxvt: disable scrollbar
+URxvt.scrollBar: false
+
+URxvt.letterSpace: 0
+URxvt.lineSpace: 1
+! urxvt: plugins
+URxvt.perl-ext-common: default,matcher,resize-font,selection-to-clipboard
+!! url launcher
+URxvt.url-launcher: /usr/bin/xgd-open
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg5
+
+! colors
+!! special
 *.foreground:   #e3e3e3
 *.background:   #1d1f21
 *.cursorColor:  #e3e3e3
-
-! black
+!! black
 *.color0:       #1d1f21
 *.color8:       #373b41
-
-! red
+!! red
 *.color1:       #af3131
 *.color9:       #d05c5c
-
-! green
+!! green
 *.color2:       #65cc3e
 *.color10:      #a6e174
-
-! yellow
+!! yellow
 *.color3:       #ee7d2f
 *.color11:      #e4954c
-
-! blue
+!! blue
 *.color4:       #4a8cc3
 *.color12:      #65a7df
-
-! magenta
+!! magenta
 *.color5:       #875fd7
 *.color13:      #af5fff
-
-! cyan
+!! cyan
 *.color6:       #45c3b3
 *.color14:      #7cdacd
-
-! white
+!! white
 *.color7:       #777777
 *.color15:      #e3e3e3
