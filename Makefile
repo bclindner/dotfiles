@@ -94,13 +94,13 @@ i3: polybar
 	# ensure i3 is installed
 	i3 -v
 	# symlink i3 config folder
-	ln -sr desktop/i3 ~/.config/i3
+	ln -sr desktop/i3 ~/.config
 
 i3-force: polybar-force
 	# ensure i3 is installed
 	i3 -v
 	# symlink i3 config folder, forcefully
-	ln -srf desktop/i3 ~/.config/i3
+	ln -srf desktop/i3 ~/.config
 
 polybar: xresources
 	# ensure polybar is installed
