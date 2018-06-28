@@ -180,11 +180,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86TouchpadToggle exec $HOME/.config/i3/touchpad-toggle.sh
 
 # print screen
-bindsym Print exec scrot -z
-
-# xfce4 power manager (brightness control)
-exec_always --no-startup-id xfce4-power-manager
-# screen lock
-bindsym $mod+l exec gnome-screensaver-command -l
+bindsym Print exec scrot
+bindsym $alt+Print exec scrot -s
+bindsym $mod+Print exec scrot -u
 
 for_window [instance="Godot_Engine"] floating enable
