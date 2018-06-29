@@ -147,7 +147,3 @@ alias ff="firefox"
 ## common pipe commands
 alias -g p-G="| grep"
 alias -g p-L="| less"
-
-# auto-sudo aliases
-alias service="sudo service"
-alias systemctl="sudo systemctl"
