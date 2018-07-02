@@ -15,18 +15,24 @@ accent = ${colors.purple}
 urgent = ${colors.red}
 ok = ${colors.green}
 
+[network]
+wifi = wlp7s0u1u2
+eth = enp9s0
+
 [bar/bclindner]
 height = 24
 offset-y = 24
 
+fixed-center = false
+
 modules-left = i3
-modules-center =
+modules-center = title
 modules-right = eth wlan memory cpu volume date
 
 background = ${colors.dark}
 foreground = ${colors.light}
 
-tray-position = left
+tray-position = right
 tray-detached = false
 tray-maxsize = 16
 tray-offset-y = -24
@@ -41,8 +47,11 @@ module-margin-left = 1
 module-margin-right = 1
 module-padding = 1
 
-font-0 = xos4 Terminess Powerline:pixelsize=14;1
+font-0 = ${xrdb:polybar.font}
 font-1 = Symbola:size=14;1
+
+[module/title]
+type = internal/xwindow
 
 [module/i3]
 type = internal/i3
@@ -108,7 +117,7 @@ format-full-padding = 1
 
 [module/wlan]
 type = internal/network
-interface = wlp7s0u2u2
+interface = ${network.wifi}
 interval = 3.0
 
 format-connected-padding = 1
@@ -118,7 +127,7 @@ format-connected-underline = ${colors.ok}
 
 [module/eth]
 type = internal/network
-interface = enp9s0
+interface = ${network.eth}
 interval = 3.0
 
 format-connected-padding = 1

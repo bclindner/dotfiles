@@ -1,3 +1,6 @@
+! polybar: font
+polybar.font: xos4 Terminess Powerline:pixelsize=14
+
 ! urxvt: font
 URxvt.font: xft:xos4 Terminess Powerline:pixelsize=14:antialias=false
 
