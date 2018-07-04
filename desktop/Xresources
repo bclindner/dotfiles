@@ -17,7 +17,7 @@ URxvt.lineSpace: 1
 ! urxvt: plugins
 URxvt.perl-ext-common: default,matcher,resize-font,selection-to-clipboard
 !! url launcher
-URxvt.url-launcher: /usr/bin/xgd-open
+URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 URxvt.matcher.rend.0: Uline Bold fg5
 
