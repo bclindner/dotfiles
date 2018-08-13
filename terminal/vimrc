@@ -47,7 +47,7 @@ iabbrev <// </<C-X><C-O>
 
 " general options
 "" colorscheme
-colorscheme zellner
+colorscheme slate
 "" line options
 set list
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
