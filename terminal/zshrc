@@ -95,7 +95,6 @@ alias svim="sudo vim"
 ### ranger
 alias rng="ranger"
 alias browse="ranger"
-alias r="ranger" #remove if machine has R installed
 ### node shorthand
 alias njs="node"
 ### make semantic
@@ -119,7 +118,7 @@ alias saug="sudo apt update && sudo apt upgrade"
 ## for Arch-based: trizen
 alias t="trizen"
 alias tzn="trizen"
-alias tzns="trizen -S"
+alias tzs="trizen -S"
 alias syu="trizen -Syu"
 alias tsyu="trizen -Syu"
 alias tss="trizen -Ss"
