@@ -1,5 +1,8 @@
+! polybar: font
+polybar.font: xos4 Terminess Powerline:pixelsize=11
+
 ! urxvt: font
-URxvt.font: xft:xos4 Terminess Powerline:pixelsize=14:antialias=false
+URxvt.font: xft:xos4 Terminess Powerline:pixelsize=11:antialias=false
 
 ! urxvt: allow scrolling in secondary window (e.g. less, vim, etc)
 URxvt.secondaryScreen: 1
