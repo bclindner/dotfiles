@@ -134,12 +134,10 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 ## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
-## love framework build macro
-alias love-build="zip -9 -r game.love"
 ## systemctl shorthand
 alias sctl="sudo systemctl"
 ## xclip for clipboard
-alias xclip="xclip -selection c"
+alias clipboard="xclip -selection c"
 ## firefox shorthand and default -new-tab
 alias firefox="firefox -new-tab"
 alias ff="firefox"
