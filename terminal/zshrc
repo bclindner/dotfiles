@@ -32,40 +32,10 @@ SAVEHIST=500
 setopt autocd notify extendedglob
 unsetopt appendhistory beep nomatch
 bindkey -e
-# prompt (pre oh-my-zsh)
-# PS1="%(!.%F{red}.%F{magenta})%n%f%(?..%F{red})%#%f " # colors username red if root, and %# red if command failed
-# if ! [[ /proc/$PPID/exe -ef /usr/bin/mc ]]; then # `mc`-safe: RPS1 does not initialize if the terminal is run from `mc`
-# RPS1="%~" # right prompt displays cd
-# fi
-
-###########
-# exports #
-###########
-
-# golang exports
-export GOPATH=$HOME/go
-export GOROOT=/usr/local/go
-export PATH=$PATH:/usr/local/go/bin:$GOROOT/bin:$GOPATH/bin
 
 ###########
 # aliases #
 ###########
-
-# suffix aliases (command file associations)
-## vim for webdev
-alias -s js="vim"
-alias -s html="vim"
-alias -s css="vim"
-alias -s json="vim"
-alias -s sass="vim"
-alias -s less="vim"
-alias -s scss="vim"
-alias -s pug="vim"
-alias -s md="vim"
-alias -s txt="vim"
-alias -s c="vim"
-## administration
-alias -s log="less"
 
 # command aliases
 ## general command shorthands
@@ -82,7 +52,6 @@ alias la="ls -a --color=auto"
 alias ll="ls -la --color=auto"
 ### clear
 alias c="clear"
-alias clr="clear"
 ### a little creature comfort: clear && ls
 alias cl="clear && ls"
 ### quit
@@ -92,20 +61,9 @@ alias x="edit"
 alias v="vim"
 alias sv="sudo vim"
 alias svim="sudo vim"
-### ranger
-alias rng="ranger"
-alias browse="ranger"
-alias r="ranger" #remove if machine has R installed
 ### node shorthand
 alias njs="node"
-### make semantic
-alias build=". ./configure && make && sudo make install"
-### make shorthands
-alias m="make"
-alias sm="sudo make"
-alias smi="sudo make install"
 ## for Debian-based: apt
-### shorthand
 alias a="apt"
 alias sa="sudo apt"
 alias acs="apt search"
@@ -116,26 +74,25 @@ alias sag="sudo apt upgrade"
 alias sap="sudo apt purge"
 alias sar="sudo apt purge"
 alias saa="sudo apt autoremove"
-alias saar="sudo apt autoremove"
-alias sadg="sudo apt update && sudo apt upgrade"
-alias sagd="sudo apt update && sudo apt upgrade"
 alias saug="sudo apt update && sudo apt upgrade"
-alias sagu="sudo apt update && sudo apt upgrade"
-### semantic
-alias install="sudo apt install"
-alias update="sudo apt update"
-alias upgrade="sudo apt upgrade"
-alias update-upgrade="sudo apt update && sudo apt upgrade"
-alias purge="sudo apt purge"
-alias remove="sudo apt purge"
-alias search="apt search"
+## for Arch-based: trizen
+alias t="trizen"
+alias tzn="trizen"
+alias tzs="trizen -S"
+alias syu="trizen -Syu"
+alias tsyu="trizen -Syu"
+alias tss="trizen -Ss"
+alias trs="trizen -Rs"
 ## quick-edit commands for some dotfiles
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 ## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
 ## systemctl shorthand
-alias sctl="sudo systemctl"
+alias sc="systemctl"
+alias sctl="systemctl"
+alias scu="systemctl --user"
+alias sctlu="systemctl --user"
 ## xclip for clipboard
 alias clipboard="xclip -selection c"
 ## firefox shorthand and default -new-tab
