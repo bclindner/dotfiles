@@ -16,10 +16,12 @@ urgent = ${colors.red}
 ok = ${colors.green}
 
 [network]
-wifi = wlp7s0u1u2
-eth = enp9s0
+wifi = wlp1s0
+eth = enp2s0
 
 [bar/bclindner]
+monitor = ${env:MONITOR:}
+
 height = 24
 offset-y = 24
 
@@ -117,11 +119,7 @@ format-full-padding = 1
 
 [module/wlan]
 type = internal/network
-<<<<<<< HEAD
-interface = wlp1s0
-=======
 interface = ${network.wifi}
->>>>>>> d6463ecd60319af37c8fbcaa027c21c589451210
 interval = 3.0
 
 format-connected-padding = 1
@@ -131,11 +129,7 @@ format-connected-underline = ${colors.ok}
 
 [module/eth]
 type = internal/network
-<<<<<<< HEAD
-interface = enp2s0
-=======
 interface = ${network.eth}
->>>>>>> d6463ecd60319af37c8fbcaa027c21c589451210
 interval = 3.0
 
 format-connected-padding = 1
