@@ -20,7 +20,6 @@ Plug 'pangloss/vim-javascript' " javascript
 Plug 'leafgarland/typescript-vim' " typescript
 Plug 'hail2u/vim-css3-syntax' " css3
 Plug 'digitaltoad/vim-pug' " pug
-Plug 'gregsexton/MatchTag' " html tag matching
 " THEME - ripped this off of the 'cool' theme that came with vim-airline lmao
 Plug 'bclindner/vim-airline-bclindner'
 call plug#end()
@@ -88,6 +87,8 @@ autocmd! BufWritePost ~/.Xresources !xrdb -merge ~/.Xresources
 autocmd! BufWritePost ~/.zshrc !source %
 autocmd! BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd! BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
+" w0rp/ale: use specific linters for stuff
+let g:ale_linters = {'javascript': ['standard']}
 " end general options
 
 " plugin configuration
