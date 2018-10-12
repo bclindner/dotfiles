@@ -89,6 +89,8 @@ autocmd! BufWritePost ~/.Xresources !xrdb -merge ~/.Xresources
 autocmd! BufWritePost ~/.zshrc !source %
 autocmd! BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd! BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
+" w0rp/ale: use specific linters for stuff
+let g:ale_linters = {'javascript': ['standard']}
 " end general options
 
 " plugin configuration

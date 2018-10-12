@@ -23,6 +23,9 @@ bindsym $mod+q kill
 # launch firefox
 bindsym $mod+w exec firefox
 
+# lock the wm
+bindsym $mod+l exec dm-tool lock
+
 # start dmenu (a program launcher)
 set $dmenu "dmenu_run -nb '#1d1f21' -sb '#3a3e42' -p '>' -fn 'xos4 Terminess Powerline:pixelsize=14' -l 15"
 bindsym $mod+space exec $dmenu

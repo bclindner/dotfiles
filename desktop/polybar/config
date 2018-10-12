@@ -16,10 +16,12 @@ urgent = ${colors.red}
 ok = ${colors.green}
 
 [network]
-wifi = wlp7s0u1u2
-eth = enp9s0
+wifi = wlp1s0
+eth = enp2s0
 
 [bar/bclindner]
+monitor = ${env:MONITOR:}
+
 height = 24
 offset-y = 24
 
