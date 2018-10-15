@@ -103,8 +103,8 @@ let g:airline_theme='bclindner'
 "" ale stuff
 let g:ale_sign_column_always = 1
 let b:ale_linters = {'javascript': 'eslint'}
-highlight ALEError ctermfg=black ctermbg=red
-highlight ALEErrorSign ctermfg=black ctermbg=red
+highlight ALEError ctermfg=black ctermbg=red cterm=bold
+highlight ALEErrorSign ctermfg=black ctermbg=red cterm=bold
 """ enable bufferline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -144,3 +144,5 @@ command! Zshrc e ~/.zshrc
 command! W w !sudo tee %
 " end custom commands
 
+"gvim fix: set background color to black
+highlight Normal guibg=#1d1f21 guifg=white
