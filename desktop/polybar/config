@@ -54,6 +54,7 @@ font-1 = Symbola:size=14;1
 
 [module/title]
 type = internal/xwindow
+label-maxlen = 60
 
 [module/i3]
 type = internal/i3

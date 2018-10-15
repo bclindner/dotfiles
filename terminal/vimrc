@@ -56,6 +56,7 @@ set number
 set linebreak
 set showbreak=">>>"
 set breakindent
+set cursorline
 "" QoL
 set hidden
 set visualbell
@@ -78,6 +79,9 @@ set mouse=a
 set backspace=indent,eol,start
 "" syntax highlighting
 syntax enable
+"" highlighting tweaks
+highlight ALEError ctermfg=black ctermbg=red cterm=bold
+highlight ALEErrorSign ctermfg=black ctermbg=red cterm=bold
 "" for makefiles and go files: use noexpandtab
 autocmd FileType go set noexpandtab
 autocmd FileType go set tabstop=2
@@ -102,9 +106,7 @@ set laststatus=2
 let g:airline_theme='bclindner'
 "" ale stuff
 let g:ale_sign_column_always = 1
-let b:ale_linters = {'javascript': 'eslint'}
-highlight ALEError ctermfg=black ctermbg=red cterm=bold
-highlight ALEErrorSign ctermfg=black ctermbg=red cterm=bold
+let b:ale_linters = {'javascript': [ 'eslint', 'standard' ] }
 """ enable bufferline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
