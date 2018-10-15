@@ -101,8 +101,8 @@ let g:airline_theme='bclindner'
 "" ale stuff
 let g:ale_sign_column_always = 1
 let b:ale_linters = {'javascript': 'eslint'}
-highlight ALEError ctermfg=black ctermbg=red
-highlight ALEErrorSign ctermfg=black ctermbg=red
+highlight ALEError ctermfg=black ctermbg=red cterm=bold
+highlight ALEErrorSign ctermfg=black ctermbg=red cterm=bold
 """ enable bufferline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
