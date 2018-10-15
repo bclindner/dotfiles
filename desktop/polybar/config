@@ -16,8 +16,8 @@ urgent = ${colors.red}
 ok = ${colors.green}
 
 [network]
-wifi = wlp1s0
-eth = enp2s0
+wifi = ${xrdb:polybar.wlanInterface}
+eth = ${xrdb:polybar.ethInterface}
 
 [bar/bclindner]
 monitor = ${env:MONITOR:}

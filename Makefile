@@ -73,10 +73,14 @@ zsh-force:
 xresources:
 	# symlink Xresources
 	ln -sr desktop/Xresources ~/.Xresources
+	# symlink Xresources.d, forcefully
+	ln -sr desktop/Xresources.d ~/.Xresources.d
 
 xresources-force:
 	# symlink Xresources, forcefully
 	ln -srf desktop/Xresources ~/.Xresources
+	# symlink Xresources.d, forcefully
+	ln -srf desktop/Xresources.d ~/.Xresources.d
 
 git:
 	# ensure git is installed (i would hope it is)
