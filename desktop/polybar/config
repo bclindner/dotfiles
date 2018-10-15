@@ -28,8 +28,8 @@ offset-y = 24
 fixed-center = false
 
 modules-left = i3
-modules-center =
-modules-right = eth wlan memory cpu volume battery date
+modules-center = title
+modules-right = eth wlan memory cpu volume date
 
 background = ${colors.dark}
 foreground = ${colors.light}
@@ -49,8 +49,8 @@ module-margin-left = 1
 module-margin-right = 1
 module-padding = 1
 
-font-0 = xos4 Terminess Powerline:pixelsize=12;1
-font-1 = Symbola:size=12;1
+font-0 = ${xrdb:polybar.font}
+font-1 = Symbola:size=14;1
 
 [module/title]
 type = internal/xwindow

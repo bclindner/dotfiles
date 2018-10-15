@@ -15,7 +15,7 @@ fonts:
 fonts-force:
 	# clone into powerline fonts (remove if present)
 	-rm -rf fonts
-	git clone https://github.com/powerline/fonts.git
+	git clone --depth=1 https://github.com/powerline/fonts.git
 	# install fonts with their script
 	sh -c fonts/install.sh
 	# perform their fix for terminess-powerline
