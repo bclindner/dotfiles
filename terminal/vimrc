@@ -59,7 +59,6 @@ set breakindent
 set cursorline
 "" QoL
 set hidden
-set visualbell
 "" search options
 set showmatch
 set nohlsearch
