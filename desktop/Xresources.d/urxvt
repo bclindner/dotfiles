@@ -1,0 +1,14 @@
+! vim: set ft=xdefaults:
+
+! allow scrolling in secondary window (e.g. less, vim, etc)
+URxvt.secondaryScreen: 1
+URxvt.secondaryWheel: 1
+URxvt.secondaryScroll: 0
+
+! disable scrollbar
+URxvt.scrollBar: false
+
+URxvt.letterSpace: 0
+URxvt.lineSpace: 1
+! plugins
+URxvt.perl-ext-common: default,matcher,resize-font,selection-to-clipboard

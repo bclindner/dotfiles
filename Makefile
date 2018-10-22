@@ -15,7 +15,7 @@ fonts:
 fonts-force:
 	# clone into powerline fonts (remove if present)
 	-rm -rf fonts
-	git clone https://github.com/powerline/fonts.git
+	git clone --depth=1 https://github.com/powerline/fonts.git
 	# install fonts with their script
 	sh -c fonts/install.sh
 	# perform their fix for terminess-powerline
@@ -77,10 +77,14 @@ zsh-force:
 xresources:
 	# symlink Xresources
 	ln -sr desktop/Xresources ~/.Xresources
+	# symlink Xresources.d, forcefully
+	ln -sr desktop/Xresources.d ~/.Xresources.d
 
 xresources-force:
 	# symlink Xresources, forcefully
 	ln -srf desktop/Xresources ~/.Xresources
+	# symlink Xresources.d, forcefully
+	ln -srf desktop/Xresources.d ~/.Xresources.d
 
 git:
 	# ensure git is installed (i would hope it is)

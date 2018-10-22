@@ -1,0 +1,7 @@
+! vim: set ft=xdefaults:
+
+! urxvt
+URxvt.font: xft:xos4 Terminess Powerline:pixelsize=12:antialias=false
+
+! polybar
+polybar.font: xos4 Terminess Powerline:pixelsize=12

@@ -1,0 +1,5 @@
+! vim: set ft=xdefaults:
+
+! wifi networks
+polybar.wlanInterface: wlp1s0
+polybar.ethInterface: enp2s0

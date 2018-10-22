@@ -14,14 +14,14 @@ to install a basic set of configs, you can just type `make` - this might take a 
 
 below is a list of potential `make` targets:
 
-* `make xresources`: installs the `.Xresources` file containing my color pallette, including color scheme info for newer `rofi` versions.
+* `make xresources`: installs the `.Xresources` file and `.Xresources.d` folder containing my color palette and configurations for urxvt, some device-specific polybar configs, etc.
 * `make vim`: installs configs for `vim`, including the [Vundle](https://github.com/VundleVim/Vundle.vim) plugin manager.
 * `make zsh`: installs the `zsh` config, including the [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) zsh framework.
 * `make fonts`: installs Powerline-compatible fonts (e.g. Terminus). This is *required* for the `vim` and  `zsh` build targets, since they require Powerline fonts to display correctly. this command isn't included in them because it can take a long time, which is unneccessary if you're just running `make vim` on something with Powerline fonts already installed.
   * this target assumes x11 is installed already.
 * `make i3` installs my configs for `i3` and `polybar`.
-  * this target assumes x11 and i3-gaps are installed and polybar is installed and compiled with support for i3, pulseaudio and wireless\_tools (for now, until a proper replacement for that package is set up).
-  * you may also want to install `urxvt` - i3-sensible-terminal will default to another terminal otherwise
+  * this target assumes x11 and i3-gaps are installed and polybar is installed and compiled with support for i3, pulseaudio and networking.
+  * you may also want to install `urxvt` / `rxvt-unicode` - i3-sensible-terminal will default to another (unstyled) terminal otherwise
 * `make polybar` installs the polybar config alone, as well as the usual script i3 uses to launch it.
   * this will automatically `make xresources`, as it is required for the bar colors.
 * `make git` installs my .gitconfig - if you're not me, probably don't do this, because you'd be using my name and email for all of your commits, and that would be helping precisely noone.

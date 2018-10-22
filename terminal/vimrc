@@ -21,7 +21,8 @@ Plug 'pangloss/vim-javascript' " javascript
 Plug 'leafgarland/typescript-vim' " typescript
 Plug 'hail2u/vim-css3-syntax' " css3
 Plug 'digitaltoad/vim-pug' " pug
-Plug 'gregsexton/MatchTag' " html tag matching
+Plug 'mxw/vim-jsx' " jsx
+" Plug 'gregsexton/MatchTag' " html tag matching
 " THEME - ripped this off of the 'cool' theme that came with vim-airline lmao
 Plug 'bclindner/vim-airline-bclindner'
 call plug#end()
@@ -56,9 +57,9 @@ set number
 set linebreak
 set showbreak=">>>"
 set breakindent
+set cursorline
 "" QoL
 set hidden
-set visualbell
 "" search options
 set showmatch
 set nohlsearch
@@ -78,6 +79,9 @@ set mouse=a
 set backspace=indent,eol,start
 "" syntax highlighting
 syntax enable
+"" highlighting tweaks
+highlight ALEError ctermfg=black ctermbg=red cterm=bold
+highlight ALEErrorSign ctermfg=black ctermbg=red cterm=bold
 "" for makefiles and go files: use noexpandtab
 autocmd FileType go set noexpandtab
 autocmd FileType go set tabstop=2
@@ -89,6 +93,8 @@ autocmd! BufWritePost ~/.Xresources !xrdb -merge ~/.Xresources
 autocmd! BufWritePost ~/.zshrc !source %
 autocmd! BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd! BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
+" w0rp/ale: use specific linters for stuff
+let g:ale_linters = {'javascript': ['eslint']}
 " end general options
 
 " plugin configuration
@@ -100,6 +106,7 @@ set laststatus=2
 let g:airline_theme='bclindner'
 "" ale stuff
 let g:ale_sign_column_always = 1
+let b:ale_linters = {'javascript': [ 'eslint', 'standard' ] }
 """ enable bufferline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -139,3 +146,5 @@ command! Zshrc e ~/.zshrc
 command! W w !sudo tee %
 " end custom commands
 
+"gvim fix: set background color to black
+highlight Normal guibg=#1d1f21 guifg=white

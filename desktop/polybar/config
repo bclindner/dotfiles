@@ -16,10 +16,12 @@ urgent = ${colors.red}
 ok = ${colors.green}
 
 [network]
-wifi = wlp7s0u1u2
-eth = enp9s0
+wifi = ${xrdb:polybar.wlanInterface}
+eth = ${xrdb:polybar.ethInterface}
 
 [bar/bclindner]
+monitor = ${env:MONITOR:}
+
 height = 24
 offset-y = 24
 
@@ -27,7 +29,7 @@ fixed-center = false
 
 modules-left = i3
 modules-center = title
-modules-right = eth wlan memory cpu volume date
+modules-right = eth wlan memory cpu volume battery date
 
 background = ${colors.dark}
 foreground = ${colors.light}
@@ -52,6 +54,7 @@ font-1 = Symbola:size=14;1
 
 [module/title]
 type = internal/xwindow
+label-maxlen = 60
 
 [module/i3]
 type = internal/i3
