@@ -37,6 +37,8 @@ vim:
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
 	vim +PlugInstall +qall
+	# launch the YCM install script
+	python3 ~/.vim/plugged/YouCompleteMe/install.py
 
 vim-force:
 	# ensure vim is installed
@@ -49,6 +51,8 @@ vim-force:
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
 	vim +PlugInstall +qall
+	# launch the YCM install script
+	python3 ~/.vim/plugged/YouCompleteMe/install.py
 
 zsh:
 	# clone the oh-my-zsh repo to $HOME

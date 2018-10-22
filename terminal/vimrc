@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged/')
 "" THE ESSENTIALS - statusline, file tree, linter, fuzzy finder, etc.
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
+Plug 'valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'

@@ -24,6 +24,8 @@ source $ZSH/oh-my-zsh.sh
 
 # use 256 colors
 export TERM=xterm-256color
+# vim is my editor
+export EDITOR=vim
 # history
 HISTFILE=~/.histfile
 HISTSIZE=500
