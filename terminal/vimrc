@@ -137,6 +137,8 @@ let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 "" ctrlp stuff - ignore line
 set wildignore+=node_modules
+"" ycm stuff - set ycm color
+highlight Pmenu ctermbg=5 ctermfg=15
 " end plugin configuration
 
 " custom commands
