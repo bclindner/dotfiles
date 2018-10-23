@@ -183,8 +183,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86TouchpadToggle exec $HOME/.config/i3/touchpad-toggle.sh
 
 # print screen
-bindsym Print exec mkdir -p ~/screenshots; scrot ~/screenshots/$(date +scrot-%F-%M-%S.png)
-bindsym $alt+Print exec mkdir -p ~/screenshots; scrot -s ~/screenshots/$(date +scrot-%F-%M-%S.png)
-bindsym $mod+Print exec mkdir -p ~/screenshots; scrot -u ~/screenshots/$(date +scrot-%F-%M-%S.png)
+bindsym Print exec scrot ~/$(mkdir -p ~/screenshots && echo screenshots)/$(date +scrot-%F-%M-%S.png)
+bindsym $alt+Print exec mkdir -p ~/$(mkdir -p ~/screenshots && echo screenshots) scrot -s ~/screenshots/$(date +scrot-%F-%M-%S.png)
+bindsym $mod+Print exec mkdir -p ~/$(mkdir -p ~/screenshots && echo screenshots) scrot -u ~/screenshots/$(date +scrot-%F-%M-%S.png)
 
 for_window [instance="Godot_Engine"] floating enable
