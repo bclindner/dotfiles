@@ -5,12 +5,13 @@ call plug#begin('~/.vim/plugged/')
 "" THE ESSENTIALS - statusline, file tree, linter, fuzzy finder, etc.
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
+Plug 'valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " OPTIMIZATIONS - autoclosing, multicursor, sneak, :Bdelete, and surround
-Plug 'Townk/vim-autoclose'
+Plug 'Raimondi/delimitMate'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-sneak'
 Plug 'moll/vim-bbye'
@@ -136,6 +137,8 @@ let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 "" ctrlp stuff - ignore line
 set wildignore+=node_modules
+"" ycm stuff - set ycm color
+highlight Pmenu ctermbg=5 ctermfg=15
 " end plugin configuration
 
 " custom commands
