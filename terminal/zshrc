@@ -14,7 +14,7 @@ COMPLETION_WAITING_DOTS="true"
 ## i don't actually know what this does
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 ## use a buncha plugins:
-plugins=(git node screen npm command-not-found sudo gulp yarn docker docker-compose validate)
+plugins=(aws git node screen npm command-not-found sudo gulp yarn docker docker-compose validate virtualenv)
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
