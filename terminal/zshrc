@@ -26,6 +26,10 @@ source $ZSH/oh-my-zsh.sh
 export TERM=xterm-256color
 # vim is my editor
 export EDITOR=vim
+# GOPATH is $HOME/go
+export GOPATH=~/go
+# Add Go bin to PATH
+export PATH=~/go/bin:$PATH
 # history
 HISTFILE=~/.histfile
 HISTSIZE=500
