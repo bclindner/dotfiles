@@ -17,6 +17,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'moll/vim-bbye'
 Plug 'tpope/vim-surround'
 " language support
+Plug 'fatih/vim-go' "golang
 Plug 'pangloss/vim-javascript' " javascript
 Plug 'leafgarland/typescript-vim' " typescript
 Plug 'hail2u/vim-css3-syntax' " css3
