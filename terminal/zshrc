@@ -14,7 +14,7 @@ COMPLETION_WAITING_DOTS="true"
 ## i don't actually know what this does
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 ## use a buncha plugins:
-plugins=(aws git node screen npm command-not-found gulp yarn docker docker-compose vi-mode virtualenv)
+plugins=(aws git node screen npm command-not-found gulp yarn docker docker-compose systemd vi-mode virtualenv)
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -98,11 +98,6 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 ## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
-## systemctl shorthand
-alias sc="systemctl"
-alias sctl="systemctl"
-alias scu="systemctl --user"
-alias sctlu="systemctl --user"
 ## xclip for clipboard
 alias clipboard="xclip -selection c"
 ## firefox shorthand and default -new-tab
