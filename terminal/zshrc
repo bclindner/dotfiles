@@ -14,10 +14,23 @@ COMPLETION_WAITING_DOTS="true"
 ## i don't actually know what this does
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 ## use a buncha plugins:
-plugins=(aws git node screen npm command-not-found gulp yarn docker docker-compose systemd vi-mode virtualenv)
+plugins=(
+aws
+git
+node
+screen
+npm
+command-not-found
+gulp
+yarn
+docker
+docker-compose
+systemd
+virtualenv
+vi-mode
+)
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-
 ####################
 # general settings #
 ####################
@@ -37,7 +50,8 @@ SAVEHIST=500
 # misc. options
 setopt autocd notify extendedglob
 unsetopt appendhistory beep nomatch
-bindkey -e
+# use vi bindings
+bindkey -v
 
 ###########
 # aliases #
