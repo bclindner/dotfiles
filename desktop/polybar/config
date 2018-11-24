@@ -60,6 +60,7 @@ label-maxlen = 60
 type = internal/i3
 index-sort = true
 wrapping-scroll = false
+pin-workspaces = true
 
 label-mode-foreground = ${colors.light}
 label-mode-background = ${colors.dark}
