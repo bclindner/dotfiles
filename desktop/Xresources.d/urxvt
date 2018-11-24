@@ -1,5 +1,7 @@
 ! vim: set ft=xdefaults:
 
+URxvt.termName: rxvt-unicode
+
 ! allow scrolling in secondary window (e.g. less, vim, etc)
 URxvt.secondaryScreen: 1
 URxvt.secondaryWheel: 1

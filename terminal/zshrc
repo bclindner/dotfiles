@@ -27,7 +27,6 @@ docker
 docker-compose
 systemd
 virtualenv
-vi-mode
 )
 ## use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -50,8 +49,6 @@ SAVEHIST=500
 # misc. options
 setopt autocd notify extendedglob
 unsetopt appendhistory beep nomatch
-# use vi bindings
-bindkey -v
 
 ###########
 # aliases #
