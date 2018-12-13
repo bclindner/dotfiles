@@ -1,6 +1,7 @@
 [user]
   email = brian@bclindner.com
   name = Brian C. Lindner
+  signingkey = AA99417F7F652506
 [core]
   editor = vim
 [web]
