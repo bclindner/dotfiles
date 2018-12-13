@@ -74,7 +74,7 @@ alias c="clear"
 alias cl="clear && ls"
 ### quit
 alias q="exit"
-alias x="edit"
+alias x="exit"
 ### vim
 alias v="vim"
 alias sv="sudo vim"
