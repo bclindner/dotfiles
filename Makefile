@@ -1,4 +1,4 @@
-default: fonts vim zsh xresources i3 polybar git
+default: fonts nvim zsh xresources i3 polybar git
 fonts:
 	# clone into powerline fonts
 	git clone https://github.com/powerline/fonts.git
@@ -26,43 +26,36 @@ fonts-force:
 	# clean up
 	rm -rf fonts
 
-vim:
-	# ensure vim is installed
-	vim --version
+nvim:
+	# ensure nvim is installed
+	nvim --version
+	# make the directory
+	mkdir -p ~/.config/nvim
 	# symlink the vimrc
-	ln -sr terminal/vimrc ~/.vimrc
-	# make the autoload directory
-	mkdir -p ~/.vim/autoload
+	ln -sr terminal/init.vim ~/.config/nvim/init.vim
 	# download vim-plug
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
-	vim +PlugInstall +qall
-	# launch the YCM install script
-	python3 ~/.vim/plugged/YouCompleteMe/install.py
+	nvim +PlugInstall +qall
 
-vim-force:
-	# ensure vim is installed
-	vim --version
-	# symlink the vimrc, forcefully
-	ln -srf terminal/vimrc ~/.vimrc
-	# make the autoload directory
-	mkdir -p ~/.vim/autoload
+nvim-force:
+	# ensure nvim is installed
+	nvim --version
+	# make the directory
+	mkdir -p ~/.config/nvim
+	# symlink the vimrc
+	ln -sr terminal/init.vim ~/.config/nvim/init.vim
 	# download vim-plug
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
-	vim +PlugInstall +qall
-	# launch the YCM install script
-	python3 ~/.vim/plugged/YouCompleteMe/install.py
+	nvim +PlugInstall +qall
 
 zsh:
-	# clone the oh-my-zsh repo to $HOME
-	git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-	# symlink the zshrc
+	# symlink zshrc and zshrc.d
 	ln -sr terminal/zshrc ~/.zshrc
-	# make the custom themes folder
-	mkdir -p ~/.oh-my-zsh/custom/themes
-	# symlink the custom theme
-	ln -sr terminal/bclindner.zsh-theme ~/.oh-my-zsh/custom/themes/
+	ln -sr terminal/zshrc.d ~/.zshrc.d
+	# curl antigen to .zshrc.d
+	curl -L git.io/antigen > ~/.zshrc.d/antigen.zsh
 
 zsh-force:
 	# clone the oh-my-zsh repo to $HOME

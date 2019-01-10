@@ -4,40 +4,39 @@
 # oh-my-zsh settings #
 ######################
 
-export ZSH=$HOME/.oh-my-zsh
-## use forked agnoster theme
-ZSH_THEME="bclindner"
-## correction disabled
-ENABLE_CORRECTION="false"
-## ... on completion waiting
+ZSH=~/.zshrc.d
+# ... on completion waiting
 COMPLETION_WAITING_DOTS="true"
-## i don't actually know what this does
+ZSH_THEME="bclindner"
+# ignore untracked git files
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-## use a buncha plugins:
-plugins=(
-aws
-git
-node
-screen
-npm
-command-not-found
-gulp
-yarn
-docker
-docker-compose
-systemd
-virtualenv
-)
-## use oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# antigen
+ADOTDIR=$HOME/.zshrc.d/antigen
+source ~/.zshrc.d/antigen.zsh
+## plugins
+antigen use oh-my-zsh
+antigen bundles <<EOBUNDLES
+  git
+  gulp
+  yarn
+  docker
+  docker-compose
+  systemd
+  virtualenv
+  zsh-users/zsh-autosuggestions
+EOBUNDLES
+## theme
+antigen bundle $HOME/.zshrc.d/ bclindner.zsh-theme --no-local-clone
+# end antigen
+antigen apply
 ####################
 # general settings #
 ####################
 
 # use 256 colors
 export TERM=xterm-256color
-# vim is my editor
-export EDITOR=vim
+# neovim is my editor
+export EDITOR=nvim
 # GOPATH is $HOME/go
 export GOPATH=~/go
 # Add Go bin to PATH
@@ -47,14 +46,15 @@ HISTFILE=~/.histfile
 HISTSIZE=500
 SAVEHIST=500
 # misc. options
-setopt autocd notify extendedglob
-unsetopt appendhistory beep nomatch
+setopt appendhistory notify extendedglob
+unsetopt beep nomatch
 
 ###########
 # aliases #
 ###########
 
 # command aliases
+# note: these can be overridden by typing \ before the command
 ## general command shorthands
 ### rm
 alias rr="rm -r"
@@ -66,19 +66,17 @@ alias s="sudo"
 alias ls="ls --color=auto"
 alias sl="ls --color=auto"
 alias l="ls --color=auto"
-alias la="ls -a --color=auto"
-alias ll="ls -la --color=auto"
-### clear
-alias c="clear"
-### a little creature comfort: clear && ls
-alias cl="clear && ls"
+alias la="ls -al --color=auto"
+alias ll="ls -l --color=auto"
+alias lh="ls -lh --color=auto"
 ### quit
 alias q="exit"
 alias x="exit"
-### vim
-alias v="vim"
-alias sv="sudo vim"
-alias svim="sudo vim"
+### neovim
+alias vim="nvim"
+alias v="nvim"
+alias sv="sudo nvim"
+alias svim="sudo nvim"
 ### node shorthand
 alias njs="node"
 ## for Debian-based: apt
@@ -105,16 +103,15 @@ alias tzss="trizen -Ss"
 alias trs="trizen -Rs"
 alias tzrs="trizen -Rs"
 ## quick-edit commands for some dotfiles
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
+alias zshrc="$EDITOR ~/.zshrc"
+alias vimrc="$EDITOR ~/.config/nvim/init.vim"
 ## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
-## xclip for clipboard
-alias clipboard="xclip -selection c"
 ## firefox shorthand and default -new-tab
 alias firefox="firefox -new-tab"
 alias ff="firefox"
 # global aliases (shell text replacements)
 ## common pipe commands
-alias -g p-G="| grep"
-alias -g p-L="| less"
+alias -g Pgrep="| grep"
+alias -g Pless="| less"
+alias -g Pclip="| xclip -i -selection CLIPBOARD"
