@@ -177,7 +177,7 @@ exec_always --no-startup-id $HOME/.config/polybar/i3-launch.sh
 # render background
 exec_always --no-startup-id xsetroot -solid "#1d1f21"
 
-# start syndaemon
+# start syndaemon, if possible
 exec_always --no-startup-id syndaemon -i 0.5 -K -R
 
 # volume controls
@@ -190,7 +190,7 @@ bindsym XF86TouchpadToggle exec $HOME/.config/i3/touchpad-toggle.sh
 
 # print screen
 exec_always --no-startup-id mkdir -p ~/screenshots
-bindsym Print exec maim > ~/echo screenshots/$(date +screenshot-%F-%M-%S.png)
-bindsym --release $mod+Print exec maim -s > ~/screenshots/$(date +screenshot-%F-%M-%S.png)
+bindsym Print exec maim | tee ~/echo screenshots/$(date +screenshot-%F-%M-%S.png) | xclip -selection CLIPBOARD -t image/png
+bindsym --release $mod+Print exec maim -s | tee ~/screenshots/$(date +screenshot-%F-%H-%H-%M-%S_%N.png) | xclip -selection CLIPBOARD -t image/png
 
 for_window [instance="Godot_Engine"] floating enable
