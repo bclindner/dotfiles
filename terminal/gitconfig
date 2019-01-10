@@ -3,7 +3,7 @@
   name = Brian C. Lindner
   signingkey = AA99417F7F652506
 [core]
-  editor = vim
+  editor = nvim
 [web]
   browser = firefox
 [push]
