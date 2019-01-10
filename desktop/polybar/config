@@ -38,6 +38,7 @@ tray-position = right
 tray-detached = false
 tray-maxsize = 16
 tray-offset-y = -24
+tray-padding = 2
 
 line-size = 3
 line-color = ${colors.accent}
