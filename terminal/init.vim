@@ -10,12 +10,12 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'bclindner/vim-airline-bclindner'
   "" tree browser
   Plug 'scrooloose/nerdtree'
-  "" async linter
-  Plug 'w0rp/ale'
   "" fuzzy finder
   Plug 'ctrlpvim/ctrlp.vim'
   "" git support
   Plug 'airblade/vim-gitgutter'
+  "" syntax linting / LSP support
+  Plug 'w0rp/ale'
   "" autocompletion
   Plug 'lifepillar/vim-mucomplete'
   "" better buffer handling
@@ -24,8 +24,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-surround'
   "" autoclosing
   Plug 'Raimondi/delimitMate'
-  "" lsp support
-  Plug 'autozimu/LanguageClient-neovim'
   "" language support
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
@@ -90,9 +88,6 @@ set mouse=a
 set backspace=indent,eol,start
 "" syntax highlighting
 syntax enable
-"" highlighting tweaks
-highlight ALEError ctermfg=black ctermbg=red cterm=bold
-highlight ALEErrorSign ctermfg=black ctermbg=red cterm=bold
 "" for makefiles and go files: use noexpandtab
 autocmd FileType go set noexpandtab
 autocmd FileType go set tabstop=2
@@ -105,12 +100,13 @@ autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
 " enforce 80 columns on markdown
 autocmd FileType markdown set tw=80
-" w0rp/ale: use specific linters for stuff
-let g:ale_linters = {'javascript': ['eslint']}
 " end general options
 
 " plugin configuration
-""" set airline symbols
+"" airline stuff
+set laststatus=2
+let g:airline_theme='bclindner'
+"" set airline symbols
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
   let g:airline_left_sep = ''
@@ -121,33 +117,34 @@ if !exists('g:airline_symbols')
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
   let g:airline_symbols.crypt = '🔒'
-  let g:airline_symbols.linenr = '␊'
-  let g:airline_symbols.linenr = '␤'
-  let g:airline_symbols.linenr = '¶'
   let g:airline_symbols.maxlinenr = '☰'
-  let g:airline_symbols.maxlinenr = ''
   let g:airline_symbols.branch = '⎇'
   let g:airline_symbols.paste = 'ρ'
-  let g:airline_symbols.paste = 'Þ'
-  let g:airline_symbols.paste = '∥'
   let g:airline_symbols.spell = 'Ꞩ'
   let g:airline_symbols.notexists = '∄'
   let g:airline_symbols.whitespace = 'Ξ'
 endif
-"" nerdtree stuff
-autocmd StdinReadPre * let s:std_in=1
-let g:NERDTreeWinPos = "right"
-"" airline stuff
-set laststatus=2
-let g:airline_theme='bclindner'
-"" ale stuff
-let g:ale_sign_column_always = 1
-let b:ale_linters = {'javascript': [ 'eslint', 'standard' ] }
-""" enable bufferline
+"" enable airline bufferline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
-"" ctrlp stuff - ignore line
+"" nerdtree stuff
+autocmd StdinReadPre * let s:std_in=1
+let g:NERDTreeWinPos = "right"
+"" ale stuff
+let g:ale_sign_column_always = 1
+let g:ale_linters = {
+  \ 'javascript': ['eslint', 'standard'],
+\ }
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = 'ℹ️'
+highlight ALEError ctermfg=black ctermbg=red cterm=bold
+highlight ALEWarning ctermfg=black ctermbg=yellow cterm=bold
+highlight ALEErrorSign ctermfg=red cterm=bold
+highlight ALEWarningSign ctermfg=yellow cterm=bold
+let g:ale_go_bingo_options = '-enable-global-cache'
+let g:ale_go_gometalinter_options = '--fast --disable=vetshadow'
+"" ctrlp stuff - ignore node_modules
 set wildignore+=node_modules
 " end plugin configuration
 
@@ -167,3 +164,7 @@ autocmd FileType go set makeprg=go\ run\ .
 
 "gvim fix: set background color to black
 highlight Normal guibg=#1d1f21 guifg=white
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
