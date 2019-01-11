@@ -58,14 +58,11 @@ zsh:
 	curl -L git.io/antigen > ~/.zshrc.d/antigen.zsh
 
 zsh-force:
-	# clone the oh-my-zsh repo to $HOME
-	git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-	# symlink the zshrc
+	# symlink zshrc and zshrc.d
 	ln -srf terminal/zshrc ~/.zshrc
-	# make the custom themes folder
-	mkdir -p ~/.oh-my-zsh/custom/themes
-	# symlink the custom theme, forcefully
-	ln -srf terminal/bclindner.zsh-theme ~/.oh-my-zsh/custom/themes/
+	ln -srf terminal/zshrc.d ~/.zshrc.d
+	# curl antigen to .zshrc.d
+	curl -L git.io/antigen > ~/.zshrc.d/antigen.zsh
 
 xresources:
 	# symlink Xresources
