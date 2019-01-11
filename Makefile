@@ -69,12 +69,16 @@ xresources:
 	ln -sr desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
 	ln -sr desktop/Xresources.d ~/.Xresources.d
+	# refresh xrdb
+	xrdb -merge ~/.Xresources
 
 xresources-force:
 	# symlink Xresources, forcefully
 	ln -srf desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
 	ln -srf desktop/Xresources.d ~/.Xresources.d
+	# refresh xrdb
+	xrdb -merge ~/.Xresources
 
 git:
 	# ensure git is installed (i would hope it is)
@@ -88,13 +92,13 @@ git-force:
 	# link the gitconfig
 	ln -srf terminal/gitconfig ~/.gitconfig
 
-i3: polybar
+i3: xresources polybar
 	# ensure i3 is installed
 	i3 -v
 	# symlink i3 config folder
 	ln -sr desktop/i3 ~/.config
 
-i3-force: polybar-force
+i3-force: xresources-force polybar-force
 	# ensure i3 is installed
 	i3 -v
 	# symlink i3 config folder, forcefully
