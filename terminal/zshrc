@@ -110,6 +110,8 @@ alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.co
 ## firefox shorthand and default -new-tab
 alias firefox="firefox -new-tab"
 alias ff="firefox"
+## journalctl alias
+alias jctl="sudo journalctl"
 # global aliases (shell text replacements)
 ## common pipe commands
 alias -g Pgrep="| grep"
