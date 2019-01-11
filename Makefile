@@ -70,7 +70,7 @@ xresources:
 	# symlink Xresources
 	ln -sr desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
-	ln -sr desktop/Xresources.d ~
+	ln -sr desktop/Xresources.d ~/.Xresources.d
 	# refresh xrdb
 	xrdb -merge ~/.Xresources
 
@@ -80,7 +80,7 @@ xresources-force:
 	# symlink Xresources, forcefully
 	ln -srf desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
-	ln -srf desktop/Xresources.d ~
+	ln -srf desktop/Xresources.d ~/.Xresources.d
 	# refresh xrdb
 	xrdb -merge ~/.Xresources
 
