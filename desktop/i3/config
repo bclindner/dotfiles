@@ -1,15 +1,8 @@
+# vim: set ft=conf:
 
 set $mod Mod4
 set $alt Mod1
 set $super Mod4
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:xos4 Terminess Powerline 12
-
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -27,7 +20,7 @@ bindsym $mod+w exec firefox
 bindsym $mod+l exec dm-tool lock
 
 # start dmenu (a program launcher)
-set $dmenu "dmenu_run -nb '#1d1f21' -sb '#3a3e42' -p '>' -fn 'xos4 Terminess Powerline:pixelsize=14' -l 15"
+set $dmenu $HOME/.config/i3/dmenu.sh
 bindsym $mod+space exec $dmenu
 bindsym $mod+d exec $dmenu
 bindsym $alt+F2 exec $dmenu
@@ -172,7 +165,7 @@ default_orientation vertical
 for_window [class="^"] split toggle
 
 # start polybar
-exec_always --no-startup-id $HOME/.config/polybar/i3-launch.sh
+exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 
 # render background
 exec_always --no-startup-id xsetroot -solid "#1d1f21"

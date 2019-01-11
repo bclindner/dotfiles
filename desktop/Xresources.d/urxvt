@@ -2,6 +2,9 @@
 
 URxvt.termName: rxvt-unicode
 
+! font
+URxvt.font: xft:FONTNAME:pixelsize=FONTSIZE:antialias=false,xft:Symbola:size=FONTSIZE
+
 ! allow scrolling in secondary window (e.g. less, vim, etc)
 URxvt.secondaryScreen: 1
 URxvt.secondaryWheel: 1
