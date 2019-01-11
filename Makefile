@@ -65,18 +65,22 @@ zsh-force:
 	curl -L git.io/antigen > ~/.zshrc.d/antigen.zsh
 
 xresources:
+	# make sure env is filled out, first
+	ls desktop/Xresources.d/env
 	# symlink Xresources
 	ln -sr desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
-	ln -sr desktop/Xresources.d ~/.Xresources.d
+	ln -sr desktop/Xresources.d ~
 	# refresh xrdb
 	xrdb -merge ~/.Xresources
 
 xresources-force:
+	# make sure env is filled out, first
+	ls desktop/Xresources.d/env
 	# symlink Xresources, forcefully
 	ln -srf desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
-	ln -srf desktop/Xresources.d ~/.Xresources.d
+	ln -srf desktop/Xresources.d ~
 	# refresh xrdb
 	xrdb -merge ~/.Xresources
 
