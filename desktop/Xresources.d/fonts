@@ -1,9 +1,0 @@
-! vim: set ft=xdefaults:
-
-#define FONTSIZE 14
-
-! urxvt
-URxvt.font: xft:xos4 Terminess Powerline:pixelsize=FONTSIZE:antialias=false,xft:Symbola:size=FONTSIZE
-
-! polybar
-polybar.font: xos4 Terminess Powerline:pixelsize=FONTSIZE,Symbola:size=14;1

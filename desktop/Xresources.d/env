@@ -1,0 +1,11 @@
+! vim: set ft=xdefaults:
+
+! Environment-specific variables. This file will not be merged.
+
+! Font and font size.
+#define FONTNAME xos4 Terminess Powerline
+#define FONTSIZE 14
+
+! Polybar network interfaces.
+polybar.wlanInterface: wlp1s0
+polybar.ethInterface: enp2s0
