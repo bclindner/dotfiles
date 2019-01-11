@@ -1,3 +1,4 @@
 terminal/zshrc.d/antigen.zsh
 terminal/zshrc.d/antigen
 terminal/zshrc.d/*antigen-compat
+desktop/Xresources.d/env

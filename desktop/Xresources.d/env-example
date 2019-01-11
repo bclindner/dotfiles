@@ -1,6 +1,6 @@
 ! vim: set ft=xdefaults:
 
-! Environment-specific variables. This file will not be merged.
+! Environment-specific variables.
 
 ! Font and font size.
 #define FONTNAME xos4 Terminess Powerline
