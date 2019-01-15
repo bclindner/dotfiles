@@ -95,7 +95,6 @@ autocmd FileType make set noexpandtab
 autocmd FileType make set tabstop=2
 " auto-apply dotfiles on save
 autocmd BufWritePost ~/.Xresources* !xrdb -merge ~/.Xresources
-autocmd BufWritePost ~/.zshrc !source %
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
 " enforce 80 columns on markdown
