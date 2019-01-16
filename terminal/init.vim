@@ -135,12 +135,12 @@ let g:ale_sign_column_always = 1
 let g:ale_linters = {
   \ 'javascript': ['eslint', 'standard'],
 \ }
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = 'ℹ️'
+let g:ale_sign_error = 'EE'
+let g:ale_sign_warning = 'WW'
 highlight ALEError ctermfg=black ctermbg=red cterm=bold
 highlight ALEWarning ctermfg=black ctermbg=yellow cterm=bold
-highlight ALEErrorSign ctermfg=red cterm=bold
-highlight ALEWarningSign ctermfg=yellow cterm=bold
+highlight ALEErrorSign ctermfg=black ctermfg=red cterm=bold
+highlight ALEWarningSign ctermfg=black ctermfg=yellow cterm=bold
 let g:ale_go_bingo_options = '-enable-global-cache'
 let g:ale_go_gometalinter_options = '--fast --disable=vetshadow'
 "" ctrlp stuff - ignore node_modules
@@ -163,7 +163,3 @@ autocmd FileType go set makeprg=go\ run\ .
 
 "gvim fix: set background color to black
 highlight Normal guibg=#1d1f21 guifg=white
-
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
