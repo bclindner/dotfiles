@@ -45,7 +45,7 @@ nnoremap <silent> <A-Right> :wincmd l<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
 "" C-x closes buffer
-nnoremap <C-x> :bdelete<CR>
+nnoremap <C-x> :Bdelete<CR>
 "" F5 makes
 noremap <F5> :make<CR>
 " end binds
@@ -163,7 +163,3 @@ autocmd FileType go set makeprg=go\ run\ .
 
 "gvim fix: set background color to black
 highlight Normal guibg=#1d1f21 guifg=white
-
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
