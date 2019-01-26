@@ -2,6 +2,7 @@
 
 " plugins (via vim-plug)
 filetype plugin indent on
+let g:ale_completion_enabled = 1
 call plug#begin('~/.local/share/nvim/plugged')
   "" vim-plug itself
   Plug 'junegunn/vim-plug'
@@ -10,30 +11,35 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'bclindner/vim-airline-bclindner'
   "" tree browser
   Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  "" block commenting controls
+  Plug 'scrooloose/nerdcommenter'
   "" fuzzy finder
   Plug 'ctrlpvim/ctrlp.vim'
   "" git support
   Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
   "" syntax linting / LSP support
   Plug 'w0rp/ale'
   "" autocompletion
-  Plug 'lifepillar/vim-mucomplete'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   "" better buffer handling
   Plug 'moll/vim-bbye'
   "" commands for working w/ quotes, tags, etc
   Plug 'tpope/vim-surround'
-  "" autoclosing
-  Plug 'Raimondi/delimitMate'
+  "" html autoclose/tag matching
+  Plug 'Townk/vim-autoclose'
   "" language support
-  Plug 'pangloss/vim-javascript'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'hail2u/vim-css3-syntax'
-  Plug 'digitaltoad/vim-pug'
+  Plug 'sheerun/vim-polyglot'
   Plug 'mxw/vim-jsx'
+  "" nice starting screen
+  Plug 'mhinz/vim-startify'
 call plug#end()
 " end vim-plug configuration
 
 " binds
+" open :term
+noremap ~ :20split\|term<CR>i
 "" NERDtree
 noremap <C-t> :NERDTreeToggle<CR>
 "" alt-movement between splits
@@ -48,6 +54,8 @@ nnoremap <S-Tab> :bprev<CR>
 nnoremap <C-x> :Bdelete<CR>
 "" F5 makes
 noremap <F5> :make<CR>
+"" ESC returns from terminal insert mode
+tnoremap <Esc> <C-\><C-n>
 " end binds
 
 " general options
@@ -60,9 +68,10 @@ set number
 set linebreak
 set showbreak=">>>"
 set breakindent
-set cursorline
 "" QoL
 set hidden
+set splitbelow
+set splitright
 "" search options
 set showmatch
 set nohlsearch
@@ -81,7 +90,6 @@ set completeopt+=menuone
 set completeopt+=noselect
 set shortmess+=c
 set belloff+=ctrlg
-let g:mucomplete#enable_auto_at_startup = 1
 "" use mouse, because sometimes i'm just lazy
 set mouse=a
 "" make backspace not stupid
@@ -129,16 +137,19 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 "" nerdtree stuff
 autocmd StdinReadPre * let s:std_in=1
-let g:NERDTreeWinPos = "right"
 "" ale stuff
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
-  \ 'javascript': ['eslint', 'standard'],
+  \ 'javascript': ['tsserver', 'eslint'],
 \ }
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = 'ℹ️'
-highlight ALEError ctermfg=black ctermbg=red cterm=bold
-highlight ALEWarning ctermfg=black ctermbg=yellow cterm=bold
+let g:ale_fixers = {
+      \ 'javascript': ['prettier']
+      \ }
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = 'E>'
+let g:ale_sign_warning = 'W>'
+highlight ALEError ctermfg=black ctermbg=red cterm=undercurl
+highlight ALEWarning  ctermfg=black ctermbg=yellow cterm=undercurl
 highlight ALEErrorSign ctermfg=red cterm=bold
 highlight ALEWarningSign ctermfg=yellow cterm=bold
 let g:ale_go_bingo_options = '-enable-global-cache'

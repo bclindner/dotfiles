@@ -44,11 +44,7 @@ CURRENT_BG='NONE'
   # what font the user is viewing this source code in. Do not replace the
   # escape sequence with a single literal character.
   # Do not change this! Do not make it '\u2b80'; that is the old, wrong code point.
-  if [[ -o login ]]; then
-    SEGMENT_SEPARATOR=' '
-  else
-    SEGMENT_SEPARATOR=$'\ue0b0'
-  fi
+SEGMENT_SEPARATOR=$'\ue0b0'
 }
 
 # Begin a segment
@@ -94,11 +90,7 @@ prompt_git() {
   local PL_BRANCH_CHAR
   () {
     local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-    if [[ -o login ]]; then
-      PL_BRANCH_CHAR="B"
-    else
-      PL_BRANCH_CHAR=$'\ue0a0'         # 
-    fi
+    PL_BRANCH_CHAR=$'\ue0a0'         # 
   }
   local ref dirty mode repo_path
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
@@ -126,13 +118,8 @@ prompt_git() {
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
-    if [[ -o login ]]; then
-      zstyle ':vcs_info:*' stagedstr '+'
-      zstyle ':vcs_info:*' unstagedstr 'o'
-    else
-      zstyle ':vcs_info:*' stagedstr '✚'
-      zstyle ':vcs_info:*' unstagedstr '●'
-    fi
+    zstyle ':vcs_info:*' stagedstr '✚'
+    zstyle ':vcs_info:*' unstagedstr '●'
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
