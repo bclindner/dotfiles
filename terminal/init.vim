@@ -22,7 +22,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   "" syntax linting / LSP support
   Plug 'w0rp/ale'
   "" autocompletion
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'lifepillar/vim-mucomplete'
   "" better buffer handling
   Plug 'moll/vim-bbye'
   "" commands for working w/ quotes, tags, etc
@@ -86,8 +86,9 @@ set smartindent
 set softtabstop=2
 set tabstop=2
 "" autocomplete options
-set completeopt+=menuone
-set completeopt+=noselect
+set completeopt=menu,menuone,preview,noselect,noinsert
+set wildmode=longest,list,full
+set wildmenu
 set shortmess+=c
 set belloff+=ctrlg
 "" use mouse, because sometimes i'm just lazy
@@ -141,6 +142,7 @@ autocmd StdinReadPre * let s:std_in=1
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
   \ 'javascript': ['tsserver', 'eslint'],
+  \ 'python': ['pyls', 'autopep8', 'flake8'],
 \ }
 let g:ale_fixers = {
       \ 'javascript': ['prettier']
