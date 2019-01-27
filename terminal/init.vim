@@ -39,7 +39,7 @@ call plug#end()
 
 " binds
 " open :term
-noremap ~ :20split\|term<CR>i
+nnoremap ~ :20split\|term<CR>i
 "" NERDtree
 noremap <C-t> :NERDTreeToggle<CR>
 "" alt-movement between splits
@@ -66,9 +66,10 @@ set list
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number
 set linebreak
-set showbreak=">>>"
+set showbreak="^^^"
 set breakindent
 "" QoL
+set confirm
 set hidden
 set splitbelow
 set splitright
@@ -91,12 +92,18 @@ set wildmode=longest,list,full
 set wildmenu
 set shortmess+=c
 set belloff+=ctrlg
+"" set folding options
+set foldmethod=syntax
+set foldlevel=1000
+set nofoldenable
 "" use mouse, because sometimes i'm just lazy
 set mouse=a
 "" make backspace not stupid
 set backspace=indent,eol,start
 "" syntax highlighting
 syntax enable
+"" terminal options
+autocmd TermOpen * setlocal nonumber
 "" for makefiles and go files: use noexpandtab
 autocmd FileType go set noexpandtab
 autocmd FileType go set tabstop=2
@@ -105,7 +112,8 @@ autocmd FileType make set tabstop=2
 " auto-apply dotfiles on save
 autocmd BufWritePost ~/.Xresources* !xrdb -merge ~/.Xresources
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
-autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
+autocmd BufWritePost ~/dotfiles/desktop/i3/config !i3-msg reload
+autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/i3/polybar.sh
 " enforce 80 columns on markdown
 autocmd FileType markdown set tw=80
 " end general options
@@ -174,5 +182,7 @@ autocmd FileType javascript set makeprg=node\ %
 autocmd FileType go set makeprg=go\ run\ .
 " end make configuration
 
-"gvim fix: set background color to black
+" gvim fix: set background color to black
 highlight Normal guibg=#1d1f21 guifg=white
+" highlight fix: make folds readable
+highlight Folded ctermfg=red ctermbg=black cterm=bold
