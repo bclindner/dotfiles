@@ -39,8 +39,6 @@ nvim:
 	nvim +PlugInstall +qall
 
 nvim-force:
-	# ensure nvim is installed
-	nvim --version
 	# make the directory
 	mkdir -p ~/.config/nvim
 	# symlink the vimrc
@@ -75,8 +73,6 @@ xresources:
 	xrdb -merge ~/.Xresources
 
 xresources-force:
-	# make sure env is filled out, first
-	ls desktop/Xresources.d/env
 	# symlink Xresources, forcefully
 	ln -srf desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
@@ -91,8 +87,6 @@ git:
 	ln -sr terminal/gitconfig ~/.gitconfig
 
 git-force:
-	# ensure git is installed (i would hope it is)
-	git --version
 	# link the gitconfig
 	ln -srf terminal/gitconfig ~/.gitconfig
 
@@ -103,8 +97,6 @@ i3: xresources polybar
 	ln -sr desktop/i3 ~/.config
 
 i3-force: xresources-force polybar-force
-	# ensure i3 is installed
-	i3 -v
 	# symlink i3 config folder, forcefully
 	ln -srf desktop/i3 ~/.config
 
@@ -115,8 +107,6 @@ polybar: xresources
 	ln -sr desktop/polybar ~/.config/polybar
 
 polybar-force: xresources-force
-	# ensure polybar is installed
-	polybar -v
 	# symlink polybar config folder, forcefully
 	ln -srf desktop/polybar ~/.config/polybar
 
@@ -127,7 +117,5 @@ rofi:
 	ln -sr desktop/rofi ~/.config/rofi
 
 rofi-force:
-	# ensure rofi is installed
-	rofi -v
 	# symlink rofi config folder, forcefully
 	ln -srf desktop/rofi ~/.config/rofi
