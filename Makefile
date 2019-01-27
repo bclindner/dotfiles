@@ -1,4 +1,4 @@
-default: fonts nvim zsh xresources i3 polybar git
+default: fonts nvim zsh xresources i3 polybar git rofi
 fonts:
 	# clone into powerline fonts
 	git clone https://github.com/powerline/fonts.git
@@ -119,3 +119,15 @@ polybar-force: xresources-force
 	polybar -v
 	# symlink polybar config folder, forcefully
 	ln -srf desktop/polybar ~/.config/polybar
+
+rofi:
+	# ensure rofi is installed
+	rofi -v
+	# symlink rofi config folder
+	ln -sr desktop/rofi ~/.config/rofi
+
+rofi-force:
+	# ensure rofi is installed
+	rofi -v
+	# symlink rofi config folder, forcefully
+	ln -srf desktop/rofi ~/.config/rofi

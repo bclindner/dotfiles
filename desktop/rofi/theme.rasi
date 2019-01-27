@@ -1,0 +1,46 @@
+* {
+  fg: #e3e3e3;
+  bg: #1d1f21;
+  lighterbg: #595f66;
+  accent: #875fd7;
+  font: "xos4 Terminess Powerline 12";
+
+  background-color: transparent;
+  text-color: @fg;
+
+  borderwidth: 3;
+  width: 100%;
+}
+
+window {
+  background-color: @bg;
+}
+
+#mainbox {
+  border: 0 1 1 1;
+  border-color: @lighterbg;
+  padding: 10;
+}
+
+entry {
+  padding: 2;
+  margin-bottom: 8;
+}
+
+prompt {
+  background-color: @bg;
+  padding: 2;
+  margin-bottom: 16;
+}
+
+#listview {
+padding: 8 0;
+}
+
+#element {
+  padding: 0;
+}
+
+element.selected {
+  background-color: @accent;
+}

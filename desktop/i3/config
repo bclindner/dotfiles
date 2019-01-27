@@ -20,7 +20,8 @@ bindsym $mod+w exec firefox
 bindsym $mod+l exec dm-tool lock
 
 # start dmenu (a program launcher)
-set $dmenu $HOME/.config/i3/dmenu.sh
+# set $dmenu $HOME/.config/i3/dmenu.sh
+set $dmenu "rofi -show combi"
 bindsym $mod+space exec $dmenu
 bindsym $mod+d exec $dmenu
 bindsym $alt+F2 exec $dmenu
@@ -123,30 +124,21 @@ bindsym $mod+Shift+q exec "i3-msg exit"
 
 # resize mode
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         bindsym $mod+Left resize shrink width 1 px or 1 ppt
         bindsym $mod+Down resize grow height 1 px or 1 ppt
         bindsym $mod+Up resize shrink height 1 px or 1 ppt
         bindsym $mod+Right resize grow width 1 px or 1 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
