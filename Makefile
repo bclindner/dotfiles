@@ -90,13 +90,13 @@ git-force:
 	# link the gitconfig
 	ln -srf terminal/gitconfig ~/.gitconfig
 
-i3: xresources polybar
+i3: xresources polybar rofi
 	# ensure i3 is installed
 	i3 -v
 	# symlink i3 config folder
 	ln -sr desktop/i3 ~/.config
 
-i3-force: xresources-force polybar-force
+i3-force: xresources-force polybar-force rofi-force
 	# symlink i3 config folder, forcefully
 	ln -srf desktop/i3 ~/.config
 
