@@ -89,6 +89,7 @@ if [ $? -eq 0 ]; then
   alias v="nvim"
   alias sv="sudo nvim"
   alias svim="sudo nvim"
+  alias dev="nvim +normal\ ~ +NERDTree +wincmd\ l"
 fi
 ## apt
 which apt &>/dev/null
