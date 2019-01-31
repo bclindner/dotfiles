@@ -46,6 +46,7 @@ setopt appendhistory notify extendedglob
 unsetopt beep nomatch
 # Darwin/BSD only: use CLICOLOR
 export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
 ###########
 # aliases #
