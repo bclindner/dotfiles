@@ -207,8 +207,8 @@ augroup END
 "" }}}
 "" automatic views {{{
 augroup AutoViews
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
+  autocmd BufWinLeave *.* mkview!
+  autocmd BufWinEnter *.* silent loadview
 augroup END
 "" }}}
 "" enforce 80 columns on markdown
