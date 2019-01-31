@@ -205,12 +205,6 @@ augroup TermConfig
   autocmd TermClose * bdelete!
 augroup END
 "" }}}
-"" automatic views {{{
-augroup AutoViews
-  autocmd BufWinLeave *.* mkview!
-  autocmd BufWinEnter *.* silent loadview
-augroup END
-"" }}}
 "" enforce 80 columns on markdown
 autocmd FileType markdown set tw=80
 " }}} end autocommands
