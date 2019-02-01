@@ -26,9 +26,11 @@
 # }}}
 
 # plugins {{{
+# antigen config {{{
 ADOTDIR=$HOME/.zshrc.d/antigen
 source ~/.zshrc.d/antigen.zsh
 antigen use oh-my-zsh
+# }}}
 # antigen bundles {{{
 antigen bundles <<EOBUNDLES
   git
@@ -39,12 +41,12 @@ antigen bundles <<EOBUNDLES
   systemd
   virtualenv
   zsh-users/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
 EOBUNDLES
-# }}}
 ## theme
 antigen bundle $HOME/.zshrc.d/ bclindner.zsh-theme --no-local-clone
-# apply
 antigen apply
+# }}}
 # }}}
 
 # aliases {{{
@@ -56,7 +58,8 @@ antigen apply
     # sudo {{{
     alias s="sudo"
     # }}}
-    # ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)! {{{
+    # ranger auto-cd {{{
+    # thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
     alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
     # }}}
     # firefox shorthand and default -new-tab {{{
