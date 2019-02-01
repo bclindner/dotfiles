@@ -28,7 +28,7 @@ fonts-force:
 
 nvim:
 	# ensure nvim is installed
-	nvim --version
+	nvim --version >/dev/null
 	# make the directory
 	mkdir -p ~/.config/nvim
 	# symlink the vimrc
@@ -37,16 +37,38 @@ nvim:
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
 	nvim +PlugInstall +qall
+	# symlink to normal vim dirs (in case vim needs to be used as a fallback)
+	ln -sr ~/.local/share/nvim/plugged ~/.vim/plugged
 
 nvim-force:
 	# make the directory
 	mkdir -p ~/.config/nvim
 	# symlink the vimrc
-	ln -sr terminal/init.vim ~/.config/nvim/init.vim
+	ln -srf terminal/init.vim ~/.config/nvim/init.vim
 	# download vim-plug
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
 	nvim +PlugInstall +qall
+	# symlink to normal vim dirs (in case vim needs to be used as a fallback)
+	ln -srf ~/.local/share/nvim/plugged ~/.vim/plugged
+
+vim:
+	# ensure nvim is installed
+	\vim --version >/dev/null
+	# symlink the vimrc
+	ln -sr terminal/init.vim ~/.vimrc
+	# download vim-plug
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	# install plugins
+	\vim +PlugInstall +qall
+
+vim-force:
+	# symlink the vimrc
+	ln -srf terminal/init.vim ~/.vimrc
+	# download vim-plug
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	# install plugins
+	vim +PlugInstall +qall
 
 zsh:
 	# symlink zshrc and zshrc.d
