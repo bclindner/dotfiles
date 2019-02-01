@@ -1,16 +1,35 @@
 # bclindner zsh config
 
-ZSH=~/.zshrc.d
-# ... on completion waiting
-COMPLETION_WAITING_DOTS="true"
-ZSH_THEME="bclindner"
-# ignore untracked git files
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-# antigen
+# general settings {{{
+  # options
+  setopt appendhistory notify extendedglob
+  unsetopt beep nomatch
+  # terminal/editor vars
+  ZSH=~/.zshrc.d
+  export TERM=xterm-256color
+  export EDITOR=nvim
+  # ignore untracked git files
+  DISABLE_UNTRACKED_FILES_DIRTY="true"
+  # my theme
+  ZSH_THEME="bclindner"
+  # ... on completion waiting
+  COMPLETION_WAITING_DOTS="true"
+  # history settings {{{
+    HISTFILE=~/.histfile
+    HISTSIZE=500
+    SAVEHIST=500
+  # }}}
+  # Darwin/BSD {{{
+    export CLICOLOR=1
+    export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+  # }}}
+# }}}
+
+# plugins {{{
 ADOTDIR=$HOME/.zshrc.d/antigen
 source ~/.zshrc.d/antigen.zsh
-## plugins
 antigen use oh-my-zsh
+# antigen bundles {{{
 antigen bundles <<EOBUNDLES
   git
   gulp
@@ -21,118 +40,108 @@ antigen bundles <<EOBUNDLES
   virtualenv
   zsh-users/zsh-autosuggestions
 EOBUNDLES
+# }}}
 ## theme
 antigen bundle $HOME/.zshrc.d/ bclindner.zsh-theme --no-local-clone
-# end antigen
+# apply
 antigen apply
-####################
-# general settings #
-####################
+# }}}
 
-# use 256 colors
-export TERM=xterm-256color
-# neovim is my editor
-export EDITOR=nvim
-# GOPATH is $HOME/go
-export GOPATH=~/go
-# Add Go bin to PATH
-export PATH=~/go/bin:$PATH
-# history
-HISTFILE=~/.histfile
-HISTSIZE=500
-SAVEHIST=500
-# misc. options
-setopt appendhistory notify extendedglob
-unsetopt beep nomatch
-# Darwin/BSD only: use CLICOLOR
-export CLICOLOR=1
-export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+# aliases {{{
+  # command aliases {{{
+    # quit {{{
+    alias q="exit"
+    alias x="exit"
+    # }}}
+    # sudo {{{
+    alias s="sudo"
+    # }}}
+    # ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)! {{{
+    alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
+    # }}}
+    # firefox shorthand and default -new-tab {{{
+    alias firefox="firefox -new-tab"
+    alias ff="firefox"
+    # }}}
+    # journalctl alias {{{
+    alias jctl="sudo journalctl"
+    # }}}
+    # rm {{{
+    alias rr="rm -r"
+    alias nuke="rm -rf"
+    alias rf="rm -rf"
+    # }}}
+    # ls {{{
+    case $() in
+    Linux*) # {{{
+      alias ls="ls --color=auto"
+      alias sl="ls --color=auto"
+      alias l="ls --color=auto"
+      alias la="ls -al --color=auto"
+      alias ll="ls -l --color=auto"
+      alias lh="ls -lh --color=auto"
+    ;; # }}}
+    Darwin*|*BSD) # {{{
+      alias ls="ls"
+      alias sl="ls"
+      alias l="ls"
+      alias la="ls -al"
+      alias ll="ls -l"
+      alias lh="ls -lh"
+    ;; # }}}
+    esac
+    # }}}
+    # neovim {{{
+    which nvim &>/dev/null
+    if [ $? -eq 0 ]; then
+      alias vim="nvim"
+      alias v="nvim"
+      alias sv="sudo nvim"
+      alias svim="sudo nvim"
+      alias dev="nvim +normal\ ~ +NERDTree +wincmd\ l"
+    fi
+    # }}}
+    # apt {{{
+    which apt &>/dev/null
+    if [ $? -eq 0 ]; then
+      alias a="apt"
+      alias sa="sudo apt"
+      alias acs="apt search"
+      alias sai="sudo apt install"
+      alias sad="sudo apt update"
+      alias sau="sudo apt update"
+      alias sag="sudo apt upgrade"
+      alias sap="sudo apt purge"
+      alias sar="sudo apt purge"
+      alias saa="sudo apt autoremove"
+      alias saug="sudo apt update && sudo apt upgrade"
+    fi
+    # }}}
+    # trizen {{{
+    which trizen &>/dev/null
+    if [ $? -eq 0 ]; then
+      alias t="trizen"
+      alias tzn="trizen"
+      alias tzs="trizen -S"
+      alias syu="trizen -Syu"
+      alias tsyu="trizen -Syu"
+      alias tzsyu="trizen -Syu"
+      alias tss="trizen -Ss"
+      alias tzss="trizen -Ss"
+      alias trs="trizen -Rs"
+      alias tzrs="trizen -Rs"
+    fi
+    # }}}
+    # quick-edit commands for some dotfiles {{{
+    alias zshrc="$EDITOR ~/.zshrc"
+    alias vimrc="$EDITOR ~/.config/nvim/init.vim"
+    # }}}
+  # }}}
+  # global aliases (shell text replacements) {{{
+  alias -g ,grep="| grep"
+  alias -g ,less="| less"
+  alias -g ,clip="| xclip -i"
+  # }}}
+# }}}
 
-###########
-# aliases #
-###########
-
-# command aliases
-# note: these can be overridden by typing \ before the command
-## general command shorthands
-### rm
-alias rr="rm -r"
-alias nuke="rm -rf"
-alias rf="rm -rf"
-### sudo
-alias s="sudo"
-### ls/ll/la/l (responsive to uname)
-case $() in
-Linux*)
-  alias ls="ls --color=auto"
-  alias sl="ls --color=auto"
-  alias l="ls --color=auto"
-  alias la="ls -al --color=auto"
-  alias ll="ls -l --color=auto"
-  alias lh="ls -lh --color=auto"
-;;
-Darwin*|*BSD)
-  alias ls="ls"
-  alias sl="ls"
-  alias l="ls"
-  alias la="ls -al"
-  alias ll="ls -l"
-  alias lh="ls -lh"
-;;
-esac
-### quit
-alias q="exit"
-alias x="exit"
-### neovim
-which nvim &>/dev/null
-if [ $? -eq 0 ]; then
-  alias vim="nvim"
-  alias v="nvim"
-  alias sv="sudo nvim"
-  alias svim="sudo nvim"
-  alias dev="nvim +normal\ ~ +NERDTree +wincmd\ l"
-fi
-## apt
-which apt &>/dev/null
-if [ $? -eq 0 ]; then
-  alias a="apt"
-  alias sa="sudo apt"
-  alias acs="apt search"
-  alias sai="sudo apt install"
-  alias sad="sudo apt update"
-  alias sau="sudo apt update"
-  alias sag="sudo apt upgrade"
-  alias sap="sudo apt purge"
-  alias sar="sudo apt purge"
-  alias saa="sudo apt autoremove"
-  alias saug="sudo apt update && sudo apt upgrade"
-fi
-## trizen
-which trizen &>/dev/null
-if [ $? -eq 0 ]; then
-  alias t="trizen"
-  alias tzn="trizen"
-  alias tzs="trizen -S"
-  alias syu="trizen -Syu"
-  alias tsyu="trizen -Syu"
-  alias tzsyu="trizen -Syu"
-  alias tss="trizen -Ss"
-  alias tzss="trizen -Ss"
-  alias trs="trizen -Rs"
-  alias tzrs="trizen -Rs"
-fi
-## quick-edit commands for some dotfiles
-alias zshrc="$EDITOR ~/.zshrc"
-alias vimrc="$EDITOR ~/.config/nvim/init.vim"
-## ranger auto-cd; thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
-alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
-## firefox shorthand and default -new-tab
-alias firefox="firefox -new-tab"
-alias ff="firefox"
-## journalctl alias
-alias jctl="sudo journalctl"
-# global aliases (shell text replacements)
-## common pipe commands
-alias -g Pgrep="| grep"
-alias -g Pless="| less"
-alias -g Pclip="| xclip -i -selection CLIPBOARD"
+# vi: foldmethod=marker foldenable
