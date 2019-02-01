@@ -5,6 +5,7 @@
 " pre-plugin configuration {{{
 filetype plugin indent on
 let g:ale_completion_enabled = 1
+" determine plugdir based on if we're using vim or not
 if has('nvim')
   let s:plugdir = '~/.local/share/nvim/plugged'
 else
@@ -200,6 +201,10 @@ nnoremap <S-Tab> :bprev<CR>
 " QOL binds {{{
 " open :term
 noremap ~ :15split\|term<CR>
+" ALE
+nnoremap <A-g> :ALEGoToDefinition<CR>
+nnoremap <A-d> :ALEDocumentation<CR>
+nnoremap <A-h> :ALEHover<CR>
 " NERDtree
 noremap <C-t> :NERDTreeToggle<CR>
 " F5 makes
