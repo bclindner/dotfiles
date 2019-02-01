@@ -8,7 +8,7 @@ set $super Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+q kill
@@ -102,6 +102,8 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+bindsym $alt+Left workspace prev
+bindsym $alt+Right workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -165,6 +167,9 @@ exec_always --no-startup-id xsetroot -solid "#1d1f21"
 # start syndaemon, if possible
 exec_always --no-startup-id syndaemon -i 0.5 -K -R
 
+# launch libinput-gestures for touchpad gesture control, if possible
+exec_always libinput-gestures
+
 # volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
@@ -172,6 +177,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # touchpad toggle
 bindsym XF86TouchpadToggle exec $HOME/.config/i3/touchpad-toggle.sh
+
 
 # print screen
 exec_always --no-startup-id mkdir -p ~/screenshots
