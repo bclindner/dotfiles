@@ -76,14 +76,14 @@ vim-force:
 zsh:
 	# symlink zshrc and zshrc.d
 	ln -s `pwd`/terminal/zshrc ~/.zshrc
-	ln -s `pwd`/terminal/zshrc.d ~/.zshrc.d/
+	ln -s `pwd`/terminal/zshrc.d ~/
 	# curl antigen to .zshrc.d
 	curl -L git.io/antigen > ~/.zshrc.d/antigen.zsh
 
 zsh-force:
 	# symlink zshrc and zshrc.d
 	ln -sf `pwd`/terminal/zshrc ~/.zshrc
-	ln -sf `pwd`/terminal/zshrc.d ~/.zshrc.d/
+	ln -sf `pwd`/terminal/zshrc.d ~/
 	# curl antigen to .zshrc.d
 	curl -L git.io/antigen > ~/.zshrc.d/antigen.zsh
 
