@@ -11,6 +11,8 @@ if has('nvim')
 else
   let s:plugdir = '~/.vim/plugged'
 endif
+" enable ale completion (must be done before plugin load)
+let g:ale_completion_enabled = 1
 " }}}
 call plug#begin(s:plugdir)
   " the essentials {{{
@@ -25,7 +27,7 @@ call plug#begin(s:plugdir)
   " syntax linting / LSP support
   Plug 'w0rp/ale'
   " autocompletion
-  Plug 'lifepillar/vim-mucomplete'
+  " Plug 'lifepillar/vim-mucomplete'
   " better buffer handling
   Plug 'moll/vim-bbye'
   " }}}
@@ -69,7 +71,7 @@ call plug#end()
 " general options {{{
 " line options {{{
 set list
-set listchars=tab:→\ ,nbsp:•,trail:␣,extends:⟩,precedes:⟨
+set listchars=tab:→\ ,nbsp:●,trail:•,extends:⟩,precedes:⟨
 set number
 set linebreak
 set showbreak="^^^"
@@ -166,20 +168,32 @@ let g:ale_linters = {
       \ 'javascript': ['tsserver', 'eslint'],
       \ }
 let g:ale_fixers = {
-      \ 'javascript': ['prettier']
+      \ 'javascript': ['eslint','prettier'],
+      \ 'json': ['prettier']
       \ }
 " }}}
 " options {{{
 let g:ale_sign_column_always = 1
 let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
+let g:ale_list_window_size = 3
 let g:ale_sign_error = 'E>'
 let g:ale_sign_warning = 'W>'
-let g:ale_open_list = 1
+let g:airline#extensions#ale#enabled = 1
 " }}}
 " }}}
 " ctrlp {{{
 " ignore node_modules
 set wildignore+=node_modules
+" bind ctrl-p to ctrl-t (yeah i know lmfao)
+nnoremap <C-t> :CtrlP<CR>
+" }}}
+" nerdcommenter {{{
+" add space between comment boundary and text
+let g:NERDSpaceDelims=1
+" }}}
+" mucomplete {{{
+" let g:mucomplete#enable_auto_at_startup = 1
 " }}}
 " end plugin configuration }}}
 
@@ -192,21 +206,22 @@ nnoremap <silent> <A-Left> :wincmd h<CR>
 nnoremap <silent> <A-Right> :wincmd l<CR>
 " }}}
 " buffers {{{
-" C-x closes buffer with bbye
-nnoremap <C-x> :Bdelete<CR>
+" C-w closes buffer with bbye
+nnoremap <C-w> :Bdelete<CR>
 " tab and shift-tab move buffers
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
 " }}}
 " QOL binds {{{
-" open :term
-noremap ~ :15split\|term<CR>
+" open :term (i don't use marker so :shrug:)
+nnoremap ~ :15split\|term<CR>
+nnoremap ` :term<CR>
 " ALE
 nnoremap <A-g> :ALEGoToDefinition<CR>
 nnoremap <A-d> :ALEDocumentation<CR>
 nnoremap <A-h> :ALEHover<CR>
 " NERDtree
-noremap <C-t> :NERDTreeToggle<CR>
+noremap gt :NERDTreeToggle<CR>
 " F5 makes
 noremap <F5> :make<CR>
 " ESC returns from terminal insert mode
