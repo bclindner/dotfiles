@@ -165,17 +165,17 @@ let s:NERDTreeIndicatorMap = {
 " ale {{{
 " linters and fixers {{{
 let g:ale_linters = {
-      \ 'javascript': ['tsserver', 'eslint'],
+      \ 'javascript': ['tsserver'],
       \ }
 let g:ale_fixers = {
-      \ 'javascript': ['eslint','prettier'],
+      \ 'javascript': ['prettier'],
       \ 'json': ['prettier']
       \ }
 " }}}
 " options {{{
 let g:ale_sign_column_always = 1
 let g:ale_fix_on_save = 1
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 let g:ale_list_window_size = 3
 let g:ale_sign_error = 'E>'
 let g:ale_sign_warning = 'W>'
@@ -217,9 +217,9 @@ nnoremap <S-Tab> :bprev<CR>
 nnoremap ~ :15split\|term<CR>
 nnoremap ` :term<CR>
 " ALE
-nnoremap <A-g> :ALEGoToDefinition<CR>
-nnoremap <A-d> :ALEDocumentation<CR>
-nnoremap <A-h> :ALEHover<CR>
+nnoremap gd :ALEGoToDefinition<CR>
+nnoremap gc :ALEDocumentation<CR>
+nnoremap gh :ALEHover<CR>
 " NERDtree
 noremap gt :NERDTreeToggle<CR>
 " F5 makes
@@ -232,6 +232,12 @@ nnoremap <Esc> :nohls<CR>
 " end binds }}}
 
 " autocommands {{{
+" open quickfix window when quickfix commands are run {{{
+augroup OpenQuickfix
+  autocmd!
+  autocmd QuickFixCmdPost * copen
+augroup END
+" }}}
 " for makefiles and go files: use noexpandtab {{{
 augroup UseNoexpandtab
   autocmd!
