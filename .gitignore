@@ -1,6 +1,16 @@
+# no cache
 terminal/zshrc.d/cache/
+# paths are machine-specific
+terminal/zshrc.d/paths.zsh
+terminal/zshrc.d/*-paths.zsh
+# antibody system stuff
 terminal/zshrc.d/antibody-bundle.zsh
+terminal/zshrc.d/*-antibody-bundle.zsh
+terminal/zshrc.d/antibody.zsh.lastsum
 terminal/zshrc.d/antibody.zsh.lasthash
+# old antigen
 terminal/zshrc.d/*antigen-compat
+# env is machine-specific
 desktop/Xresources.d/env
+# recursive alias sometimes happens
 desktop/Xresources.d/Xresources.d
