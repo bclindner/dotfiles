@@ -1,4 +1,7 @@
 default: fonts nvim zsh xresources i3 polybar git rofi
+terminal: git nvim zsh
+desktop: fonts xresources i3 polybar rofi
+
 fonts:
 	# clone into powerline fonts
 	git clone https://github.com/powerline/fonts.git
@@ -32,31 +35,31 @@ nvim:
 	# make the directory
 	mkdir -p ~/.config/nvim
 	# symlink the vimrc
-	ln -sr terminal/init.vim ~/.config/nvim/init.vim
+	ln -s `pwd`/terminal/init.vim ~/.config/nvim/init.vim
 	# download vim-plug
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
 	nvim +PlugInstall +qall
 	# symlink to normal vim dirs (in case vim needs to be used as a fallback)
-	ln -sr ~/.local/share/nvim/plugged ~/.vim/plugged
+	ln -s ~/.local/share/nvim/plugged ~/.vim/plugged
 
 nvim-force:
 	# make the directory
 	mkdir -p ~/.config/nvim
 	# symlink the vimrc
-	ln -srf terminal/init.vim ~/.config/nvim/init.vim
+	ln -sf `pwd`/terminal/init.vim ~/.config/nvim/init.vim
 	# download vim-plug
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
 	nvim +PlugInstall +qall
 	# symlink to normal vim dirs (in case vim needs to be used as a fallback)
-	ln -srf ~/.local/share/nvim/plugged ~/.vim/plugged
+	ln -sf ~/.local/share/nvim/plugged ~/.vim/plugged
 
 vim:
 	# ensure nvim is installed
 	\vim --version >/dev/null
 	# symlink the vimrc
-	ln -sr terminal/init.vim ~/.vimrc
+	ln -s `pwd`/terminal/init.vim ~/.vimrc
 	# download vim-plug
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
@@ -64,7 +67,7 @@ vim:
 
 vim-force:
 	# symlink the vimrc
-	ln -srf terminal/init.vim ~/.vimrc
+	ln -sf terminal/init.vim ~/.vimrc
 	# download vim-plug
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	# install plugins
@@ -72,33 +75,32 @@ vim-force:
 
 zsh:
 	# symlink zshrc and zshrc.d
-	ln -sr terminal/zshrc ~/.zshrc
-	ln -sr terminal/zshrc.d ~/.zshrc.d
-	# curl antigen to .zshrc.d
-	curl -L git.io/antigen > ~/.zshrc.d/antigen.zsh
-
+	ln -s `pwd`/terminal/zshrc ~/.zshrc
+	ln -s `pwd`/terminal/zshrc.d ~/.zshrc.d
+	# get antigen
+	curl -sL git.io/antibody | sh -s
 zsh-force:
 	# symlink zshrc and zshrc.d
-	ln -srf terminal/zshrc ~/.zshrc
-	ln -srf terminal/zshrc.d ~/.zshrc.d
-	# curl antigen to .zshrc.d
-	curl -L git.io/antigen > ~/.zshrc.d/antigen.zsh
+	ln -sf `pwd`/terminal/zshrc ~/.zshrc
+	ln -sf `pwd`/terminal/zshrc.d ~/.zshrc.d
+	# get antigen
+	curl -sL git.io/antibody | sh -s
 
 xresources:
 	# make sure env is filled out, first
 	ls desktop/Xresources.d/env
 	# symlink Xresources
-	ln -sr desktop/Xresources ~/.Xresources
+	ln -s `pwd`/desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
-	ln -sr desktop/Xresources.d ~/.Xresources.d
+	ln -s `pwd`/desktop/Xresources.d ~/.Xresources.d
 	# refresh xrdb
 	xrdb -merge ~/.Xresources
 
 xresources-force:
 	# symlink Xresources, forcefully
-	ln -srf desktop/Xresources ~/.Xresources
+	ln -sf `pwd`/desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
-	ln -srf desktop/Xresources.d ~/.Xresources.d
+	ln -sf `pwd`/desktop/Xresources.d ~/.Xresources.d
 	# refresh xrdb
 	xrdb -merge ~/.Xresources
 
@@ -106,38 +108,38 @@ git:
 	# ensure git is installed (i would hope it is)
 	git --version
 	# link the gitconfig
-	ln -sr terminal/gitconfig ~/.gitconfig
+	ln -s `pwd`/terminal/gitconfig ~/.gitconfig
 
 git-force:
 	# link the gitconfig
-	ln -srf terminal/gitconfig ~/.gitconfig
+	ln -sf `pwd`/terminal/gitconfig ~/.gitconfig
 
 i3: xresources polybar rofi
 	# ensure i3 is installed
 	i3 -v
 	# symlink i3 config folder
-	ln -sr desktop/i3 ~/.config
+	ln -s `pwd`/desktop/i3 ~/.config
 
 i3-force: xresources-force polybar-force rofi-force
 	# symlink i3 config folder, forcefully
-	ln -srf desktop/i3 ~/.config
+	ln -sf `pwd`/desktop/i3 ~/.config
 
 polybar: xresources
 	# ensure polybar is installed
 	polybar -v
 	# symlink polybar config folder
-	ln -sr desktop/polybar ~/.config/polybar
+	ln -s `pwd`/desktop/polybar ~/.config/polybar
 
 polybar-force: xresources-force
 	# symlink polybar config folder, forcefully
-	ln -srf desktop/polybar ~/.config/polybar
+	ln -sf `pwd`/desktop/polybar ~/.config/polybar
 
 rofi:
 	# ensure rofi is installed
 	rofi -v
 	# symlink rofi config folder
-	ln -sr desktop/rofi ~/.config/rofi
+	ln -s `pwd`/desktop/rofi ~/.config/rofi
 
 rofi-force:
 	# symlink rofi config folder, forcefully
-	ln -srf desktop/rofi ~/.config/rofi
+	ln -sf `pwd`/desktop/rofi ~/.config/rofi

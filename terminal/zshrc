@@ -1,151 +1,29 @@
 # bclindner zsh config
 
-# general settings {{{
-  # options
-  setopt appendhistory notify extendedglob
-  unsetopt beep nomatch
-  # terminal/editor vars
-  ZSH=~/.zshrc.d
-  export TERM=xterm-256color
-  export EDITOR=nvim
-  # ignore untracked git files
-  DISABLE_UNTRACKED_FILES_DIRTY="true"
-  # my theme
-  ZSH_THEME="bclindner"
-  # ... on completion waiting
-  COMPLETION_WAITING_DOTS="true"
-  # history settings {{{
-    HISTFILE=~/.histfile
-    HISTSIZE=500
-    SAVEHIST=500
-  # }}}
-  # Darwin/BSD {{{
-    export CLICOLOR=1
-    export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-  # }}}
-# }}}
+# options
+setopt appendhistory notify extendedglob
+unsetopt beep nomatch
+# terminal/editor vars
+ZSH=~/.zshrc.d
+export TERM=xterm-256color
+export EDITOR=nvim
+# ignore untracked git files
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+# ... on completion waiting
+COMPLETION_WAITING_DOTS="true"
+# history settings
+HISTFILE=~/.histfile
+HISTSIZE=500
+SAVEHIST=500
+# Darwin/BSD fixes
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
-# plugins {{{
-# antigen config {{{
-ADOTDIR=$HOME/.zshrc.d/antigen
-source ~/.zshrc.d/antigen.zsh
-antigen use oh-my-zsh
-# }}}
-# antigen bundles {{{
-antigen bundles <<EOBUNDLES
-  git
-  gulp
-  yarn
-  docker
-  docker-compose
-  systemd
-  virtualenv
-  zsh-users/zsh-autosuggestions
-  zsh-users/zsh-syntax-highlighting
-EOBUNDLES
-## theme
-antigen bundle $HOME/.zshrc.d/ bclindner.zsh-theme --no-local-clone
-antigen apply
-# }}}
-# }}}
 
-# aliases {{{
-  # command aliases {{{
-    # quit {{{
-    alias q="exit"
-    alias x="exit"
-    # }}}
-    # sudo {{{
-    alias s="sudo"
-    # }}}
-    # ranger auto-cd {{{
-    # thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
-    alias ranger='ranger --choosedir=$HOME/.config/rangerdir; LASTDIR=`cat $HOME/.config/rangerdir`; cd "$LASTDIR"'
-    # }}}
-    # firefox shorthand and default -new-tab {{{
-    alias firefox="firefox -new-tab"
-    alias ff="firefox"
-    # }}}
-    # journalctl alias {{{
-    alias jctl="sudo journalctl"
-    # }}}
-    # rm {{{
-    alias rr="rm -r"
-    alias nuke="rm -rf"
-    alias rf="rm -rf"
-    # }}}
-    # ls {{{
-    case $() in
-    Linux*) # {{{
-      alias ls="ls --color=auto"
-      alias sl="ls --color=auto"
-      alias l="ls --color=auto"
-      alias la="ls -al --color=auto"
-      alias ll="ls -l --color=auto"
-      alias lh="ls -lh --color=auto"
-    ;; # }}}
-    Darwin*|*BSD) # {{{
-      alias ls="ls"
-      alias sl="ls"
-      alias l="ls"
-      alias la="ls -al"
-      alias ll="ls -l"
-      alias lh="ls -lh"
-    ;; # }}}
-    esac
-    # }}}
-    # neovim {{{
-    which nvim &>/dev/null
-    if [ $? -eq 0 ]; then
-      alias vim="nvim"
-      alias v="nvim"
-      alias sv="sudo nvim"
-      alias svim="sudo nvim"
-      alias dev="nvim +normal\ ~ +NERDTree +wincmd\ l"
-    fi
-    # }}}
-    # apt {{{
-    which apt &>/dev/null
-    if [ $? -eq 0 ]; then
-      alias a="apt"
-      alias sa="sudo apt"
-      alias acs="apt search"
-      alias sai="sudo apt install"
-      alias sad="sudo apt update"
-      alias sau="sudo apt update"
-      alias sag="sudo apt upgrade"
-      alias sap="sudo apt purge"
-      alias sar="sudo apt purge"
-      alias saa="sudo apt autoremove"
-      alias saug="sudo apt update && sudo apt upgrade"
-    fi
-    # }}}
-    # trizen {{{
-    which trizen &>/dev/null
-    if [ $? -eq 0 ]; then
-      alias t="trizen"
-      alias tzn="trizen"
-      alias tzs="trizen -S"
-      alias syu="trizen -Syu"
-      alias tsyu="trizen -Syu"
-      alias tzsyu="trizen -Syu"
-      alias tss="trizen -Ss"
-      alias tzss="trizen -Ss"
-      alias trs="trizen -Rs"
-      alias tzrs="trizen -Rs"
-    fi
-    # }}}
-    # quick-edit commands for some dotfiles {{{
-    alias zshrc="$EDITOR ~/.zshrc"
-    alias vimrc="$EDITOR ~/.config/nvim/init.vim"
-    # }}}
-  # }}}
-  # global aliases (shell text replacements) {{{
-  alias -g ,grep="| grep"
-  alias -g ,less="| less"
-  alias -g ,clip="| xclip -i"
-  # }}}
-# }}}
+# source all from ~/.zshrc.d, in order lexically
+for file in `ls -1 ~/.zshrc.d/**/*.zsh`; do
+  source $file
+done
 
 # GVM, if available
 [[ -s "$HOME/.gvm/scripts/gvm" ]] &&  source "$HOME/.gvm/scripts/gvm"

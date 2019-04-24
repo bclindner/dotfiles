@@ -1,0 +1,13 @@
+# oh-my-zsh plugins
+robbyrussell/oh-my-zsh
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/gulp
+robbyrussell/oh-my-zsh path:plugins/yarn
+robbyrussell/oh-my-zsh path:plugins/docker
+robbyrussell/oh-my-zsh path:plugins/docker-compose
+robbyrussell/oh-my-zsh path:plugins/systemd
+robbyrussell/oh-my-zsh path:plugins/virtualenv
+# some zsh-users plugins
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+

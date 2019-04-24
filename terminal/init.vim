@@ -10,6 +10,8 @@ if has('nvim')
 else
   let s:plugdir = '~/.vim/plugged'
 endif
+" enable ale completion (must be done before plugin load)
+let g:ale_completion_enabled = 1
 " }}}
 call plug#begin(s:plugdir)
   " the essentials {{{
@@ -22,19 +24,7 @@ call plug#begin(s:plugdir)
   " fuzzy finder
   Plug 'ctrlpvim/ctrlp.vim'
   " autocompletion
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
-  let g:deoplete#enable_at_startup = 1
-  " LSP
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+  " Plug 'lifepillar/vim-mucomplete'
   " better buffer handling
   Plug 'moll/vim-bbye'
   " }}}
@@ -78,7 +68,7 @@ call plug#end()
 " general options {{{
 " line options {{{
 set list
-set listchars=tab:→\ ,nbsp:•,trail:␣,extends:⟩,precedes:⟨
+set listchars=tab:→\ ,nbsp:●,trail:•,extends:⟩,precedes:⟨
 set number
 set linebreak
 set showbreak="^^^"
@@ -169,9 +159,38 @@ let s:NERDTreeIndicatorMap = {
       \ 'Ignored'   : 'i',
       \ 'Unknown'   : '?'
       \ } " }}}
+" ale {{{
+" linters and fixers {{{
+let g:ale_linters = {
+      \ 'javascript': ['tsserver'],
+      \ }
+let g:ale_fixers = {
+      \ 'javascript': ['prettier'],
+      \ 'json': ['prettier']
+      \ }
+" }}}
+" options {{{
+let g:ale_sign_column_always = 1
+let g:ale_fix_on_save = 1
+let g:ale_open_list = 0
+let g:ale_list_window_size = 3
+let g:ale_sign_error = 'E>'
+let g:ale_sign_warning = 'W>'
+let g:airline#extensions#ale#enabled = 1
+" }}}
+" }}}
 " ctrlp {{{
 " ignore node_modules
 set wildignore+=node_modules
+" bind ctrl-p to ctrl-t (yeah i know lmfao)
+nnoremap <C-t> :CtrlP<CR>
+" }}}
+" nerdcommenter {{{
+" add space between comment boundary and text
+let g:NERDSpaceDelims=1
+" }}}
+" mucomplete {{{
+" let g:mucomplete#enable_auto_at_startup = 1
 " }}}
 " languageclient {{{
 " set up known langservers
@@ -197,13 +216,14 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
 " }}}
 " QOL binds {{{
-" open :term
-noremap ~ :15split\|term<CR>
-" ALE
-nnoremap gd :LSPGoToDef<CR>
-nnoremap gh :LSPHover<CR>
+" open :term (i don't use marker so :shrug:)
+nnoremap ~ :15split\|term<CR>
+nnoremap ` :term<CR>
+nnoremap gd :ALEGoToDefinition<CR>
+nnoremap gc :ALEDocumentation<CR>
+nnoremap gh :ALEHover<CR>
 " NERDtree
-noremap <C-t> :NERDTreeToggle<CR>
+noremap gt :NERDTreeToggle<CR>
 " F5 makes
 noremap <F5> :make<CR>
 " ESC returns from terminal insert mode
@@ -217,6 +237,12 @@ nnoremap gm :LSPMenu<CR>
 " end binds }}}
 
 " autocommands {{{
+" open quickfix window when quickfix commands are run {{{
+augroup OpenQuickfix
+  autocmd!
+  autocmd QuickFixCmdPost * copen
+augroup END
+" }}}
 " for makefiles and go files: use noexpandtab {{{
 augroup UseNoexpandtab
   autocmd!
