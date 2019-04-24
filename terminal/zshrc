@@ -147,4 +147,16 @@ antigen apply
   # }}}
 # }}}
 
+# GVM, if available
+[[ -s "$HOME/.gvm/scripts/gvm" ]] &&  source "$HOME/.gvm/scripts/gvm"
+# NVM, if available
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Android SDK, if available
+if [ -d "$HOME/.android/sdk" ]; then
+  export ANDROID_HOME=$HOME/.android/sdk
+  export PATH=$PATH:$ANDROID_HOME/platform-tools/
+fi
+
 # vi: foldmethod=marker foldenable

@@ -4,7 +4,6 @@
 " plugins (via vim-plug) {{{
 " pre-plugin configuration {{{
 filetype plugin indent on
-let g:ale_completion_enabled = 1
 " determine plugdir based on if we're using vim or not
 if has('nvim')
   let s:plugdir = '~/.local/share/nvim/plugged'
@@ -22,10 +21,20 @@ call plug#begin(s:plugdir)
   Plug 'scrooloose/nerdtree'
   " fuzzy finder
   Plug 'ctrlpvim/ctrlp.vim'
-  " syntax linting / LSP support
-  Plug 'w0rp/ale'
   " autocompletion
-  Plug 'lifepillar/vim-mucomplete'
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+  let g:deoplete#enable_at_startup = 1
+  " LSP
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
   " better buffer handling
   Plug 'moll/vim-bbye'
   " }}}
@@ -160,26 +169,15 @@ let s:NERDTreeIndicatorMap = {
       \ 'Ignored'   : 'i',
       \ 'Unknown'   : '?'
       \ } " }}}
-" ale {{{
-" linters and fixers {{{
-let g:ale_linters = {
-      \ 'javascript': ['tsserver', 'eslint'],
-      \ }
-let g:ale_fixers = {
-      \ 'javascript': ['prettier']
-      \ }
-" }}}
-" options {{{
-let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = 'E>'
-let g:ale_sign_warning = 'W>'
-let g:ale_open_list = 1
-" }}}
-" }}}
 " ctrlp {{{
 " ignore node_modules
 set wildignore+=node_modules
+" }}}
+" languageclient {{{
+" set up known langservers
+let g:LanguageClient_serverCommands = {}
+let g:LanguageClient_serverCommands['javascript'] = ['npx', 'javascript-typescript-stdio']
+let g:LanguageClient_serverCommands['javascript.jsx'] = ['npx', 'javascript-typescript-stdio']
 " }}}
 " end plugin configuration }}}
 
@@ -192,8 +190,8 @@ nnoremap <silent> <A-Left> :wincmd h<CR>
 nnoremap <silent> <A-Right> :wincmd l<CR>
 " }}}
 " buffers {{{
-" C-x closes buffer with bbye
-nnoremap <C-x> :Bdelete<CR>
+" C-w closes buffer with bbye
+nnoremap <C-w> :Bdelete<CR>
 " tab and shift-tab move buffers
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
@@ -202,9 +200,8 @@ nnoremap <S-Tab> :bprev<CR>
 " open :term
 noremap ~ :15split\|term<CR>
 " ALE
-nnoremap <A-g> :ALEGoToDefinition<CR>
-nnoremap <A-d> :ALEDocumentation<CR>
-nnoremap <A-h> :ALEHover<CR>
+nnoremap gd :LSPGoToDef<CR>
+nnoremap gh :LSPHover<CR>
 " NERDtree
 noremap <C-t> :NERDTreeToggle<CR>
 " F5 makes
@@ -213,6 +210,9 @@ noremap <F5> :make<CR>
 tnoremap <Esc> <C-\><C-n>
 " <ESC> in normal mode ends search
 nnoremap <Esc> :nohls<CR>
+" }}}
+" gm accesses LSP menu {{{
+nnoremap gm :LSPMenu<CR>
 " }}}
 " end binds }}}
 
@@ -229,9 +229,10 @@ augroup END
 " auto-apply dotfiles on save {{{
 augroup AutoApplyDotfiles
   autocmd!
-  autocmd BufWritePost ~/.Xresources* !xrdb -merge ~/.Xresources
+  autocmd BufWritePost ~/.Xresources.d/* !xrdb -merge ~/.Xresources
   autocmd BufWritePost ~/.config/i3/config !i3-msg reload
-  autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
+  autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/i3/polybar.sh
+  autocmd BufWritePost ~/.config/nvim/init.vim so % | AirlineRefresh
 augroup END
 " }}}
 " neovim only: make term behavior more convenient {{{
@@ -261,6 +262,14 @@ autocmd FileType markdown set tw=80
 command! Vimrc e $MYVIMRC
 command! VimrcUpdate source $MYVIMRC
 command! Zshrc e ~/.zshrc
+" }}}
+" LSP commands {{{
+command! LSPGoToDef call LanguageClient#textDocument_definition()
+command! LSPHover call LanguageClient#textDocument_hover()
+command! LSPRename call LanguageClient#textDocument_rename()
+command! LSPGetRefs call LanguageClient#textDocument_references()
+command! LSPMenu call LanguageClient_contextMenu()
+"
 " }}}
 " miscellaneous {{{
 " convert a pure React component to class, with react-pure-to-class

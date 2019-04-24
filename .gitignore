@@ -4,3 +4,6 @@ terminal/zshrc.d/antigen
 terminal/zshrc.d/*antigen-compat
 desktop/Xresources.d/env
 desktop/Xresources.d/Xresources.d
+desktop/polybar/polybar
+desktop/rofi/rofi
+desktop/zshrc.d/zshrc.d
