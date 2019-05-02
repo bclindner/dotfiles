@@ -4,7 +4,6 @@
 " plugins (via vim-plug) {{{
 " pre-plugin configuration {{{
 filetype plugin indent on
-let g:ale_completion_enabled = 1
 " determine plugdir based on if we're using vim or not
 if has('nvim')
   let s:plugdir = '~/.local/share/nvim/plugged'
@@ -24,8 +23,6 @@ call plug#begin(s:plugdir)
   Plug 'scrooloose/nerdtree'
   " fuzzy finder
   Plug 'ctrlpvim/ctrlp.vim'
-  " syntax linting / LSP support
-  Plug 'w0rp/ale'
   " autocompletion
   " Plug 'lifepillar/vim-mucomplete'
   " better buffer handling
@@ -198,6 +195,12 @@ let g:NERDSpaceDelims=1
 " mucomplete {{{
 " let g:mucomplete#enable_auto_at_startup = 1
 " }}}
+" languageclient {{{
+" set up known langservers
+let g:LanguageClient_serverCommands = {}
+let g:LanguageClient_serverCommands['javascript'] = ['npx', 'javascript-typescript-stdio']
+let g:LanguageClient_serverCommands['javascript.jsx'] = ['npx', 'javascript-typescript-stdio']
+" }}}
 " end plugin configuration }}}
 
 " binds {{{
@@ -219,7 +222,6 @@ nnoremap <S-Tab> :bprev<CR>
 " open :term (i don't use marker so :shrug:)
 nnoremap ~ :15split\|term<CR>
 nnoremap ` :term<CR>
-" ALE
 nnoremap gd :ALEGoToDefinition<CR>
 nnoremap gc :ALEDocumentation<CR>
 nnoremap gh :ALEHover<CR>
@@ -231,6 +233,9 @@ noremap <F5> :make<CR>
 tnoremap <Esc> <C-\><C-n>
 " <ESC> in normal mode ends search
 nnoremap <Esc> :nohls<CR>
+" }}}
+" gm accesses LSP menu {{{
+nnoremap gm :LSPMenu<CR>
 " }}}
 " end binds }}}
 
@@ -253,9 +258,10 @@ augroup END
 " auto-apply dotfiles on save {{{
 augroup AutoApplyDotfiles
   autocmd!
-  autocmd BufWritePost ~/.Xresources* !xrdb -merge ~/.Xresources
+  autocmd BufWritePost ~/.Xresources.d/* !xrdb -merge ~/.Xresources
   autocmd BufWritePost ~/.config/i3/config !i3-msg reload
-  autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
+  autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/i3/polybar.sh
+  autocmd BufWritePost ~/.config/nvim/init.vim so % | AirlineRefresh
 augroup END
 " }}}
 " neovim only: make term behavior more convenient {{{
@@ -285,6 +291,14 @@ autocmd FileType markdown set tw=80
 command! Vimrc e $MYVIMRC
 command! VimrcUpdate source $MYVIMRC
 command! Zshrc e ~/.zshrc
+" }}}
+" LSP commands {{{
+command! LSPGoToDef call LanguageClient#textDocument_definition()
+command! LSPHover call LanguageClient#textDocument_hover()
+command! LSPRename call LanguageClient#textDocument_rename()
+command! LSPGetRefs call LanguageClient#textDocument_references()
+command! LSPMenu call LanguageClient_contextMenu()
+"
 " }}}
 " miscellaneous {{{
 " convert a pure React component to class, with react-pure-to-class

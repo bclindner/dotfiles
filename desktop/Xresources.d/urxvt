@@ -15,5 +15,10 @@ URxvt.scrollBar: false
 
 URxvt.letterSpace: 0
 URxvt.lineSpace: 1
+
+! remove all the mode stuff i dont use
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
 ! plugins
 URxvt.perl-ext-common: default,matcher,resize-font,selection-to-clipboard

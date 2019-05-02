@@ -40,7 +40,7 @@ antibody-check-update () {
   # Run an update if the file appears to have changed
   # (checked quickly with CRC32)
   OLDSUM=$(sed -n 1p $ZSHRCD/antibody.zsh.lastsum)
-  NEWSUM=$(crc32 $ZSHRCD/zsh_plugins.txt)
+  NEWSUM=$(cksum $ZSHRCD/zsh_plugins.txt)
   if [[ "$OLDSUM" != "$NEWSUM" ]]; then
     antibody-update
     echo $NEWSUM > $ZSHRCD/antibody.zsh.lastsum
