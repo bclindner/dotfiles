@@ -83,6 +83,7 @@ set hidden
 set splitbelow
 set splitright
 set nocompatible
+set diffopt+=vertical
 " }}}
 " search options {{{
 set showmatch
@@ -165,9 +166,11 @@ let s:NERDTreeIndicatorMap = {
 " ale {{{
 " linters and fixers {{{
 let g:ale_linters = {
+      \ 'vue': ['eslint', 'vls'],
       \ 'javascript': ['tsserver'],
       \ }
 let g:ale_fixers = {
+      \ 'vue': ['eslint'],
       \ 'javascript': ['prettier'],
       \ 'json': ['prettier']
       \ }
