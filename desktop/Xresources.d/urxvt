@@ -3,7 +3,7 @@
 URxvt.termName: rxvt-unicode
 
 ! font
-URxvt.font: xft:FONTNAME:pixelsize=FONTSIZE:antialias=false,xft:Symbola:size=FONTSIZE
+URxvt.font: xft:FONTNAME:size=FONTSIZE,xft:Symbola:size=12
 
 ! allow scrolling in secondary window (e.g. less, vim, etc)
 URxvt.secondaryScreen: 1
@@ -14,7 +14,7 @@ URxvt.secondaryScroll: 0
 URxvt.scrollBar: false
 
 URxvt.letterSpace: 0
-URxvt.lineSpace: 1
+URxvt.lineSpace: 0
 
 ! remove all the mode stuff i dont use
 URxvt.iso14755: false

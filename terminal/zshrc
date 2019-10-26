@@ -24,5 +24,3 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 for file in `ls -1 ~/.zshrc.d/**/*.zsh`; do
   source $file
 done
-
-# vi: foldmethod=marker foldenable

@@ -253,9 +253,10 @@ augroup END
 " auto-apply dotfiles on save {{{
 augroup AutoApplyDotfiles
   autocmd!
-  autocmd BufWritePost ~/.Xresources* !xrdb -merge ~/.Xresources
-  autocmd BufWritePost ~/.config/i3/config !i3-msg reload
-  autocmd BufWritePost ~/.config/polybar/config !pkill -u $USER polybar && ~/.config/polybar/i3-launch.sh
+  autocmd BufWritePost Xresources !xrdb -merge ~/.Xresources
+  autocmd BufWritePost Xresources !xrdb -merge ~/.Xresources
+  autocmd BufWritePost Xresources.d/* silent !xrdb -merge ~/.Xresources
+  autocmd BufWritePost i3/config silent !i3-msg reload
 augroup END
 " }}}
 " neovim only: make term behavior more convenient {{{

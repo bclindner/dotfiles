@@ -85,6 +85,16 @@ if [ $? -eq 0 ]; then
   alias tzrs="trizen -Rs"
 fi
 # }}}
+# yay {{{
+which yay &>/dev/null
+if [ $? -eq 0 ]; then
+  alias ys="yay -S"
+  alias syu="yay -Syu"
+  alias yss="yay-Ss"
+  alias yrs="yay -Rs"
+  alias yrs="yay -Rs"
+fi
+# }}}
 # quick-edit commands for some dotfiles {{{
 alias zshrc="$EDITOR ~/.zshrc"
 alias vimrc="$EDITOR ~/.config/nvim/init.vim"

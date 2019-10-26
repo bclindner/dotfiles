@@ -20,16 +20,17 @@ wifi = ${xrdb:polybar.wlanInterface}
 eth = ${xrdb:polybar.ethInterface}
 
 [bar/bclindner]
+dpi = ${xrdb:Xft.dpi}
 monitor = ${env:MONITOR:}
 
-height = 24
-offset-y = 24
+height = 32
+offset-y = 32
 
 fixed-center = false
 
 modules-left = i3
 modules-center = title
-modules-right = eth wlan memory cpu volume battery date
+modules-right = eth wlan memory cpu volume backlight battery date
 
 background = ${colors.dark}
 foreground = ${colors.light}
@@ -40,22 +41,22 @@ tray-maxsize = 16
 tray-offset-y = -24
 tray-padding = 2
 
-line-size = 3
+line-size = 4
 line-color = ${colors.accent}
 
-padding-left = 2
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 1
 module-padding = 1
 
 font-0 = ${xrdb:polybar.font}
-font-1 = Symbola:size=14;1
+font-1 = Symbola:size=12;1
 
 [module/title]
 type = internal/xwindow
-label-maxlen = 60
+label-maxlen = 48
 
 [module/i3]
 type = internal/i3
@@ -96,7 +97,7 @@ format-underline = ${colors.accent}
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = ADP0
+adapter = AC
 full-at = 96
 poll-interval = 5
 
@@ -146,18 +147,9 @@ interval = 1
 
 format-prefix = "💻 "
 format-underline = ${colors.red}
-format = <label> <ramp-coreload>
-label =
+format = <label>
+label = %percentage%%
 format-padding = 1
-
-ramp-coreload-0 = ▁
-ramp-coreload-1 = ▂
-ramp-coreload-2 = ▃
-ramp-coreload-3 = ▄
-ramp-coreload-4 = ▅
-ramp-coreload-5 = ▆
-ramp-coreload-6 = ▇
-ramp-coreload-7 = █
 
 [module/volume]
 type = internal/pulseaudio
@@ -187,6 +179,11 @@ interval = 3
 format-padding = 1
 format-underline = ${colors.cyan}
 label = 🐏 %gb_used%/%gb_total%
+
+[module/backlight]
+type=internal/xbacklight
+format-underline = ${colors.yellow}
+label = ☀️ %percentage%%
 
 [settings]
 screenchange-reload = true

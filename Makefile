@@ -93,16 +93,12 @@ xresources:
 	ln -s `pwd`/desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
 	ln -s `pwd`/desktop/Xresources.d ~/.Xresources.d
-	# refresh xrdb
-	xrdb -merge ~/.Xresources
 
 xresources-force:
 	# symlink Xresources, forcefully
 	ln -sf `pwd`/desktop/Xresources ~/.Xresources
 	# symlink Xresources.d, forcefully
 	ln -sf `pwd`/desktop/Xresources.d ~/.Xresources.d
-	# refresh xrdb
-	xrdb -merge ~/.Xresources
 
 git:
 	# ensure git is installed (i would hope it is)

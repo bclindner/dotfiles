@@ -9,6 +9,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt
+bindsym $mod+T exec urxvt
 
 # kill focused window
 bindsym $mod+q kill
@@ -144,10 +145,20 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+mode "screenlayout" {
+      bindsym m exec sh -c "~/.screenlayout/mobile.sh && i3-msg mode normal"
+      bindsym h exec sh -c "~/.screenlayout/home.sh && i3-msg mode normal"
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+      bindsym $mod mode "default"
+      bindsym $mod+p mode "default"
+}
+
 bindsym $mod+r mode "resize"
+bindsym $mod+p mode "screenlayout"
 
 # set i3-gaps gap stuff
-gaps inner 15
+gaps inner 8
 
 # disable window decorations
 new_window pixel 0
@@ -162,9 +173,6 @@ exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 # render background
 exec_always --no-startup-id xsetroot -solid "#1d1f21"
 
-# start syndaemon, if possible
-exec_always --no-startup-id syndaemon -i 0.5 -K -R
-
 # launch libinput-gestures for touchpad gesture control, if possible
 exec_always libinput-gestures
 
@@ -176,10 +184,14 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 # touchpad toggle
 bindsym XF86TouchpadToggle exec $HOME/.config/i3/touchpad-toggle.sh
 
+# brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
 
 # print screen
 exec_always --no-startup-id mkdir -p ~/screenshots
-bindsym Print exec maim | tee ~/echo screenshots/$(date +screenshot-%F-%M-%S.png) | xclip -selection CLIPBOARD -t image/png
-bindsym --release $mod+Print exec maim -s | tee ~/screenshots/$(date +screenshot-%F-%H-%H-%M-%S_%N.png) | xclip -selection CLIPBOARD -t image/png
+bindsym Print exec maim | tee ~/screenshots/$(date +screenshot-%F-%M-%S.png) | xclip -selection CLIPBOARD -t image/png
+bindsym --release $mod+Print exec maim -s | tee ~/screenshots/$(date +screenshot-%F-%M-%S.png) | xclip -selection CLIPBOARD -t image/png
 
 for_window [instance="Godot_Engine"] floating enable
