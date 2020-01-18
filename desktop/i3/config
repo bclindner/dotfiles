@@ -15,7 +15,7 @@ bindsym $mod+T exec urxvt
 bindsym $mod+q kill
 
 # launch firefox
-bindsym $mod+w exec firefox
+bindsym $mod+w exec firefox-developer-edition
 
 # lock the wm
 bindsym $mod+l exec dm-tool lock

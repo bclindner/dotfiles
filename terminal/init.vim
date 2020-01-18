@@ -177,7 +177,7 @@ let g:ale_fixers = {
 " }}}
 " options {{{
 let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_open_list = 0
 let g:ale_list_window_size = 3
 let g:ale_sign_error = 'E>'
