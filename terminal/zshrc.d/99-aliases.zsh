@@ -103,5 +103,8 @@ alias vimrc="$EDITOR ~/.config/nvim/init.vim"
 alias gsa="git stash apply"
 alias gs="git stash"
 # }}}
+# youtube dl-and-convert function{{{
+function ytdl() { youtube-dl $1 -o - | ffmpeg -i pipe:0 $2 }
+# }}}
 
 # vi: foldmethod=marker foldenable

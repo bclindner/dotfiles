@@ -20,3 +20,7 @@ else
   # if there's no xrandr, just launch the bar
   polybar --reload $BARTYPE &
 fi
+
+# after that, try to start applets
+blueman-applet || true
+nm-applet || true

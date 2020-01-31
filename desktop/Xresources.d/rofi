@@ -1,9 +1,2 @@
 ! vim: set ft=xdefaults:
 
-rofi.font: FONTNAME FONTSIZE
-rofi.location: 2
-rofi.modi: run,drun,combi,ssh
-rofi.combi-modi: window,drun,ssh,run
-rofi.display-combi: >
-rofi.theme: ~/.config/rofi/theme.rasi
-rofi.show-icons: true

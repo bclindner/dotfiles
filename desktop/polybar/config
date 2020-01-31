@@ -15,10 +15,6 @@ accent = ${colors.purple}
 urgent = ${colors.red}
 ok = ${colors.green}
 
-[network]
-wifi = ${xrdb:polybar.wlanInterface}
-eth = ${xrdb:polybar.ethInterface}
-
 [bar/bclindner]
 dpi = ${xrdb:Xft.dpi}
 monitor = ${env:MONITOR:}
@@ -30,7 +26,7 @@ fixed-center = false
 
 modules-left = i3
 modules-center = title
-modules-right = eth wlan memory cpu volume backlight battery date
+modules-right = memory cpu volume backlight battery date
 
 background = ${colors.dark}
 foreground = ${colors.light}
@@ -120,26 +116,6 @@ label-full = %percentage%%
 format-full-underline = ${colors.green}
 format-full-prefix = "🔌 "
 format-full-padding = 1
-
-[module/wlan]
-type = internal/network
-interface = ${network.wifi}
-interval = 3.0
-
-format-connected-padding = 1
-format-connected = <label-connected>
-label-connected = 🖧  %essid% %signal%%
-format-connected-underline = ${colors.ok}
-
-[module/eth]
-type = internal/network
-interface = ${network.eth}
-interval = 3.0
-
-format-connected-padding = 1
-format-connected-underline = ${colors.ok}
-format-connected = <label-connected>
-label-connected = 🔗 %local_ip%
 
 [module/cpu]
 type = internal/cpu

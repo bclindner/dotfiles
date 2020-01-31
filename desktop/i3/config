@@ -51,6 +51,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -104,6 +105,9 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
@@ -146,8 +150,8 @@ mode "resize" {
 }
 
 mode "screenlayout" {
-      bindsym m exec sh -c "~/.screenlayout/mobile.sh && i3-msg mode normal"
-      bindsym h exec sh -c "~/.screenlayout/home.sh && i3-msg mode normal"
+      bindsym m exec sh -c "~/.screenlayout/mobile.sh && i3-msg restart"
+      bindsym h exec sh -c "~/.screenlayout/home.sh && i3-msg restart"
       bindsym Return mode "default"
       bindsym Escape mode "default"
       bindsym $mod mode "default"

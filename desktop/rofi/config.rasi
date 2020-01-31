@@ -1,3 +1,13 @@
+configuration {
+  font: "Inconsolata for Powerline 12";
+  location: 0;
+  modi: "run,drun,combi,ssh";
+  combi-modi: "window,drun,ssh,run";
+  display-combi: ">";
+  show-icons: true;
+  lines: 10;
+}
+
 * {
   fg: #e3e3e3;
   bg: #1d1f21;
@@ -16,20 +26,20 @@ window {
 }
 
 #mainbox {
-  border: 0 1 1 1;
+  border: 1;
   border-color: @lighterbg;
   padding: 10;
 }
 
 entry {
   padding: 2;
-  margin-bottom: 8;
+  margin-bottom: 4;
 }
 
 prompt {
   background-color: @bg;
   padding: 2;
-  margin-bottom: 16;
+  margin-bottom: 8;
 }
 
 #listview {
@@ -38,6 +48,7 @@ padding: 8 0;
 
 #element {
   padding: 0;
+  margin: 2;
 }
 
 element.selected {
