@@ -210,6 +210,8 @@ nnoremap <silent> <A-Right> :wincmd l<CR>
 " }}}
 " buffers {{{
 " C-w closes buffer with bbye
+" (this does mess with window switching but that's done another way in this
+" config)
 nnoremap <C-w> :Bdelete<CR>
 " tab and shift-tab move buffers
 nnoremap <Tab> :bnext<CR>
@@ -223,6 +225,7 @@ nnoremap ` :term<CR>
 nnoremap gd :ALEGoToDefinition<CR>
 nnoremap gc :ALEDocumentation<CR>
 nnoremap gh :ALEHover<CR>
+nnoremap gl :ALEFix<CR>
 " NERDtree
 noremap gt :NERDTreeToggle<CR>
 " F5 makes
