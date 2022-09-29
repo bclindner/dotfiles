@@ -73,18 +73,22 @@ vim-force:
 	# install plugins
 	vim +PlugInstall +qall
 
-zsh:
+zsh: asdfvm antidote
 	# symlink zshrc and zshrc.d
 	ln -s `pwd`/terminal/zshrc ~/.zshrc
 	ln -s `pwd`/terminal/zshrc.d ~/.zshrc.d
-	# get antigen
-	curl -sL git.io/antibody | sh -s
-zsh-force:
+zsh-force: asdfvm antidote
 	# symlink zshrc and zshrc.d
 	ln -sf `pwd`/terminal/zshrc ~/.zshrc
 	ln -sf `pwd`/terminal/zshrc.d ~/.zshrc.d
-	# get antigen
-	curl -sL git.io/antibody | sh -s
+
+antidote:
+	# clone antidote
+	git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+
+asdfvm:
+	# clone asdf
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 
 xresources:
 	# make sure env is filled out, first

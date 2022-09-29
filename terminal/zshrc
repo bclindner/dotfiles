@@ -3,6 +3,7 @@
 # options
 setopt appendhistory notify extendedglob
 unsetopt beep nomatch
+bindkey -v
 # terminal/editor vars
 ZSH=~/.zshrc.d
 export TERM=xterm-256color
@@ -19,6 +20,10 @@ SAVEHIST=500
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
+# include antidote
+source $HOME/.antidote/antidote.zsh
+# include asdf
+source $HOME/.asdf/asdf.sh
 
 # source all from ~/.zshrc.d, in order lexically
 for file in `ls -1 ~/.zshrc.d/**/*.zsh`; do

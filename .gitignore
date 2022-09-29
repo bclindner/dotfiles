@@ -3,7 +3,10 @@ terminal/zshrc.d/cache/
 # paths are machine-specific
 terminal/zshrc.d/paths.zsh
 terminal/zshrc.d/*-paths.zsh
-# antibody system stuff
+# antidote
+terminal/zshrc.d/antidote-bundle.zsh
+terminal/zshrc.d/antidote.zsh.lastsum
+# old antibody system stuff
 terminal/zshrc.d/antibody-bundle.zsh
 terminal/zshrc.d/*-antibody-bundle.zsh
 terminal/zshrc.d/antibody.zsh.lastsum
