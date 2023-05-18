@@ -94,7 +94,7 @@ mkdir -p "$HOME/Developer/archive"
 
 
 log_info "cloning dotfiles..."
-git clone --branch new https://github.com/bclindner/dotfiles.git $DOTSDIR
+git clone https://github.com/bclindner/dotfiles.git $DOTSDIR
 
 log_info "setting up (neo)vim..."
 mkdir -p $HOME/.config/nvim
