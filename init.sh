@@ -98,19 +98,19 @@ git clone https://github.com/bclindner/dotfiles.git $DOTSDIR
 
 log_info "setting up (neo)vim..."
 mkdir -p $HOME/.config/nvim
-ln -s "$DOTSDIR/terminal/init.vim" "$HOME/.config/nvim/init.vim"
+ln -s "$DOTSDIR/init.vim" "$HOME/.config/nvim/init.vim"
 curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/$PLUGVIM_VERSION/plug.vim
 nvim +PlugInstall +qall
 
 log_info "setting up zsh..."
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
 git clone --depth=1 --branch "$ANTIDOTE_VERSION" https://github.com/mattmc3/antidote.git ${HOME}/.antidote
-ln -s "$DOTSDIR/terminal/zshrc" "$HOME/.zshrc"
-ln -s "$DOTSDIR/terminal/zshrc.d" "$HOME/.zshrc.d"
+ln -s "$DOTSDIR/zshrc" "$HOME/.zshrc"
+ln -s "$DOTSDIR/zshrc.d" "$HOME/.zshrc.d"
 zsh -ci "antidote update"
 
 log_info "setting up misc. links..."
-ln -s "$DOTSDIR/terminal/gitconfig" "$HOME/.gitconfig"
+ln -s "$DOTSDIR/gitconfig" "$HOME/.gitconfig"
 
 log_ok "dotfiles fully initialized"
 log_ok "run \`source ~/.zshrc\` or relog session to initialize zsh"
