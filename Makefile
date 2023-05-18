@@ -40,7 +40,7 @@ antidote:
 
 asdfvm:
 	# clone asdf
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
 
 git:
 	# ensure git is installed (i would hope it is)
