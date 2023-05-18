@@ -1,22 +1,8 @@
 # no cache
-terminal/zshrc.d/cache/
+zshrc.d/cache/
 # paths are machine-specific
-terminal/zshrc.d/paths.zsh
-terminal/zshrc.d/*-paths.zsh
+zshrc.d/paths.zsh
+zshrc.d/*-paths.zsh
 # antidote
-terminal/zshrc.d/antidote-bundle.zsh
-terminal/zshrc.d/antidote.zsh.lastsum
-# old antibody system stuff
-terminal/zshrc.d/antibody-bundle.zsh
-terminal/zshrc.d/*-antibody-bundle.zsh
-terminal/zshrc.d/antibody.zsh.lastsum
-terminal/zshrc.d/antibody.zsh.lasthash
-# old antigen
-terminal/zshrc.d/*antigen-compat
-# env is machine-specific
-desktop/Xresources.d/env
-# recursive alias sometimes happens
-desktop/Xresources.d/Xresources.d
-desktop/polybar/polybar
-desktop/rofi/rofi
-desktop/zshrc.d/zshrc.d
+zshrc.d/antidote-bundle.zsh
+zshrc.d/antidote.zsh.lastsum
