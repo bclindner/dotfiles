@@ -18,4 +18,4 @@ RUN chmod +x ./init.sh
 RUN chown bclindner:bclindner ./init.sh
 RUN rm -rf /home/bclindner/.config/nvim/
 USER bclindner
-RUN bash ./init.sh
+RUN zsh ./init.sh

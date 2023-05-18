@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/zsh
 # Initialize an environment with the bclindner dotfiles.
 
 set -u
@@ -68,8 +68,8 @@ done
 
 log_info "checking for directory issues..."
 
-for path in ${REQUIRED_NONEXISTING_PATHS[@]}; do
-    ensure_path_not_exists $path
+for dir in ${REQUIRED_NONEXISTING_PATHS[@]}; do
+    ensure_path_not_exists $dir
     failures=$(($failures+$?))
 done
 
