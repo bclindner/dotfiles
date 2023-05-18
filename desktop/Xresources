@@ -1,7 +1,0 @@
-! vim: set ft=xdefaults:
-
-#include ".Xresources.d/env"
-#include ".Xresources.d/colors"
-#include ".Xresources.d/urxvt"
-#include ".Xresources.d/polybar"
-#include ".Xresources.d/rofi"

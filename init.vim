@@ -1,16 +1,15 @@
-" bclindner's init.vim/vimrc
-" best used with neovim, but vim works fine too
+" bclindner's init.vim
+" neovim is required for this configuration
+if !has('nvim')
+  echoerr "this init does not work without nvim"
+endif
 
-" plugins (via vim-plug) {{{
+" plugins (via vim-plug) {{{{{{}}}
 " pre-plugin configuration {{{
 filetype plugin indent on
 let g:ale_completion_enabled = 1
 " determine plugdir based on if we're using vim or not
-if has('nvim')
-  let s:plugdir = '~/.local/share/nvim/plugged'
-else
-  let s:plugdir = '~/.vim/plugged'
-endif
+let s:plugdir = '~/.local/share/nvim/plugged'
 " enable ale completion (must be done before plugin load)
 let g:ale_completion_enabled = 1
 " }}}
@@ -26,10 +25,11 @@ call plug#begin(s:plugdir)
   Plug 'ctrlpvim/ctrlp.vim'
   " syntax linting / LSP support
   Plug 'w0rp/ale'
-  " autocompletion
-  " Plug 'lifepillar/vim-mucomplete'
   " better buffer handling
   Plug 'moll/vim-bbye'
+  " debugging / DAP support
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'mfussenegger/nvim-dap-python'
   " }}}
   " git support {{{
   Plug 'airblade/vim-gitgutter'
@@ -52,12 +52,6 @@ call plug#begin(s:plugdir)
   " xml autoclose/tag matching
   Plug 'Townk/vim-autoclose'
   Plug 'alvan/vim-closetag'
-  " }}}
-  " snippet support {{{
-  Plug 'MarcWeber/vim-addon-mw-utils'
-  Plug 'tomtom/tlib_vim'
-  Plug 'garbas/vim-snipmate'
-  Plug 'honza/vim-snippets'
   " }}}
   " custom colorschemes {{{
   " editor colorscheme
@@ -165,14 +159,19 @@ let s:NERDTreeIndicatorMap = {
       \ } " }}}
 " ale {{{
 " linters and fixers {{{
+let g:ale_elixir_elixir_ls_release = '/home/bclindner/.local/share/elixir-ls/'
 let g:ale_linters = {
       \ 'vue': ['eslint', 'vls'],
+      \ 'go': ['gopls'],
       \ 'javascript': ['tsserver'],
+      \ 'python': ['pylsp'],
+      \ 'elixir': ['elixir-ls'],
       \ }
 let g:ale_fixers = {
       \ 'vue': ['eslint'],
       \ 'javascript': ['prettier'],
-      \ 'json': ['prettier']
+      \ 'json': ['prettier'],
+      \ 'python': ['isort', 'black']
       \ }
 " }}}
 " options {{{
@@ -201,21 +200,12 @@ let g:NERDSpaceDelims=1
 " end plugin configuration }}}
 
 " binds {{{
-" splits {{{
-" split movement
-nnoremap <silent> <A-Up> :wincmd k<CR>
-nnoremap <silent> <A-Down> :wincmd j<CR>
-nnoremap <silent> <A-Left> :wincmd h<CR>
-nnoremap <silent> <A-Right> :wincmd l<CR>
-" }}}
 " buffers {{{
-" C-w closes buffer with bbye
-" (this does mess with window switching but that's done another way in this
-" config)
-nnoremap <C-w> :Bdelete<CR>
 " tab and shift-tab move buffers
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
+" gw to close tab
+nnoremap gw :Bdelete<CR>
 " }}}
 " QOL binds {{{
 " open :term (i don't use marker so :shrug:)
@@ -226,8 +216,11 @@ nnoremap gd :ALEGoToDefinition<CR>
 nnoremap gc :ALEDocumentation<CR>
 nnoremap gh :ALEHover<CR>
 nnoremap gl :ALEFix<CR>
+nnoremap g? :ALEDetail<CR>
 " NERDtree
 noremap gt :NERDTreeToggle<CR>
+" gc for quick commits
+nnoremap gc :G commit -a<CR>
 " F5 makes
 noremap <F5> :make<CR>
 " ESC returns from terminal insert mode
@@ -262,15 +255,12 @@ augroup AutoApplyDotfiles
   autocmd BufWritePost i3/config silent !i3-msg reload
 augroup END
 " }}}
-" neovim only: make term behavior more convenient {{{
-if has('neovim')
-  augroup TermConfig
-    autocmd!
-    autocmd TermOpen * setlocal nonumber
-    autocmd TermOpen * startinsert
-    autocmd TermClose * bdelete!
-  augroup END
-endif
+augroup TermConfig
+  autocmd!
+  autocmd TermOpen * setlocal nonumber
+  autocmd TermOpen * startinsert
+  autocmd TermClose * bdelete!
+augroup END
 " }}}
 " filetype autocmds {{{
 " set make programs
@@ -289,12 +279,6 @@ autocmd FileType markdown set tw=80
 command! Vimrc e $MYVIMRC
 command! VimrcUpdate source $MYVIMRC
 command! Zshrc e ~/.zshrc
-" }}}
-" miscellaneous {{{
-" convert a pure React component to class, with react-pure-to-class
-command! -range ReactPureToClass <line1>,<line2>!react-pure-to-class
-" get highlighting group under cursor (thanks vim wiki)
-command! WhichHighlight :echom synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
 " }}}
 " end custom commands }}}
 

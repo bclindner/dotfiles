@@ -1,4 +1,0 @@
-! vim: set ft=xdefaults:
-
-! font
-polybar.font: FONTNAME:pixelsize=FONTSIZE,Symbola:size=14;1

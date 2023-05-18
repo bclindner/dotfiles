@@ -5,6 +5,23 @@ alias x="exit"
 # sudo {{{
 alias s="sudo"
 # }}}
+# git {{{
+# commands adapted from the oh-my-zsh git plugin - thanks y'all
+alias gst="git status"
+alias gaa="git add -a"
+alias gc="git commit"
+alias gca="git commit -a"
+alias gcam="git commit -am"
+alias glog="git log"
+alias gcana="git commit --amend --no-edit -a"
+alias gs="git stash"
+alias gsa="git stash apply"
+alias gsw="git switch"
+alias gco="git checkout"
+alias gm="git merge"
+alias gsa="git stash apply"
+alias gs="git stash"
+# }}}
 # ranger auto-cd {{{
 # thanks to gombai sandor on stackexchange (superuser.com/questions/1043806)!
 which apt &>/dev/null
@@ -99,10 +116,6 @@ fi
 alias zshrc="$EDITOR ~/.zshrc"
 alias vimrc="$EDITOR ~/.config/nvim/init.vim"
 # }}}
-# git (dangerous alias set; this overwrites GhostScript) {{{
-alias gsa="git stash apply"
-alias gs="git stash"
-# }}}
 # youtube dl-and-convert function {{{
 function ytdl() {
   if ! [ -x "$(command -v youtube-dl)" ]; then
@@ -116,5 +129,30 @@ function ytdl() {
   youtube-dl $1 -o - | ffmpeg -i pipe:0 $2
 }
 # }}}
+# podman and podman remote {{{
+alias pdm=podman
+alias pdmcl="podman container ls"
+alias pdmi="podman image ls"
+alias pdmr="podman run"
+alias pdmx="podman kill"
+alias pdr="podman --remote"
+# function to kill then remove a container
+function pdmx() {
+  podman kill $1 && podman rm $1
+}
+# }}}
+# misc. functions {{{
+# serve the given static site directory on localhost:8000 and open it
+function serve() {
+  xdg-open http://localhost:8000 &
+  python -m http.server
+}
+
+# open a file with xdg-open
+function open() {
+  xdg-open $@
+}
+# }}}
+
 
 # vi: foldmethod=marker foldenable
