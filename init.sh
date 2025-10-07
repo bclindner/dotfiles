@@ -98,9 +98,7 @@ git clone https://github.com/bclindner/dotfiles.git $DOTSDIR
 
 log_info "setting up (neo)vim..."
 mkdir -p $HOME/.config/nvim
-ln -s "$DOTSDIR/init.vim" "$HOME/.config/nvim/init.vim"
-curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/$PLUGVIM_VERSION/plug.vim
-nvim +PlugInstall +qall
+ln -s "$DOTSDIR/nvim" "$HOME/.config/nvim"
 
 log_info "setting up zsh..."
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
