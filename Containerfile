@@ -1,5 +1,7 @@
 FROM debian:stable
 
+LABEL description=Container development environment based around bclindner dotfiles.
+
 RUN apt-get update
 RUN apt-get install -y \
     zsh git curl neovim locales locales-all

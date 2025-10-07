@@ -93,8 +93,14 @@ mkdir -p "$HOME/Developer/sandboxes"
 mkdir -p "$HOME/Developer/archive"
 
 
-log_info "cloning dotfiles..."
-git clone https://github.com/bclindner/dotfiles.git $DOTSDIR
+# detect if we are in the actual repo
+if [ -f ./LICENSE ] && [ -f ./nvim ] && [ -f zshrc ]; then
+	log_info "copying dotfiles to new dir..."
+	cp -r ../* $DOTSDIR
+else
+	log_info "cloning dotfiles to new dir..."
+	git clone https://github.com/bclindner/dotfiles.git $DOTSDIR
+fi
 
 log_info "setting up (neo)vim..."
 mkdir -p $HOME/.config
