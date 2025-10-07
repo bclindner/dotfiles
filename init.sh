@@ -97,15 +97,12 @@ log_info "cloning dotfiles..."
 git clone https://github.com/bclindner/dotfiles.git $DOTSDIR
 
 log_info "setting up (neo)vim..."
-mkdir -p $HOME/.config/nvim
+mkdir -p $HOME/.config
 ln -s "$DOTSDIR/nvim" "$HOME/.config/nvim"
 
 log_info "setting up zsh..."
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
-git clone --depth=1 --branch "$ANTIDOTE_VERSION" https://github.com/mattmc3/antidote.git ${HOME}/.antidote
 ln -s "$DOTSDIR/zshrc" "$HOME/.zshrc"
-ln -s "$DOTSDIR/zshrc.d" "$HOME/.zshrc.d"
-zsh -ci "antidote update"
 
 log_info "setting up misc. links..."
 ln -s "$DOTSDIR/gitconfig" "$HOME/.gitconfig"
