@@ -66,11 +66,17 @@ require("lazy").setup({
 			"mfussenegger/nvim-dap",
 		},
 		{ "jay-babu/mason-nvim-dap.nvim" },
-		{ "rcarriga/nvim-dap-ui" },
+		{ "rcarriga/nvim-dap-ui",
+			dependencies = {
+				"mfussenegger/nvim-dap",
+				"nvim-neotest/nvim-nio",
+			},
+			opts = {}
+		},
 		-- start screen
 		{
 			"goolord/alpha-nvim",
-			dependencies = { "echasnovski/mini.icons" },
+			dependencies = { "nvim-mini/mini.icons" },
 			config = function()
 				require("alpha").setup(require("alpha.themes.startify").config)
 			end,
@@ -81,8 +87,35 @@ require("lazy").setup({
 			opts = {},
 			dependencies = { "nvim-tree/nvim-web-devicons" },
 		},
+		-- treesitter for highlighting
+		{
+			"nvim-treesitter/nvim-treesitter",
+			branch = 'main',
+			lazy = false,
+			build = ":TSUpdate"
+		},
+		-- markdown viewer
+		{
+			"MeanderingProgrammer/render-markdown.nvim",
+			dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" },
+			opts = {},
+		},
+		-- completion
+		{
+			"nvim-mini/mini.completion",
+			version = false,
+			name = "mini.git",
+			opts = {},
+		},
+		-- git
+		{
+			'nvim-mini/mini-git',
+			version = false,
+		},
+		-- colorscheme
+		{ "nuvic/flexoki-nvim", name = "flexoki" },
 	},
-	install = {},
+	install = { colorscheme = { "flexoki-moon" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
