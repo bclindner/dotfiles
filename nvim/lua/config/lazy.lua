@@ -64,6 +64,19 @@ require("lazy").setup({
 		-- debugging
 		{
 			"mfussenegger/nvim-dap",
+			config = function()
+				local dap = require('dap')
+				dap.configurations.python = {
+					type = 'debugpy';
+					request = 'launch';
+					name = "Launch file";
+					program = "${file}";
+					pythonPath = function()
+						return '/usr/bin/python'
+					end;
+				}
+
+			end,
 		},
 		{ "jay-babu/mason-nvim-dap.nvim" },
 		{ "rcarriga/nvim-dap-ui",
@@ -117,5 +130,8 @@ require("lazy").setup({
 	},
 	install = { colorscheme = { "flexoki-moon" } },
 	-- automatically check for plugin updates
-	checker = { enabled = true },
+	checker = {
+		enabled = true,
+		interval = 86400, -- once per day at most
+	},
 })
