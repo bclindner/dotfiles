@@ -23,12 +23,12 @@ alias gca=git commit -a
 alias glog=git log --oneline
 
 # quick edits to dotfiles
-alias zshrc=$EDITOR ~/.zshrc
-alias vimrc=$EDITOR ~/.config/nvim/init.lua
+alias zshrc="$EDITOR ~/.zshrc"
+alias vimrc="$EDITOR ~/.config/nvim/init.lua"
 
 # notes/journal/todo systems
-NOTEDIR=~/Developer/notes/
-JOURNALDIR=~/Developer/journal/
+NOTEDIR=~/Developer/docs/notes/
+JOURNALDIR=~/Developer/docs/journal/
 NOTEFORMAT=.md
 function note {
 	# if no note name is provided, just ls the notedir
@@ -40,7 +40,7 @@ function note {
 	fi
 }
 function notegrep {
-  rg "$@" "$NOTEDIR"
+  rg -i "$@" "$NOTEDIR"
 }
 
 function journal {
@@ -49,5 +49,16 @@ function journal {
 function journalgrep {
   rg "$@" "$JOURNALDIR"
 }
+function project {
+	cd "$HOME/Developer/projects/$@"
+}
 
 PROMPT="%(?..$(tput setaf 9)[%?]$(tput sgr0) )$(tput setab 91) %n@%m $(tput sgr0):%~%# "
+
+PATH=$PATH:$HOME/.local/bin
+
+if [[ -d ~/.zshrc.d ]]; then
+	for file in ~/.zshrc.d/*.zsh; do
+		source "$file"
+	done
+fi
