@@ -28,8 +28,16 @@ require("lazy").setup({
 				"nvim-lua/plenary.nvim",
 			},
 			keys = {
+				-- default telescope
 				{ "gp", "<cmd>Telescope<CR>" },
+				-- basic subcommand binds inspired by telescope's README
 				{ "gT", "<cmd>Telescope find_files<CR>" },
+				{ "gk", "<cmd>Telescope find_files<CR>" },
+				{ "gK", "<cmd>Telescope find_files hidden=true<CR>" },
+				{ "gff", "<cmd>Telescope find_files<CR>" },
+				{ "gfg", "<cmd>Telescope live_grep<CR>" },
+				{ "gfb", "<cmd>Telescope buffers<CR>" },
+				{ "gfh", "<cmd>Telescope help_tags<CR>" },
 			},
 		},
 		{
@@ -117,13 +125,23 @@ require("lazy").setup({
 		{
 			"nvim-mini/mini.completion",
 			version = false,
-			name = "mini.git",
+			name = "mini.completion",
 			opts = {},
 		},
 		-- git
 		{
 			'nvim-mini/mini-git',
+			name = "mini.git",
+			opts = {},
 			version = false,
+			keys = {
+				{ "gGc", "<cmd>Git commit<CR>" },
+				{ "gGC", "<cmd>Git commit -a<CR>" },
+				{ "gGa", "<cmd>Git add %<CR>" },
+			},
+		},
+		{ 'FabijanZulj/blame.nvim',
+			opts = {},
 		},
 		-- colorscheme
 		{ "nuvic/flexoki-nvim", name = "flexoki" },
